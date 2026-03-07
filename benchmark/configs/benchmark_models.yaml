@@ -1,0 +1,18 @@
+external_root: "C:/Users/amali/repos/external"
+models:
+  deepccs:
+    enabled: true
+    repo_url: "https://github.com/plpla/DeepCCS"
+    repo_path: "C:/Users/amali/repos/external/DeepCCS"
+    conda_env: "deepccs"
+    wrapper: "deepccs"
+
+  darkchem:
+    enabled: true
+    repo_url: "https://github.com/pnnl/darkchem"
+    repo_path: "darkchem"
+    conda_env: "darkchem"
+    wrapper: "darkchem"
+    wrapper_args:
+      network_dir: "darkchem-weights"
+      property_index: 1
