@@ -1,0 +1,75 @@
+{
+  "train_csv": "data/model/train_ccs_fingerprints.csv",
+  "val_csv": "data/model/val_ccs_fingerprints.csv",
+  "test_csv": "data/model/test_ccs_fingerprints.csv",
+  "n_train": 13513,
+  "n_val": 1689,
+  "n_test": 1690,
+  "random_state": 42,
+  "adduct_categories": [
+    "[2M+H]+",
+    "[2M+Na]+",
+    "[2M-H]-",
+    "[M+2H]2+",
+    "[M+2Na-3H]-",
+    "[M+2Na-H]+",
+    "[M+3H]3+",
+    "[M+4H]4+",
+    "[M+CH3COO]-",
+    "[M+Cl]-",
+    "[M+Cs]+",
+    "[M+H-2H2O]+",
+    "[M+H-H2O]+",
+    "[M+H-NH3]+",
+    "[M+H2O-H]-",
+    "[M+H3C2O2]-",
+    "[M+HCOO]-",
+    "[M+H]+",
+    "[M+K-2H]-",
+    "[M+K-H+Cl]-",
+    "[M+K-H+HCOO]-",
+    "[M+K]+",
+    "[M+Li]+",
+    "[M+NH4]+",
+    "[M+Na-2H]-",
+    "[M+Na-H+Cl]-",
+    "[M+Na-H+HCOO]-",
+    "[M+Na-H2O]+",
+    "[M+Na-H]+",
+    "[M+Na]+",
+    "[M+Rb]+",
+    "[M-H-CO2]-",
+    "[M-H2O+HCOO]-",
+    "[M-H2O+H]+",
+    "[M-H2O-H]-",
+    "[M-H]-",
+    "[M-SO3+Cl]-",
+    "[M-SO3-2H2O+H]+",
+    "[M-SO3-3H2O+H]+",
+    "[M-SO3-H2O+HCOO]-",
+    "[M-SO3-H2O+H]+",
+    "[M-SO3-H2O-H]-",
+    "[M-SO3-H]-",
+    "[M]+"
+  ],
+  "metrics": {
+    "train": {
+      "rmse": 8.667465711096142,
+      "mae": 5.103677272796631
+    },
+    "val": {
+      "rmse": 9.429638954928896,
+      "mae": 5.695774078369141
+    },
+    "test": {
+      "rmse": 9.44565174638905,
+      "mae": 5.739086151123047
+    }
+  },
+  "architecture": {
+    "layers_total": 5,
+    "hidden_layers": 3,
+    "activation": "LeakyReLU",
+    "output_activation": "linear"
+  }
+}
