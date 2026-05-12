@@ -1,0 +1,6 @@
+numpy
+pandas
+pyyaml
+requests
+rdkit
+tqdm

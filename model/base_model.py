@@ -8,9 +8,14 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import matplotlib
+
+matplotlib.use("Agg") #para generar gráficos sin necesidad de una interfaz gráfica
+import matplotlib.pyplot as plt
 import torch
 from torch import nn
 from torch.utils.data import DataLoader, TensorDataset
+from sklearn.metrics import median_absolute_error, r2_score
 
 repo_root = Path(__file__).resolve().parents[1]
 if str(repo_root) not in sys.path:
@@ -105,6 +110,61 @@ def build_target(df: pd.DataFrame) -> np.ndarray:
     return pd.to_numeric(df[ccs_col], errors="coerce").fillna(0).to_numpy(dtype=np.float32)
 
 
+def regression_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> dict[str, float]:
+    y_true = np.asarray(y_true, dtype=np.float32)
+    y_pred = np.asarray(y_pred, dtype=np.float32)
+    mse = float(np.mean((y_true - y_pred) ** 2))
+    rmse = float(np.sqrt(mse))
+    mae = float(np.mean(np.abs(y_true - y_pred)))
+    medae = float(median_absolute_error(y_true, y_pred))
+    r2 = float(r2_score(y_true, y_pred))
+    return {
+        "rmse": rmse,
+        "mae": mae,
+        "medae": medae,
+        "r2": r2,
+    }
+
+
+def predict_array(model: nn.Module, features: torch.Tensor) -> np.ndarray:
+    model.eval()
+    with torch.no_grad():
+        return model(features).detach().cpu().numpy()
+
+
+def plot_training_curves(
+    history: list[dict[str, float]],
+    output_path: Path,
+) -> None:
+    epochs = [item["epoch"] for item in history]
+    train_rmse = [item["train_rmse"] for item in history]
+    val_rmse = [item["val_rmse"] for item in history]
+    train_mae = [item["train_mae"] for item in history]
+    val_mae = [item["val_mae"] for item in history]
+
+    fig, axes = plt.subplots(1, 2, figsize=(12, 4.5), dpi=160)
+
+    axes[0].plot(epochs, train_rmse, label="Train RMSE", linewidth=2)
+    axes[0].plot(epochs, val_rmse, label="Val RMSE", linewidth=2)
+    axes[0].set_title("RMSE per epoch")
+    axes[0].set_xlabel("Epoch")
+    axes[0].set_ylabel("RMSE")
+    axes[0].grid(True, alpha=0.25)
+    axes[0].legend()
+
+    axes[1].plot(epochs, train_mae, label="Train MAE", linewidth=2)
+    axes[1].plot(epochs, val_mae, label="Val MAE", linewidth=2)
+    axes[1].set_title("MAE per epoch")
+    axes[1].set_xlabel("Epoch")
+    axes[1].set_ylabel("MAE")
+    axes[1].grid(True, alpha=0.25)
+    axes[1].legend()
+
+    fig.tight_layout()
+    fig.savefig(output_path)
+    plt.close(fig)
+
+
 def train_model(
     train_csv: str,
     output_dir: str,
@@ -161,9 +221,11 @@ def train_model(
     loss_fn = nn.MSELoss()# medimos el error cuadrático medio entre las predicciones y los valores reales
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)# actualiza los pesos del modelo para minimizar la función de pérdida
 
+    history: list[dict[str, float]] = []
+
     #bucle de entrenamiento, por cada batch de cada epoch
-    model.train()
-    for _ in range(epochs):
+    for epoch in range(1, epochs + 1):
+        model.train()
         for xb, yb in train_loader: #batch
 
             #aqui se aprende el modelo, se hace un forward pass, se calcula la pérdida, se hace un backward pass y se actualizan los pesos
@@ -174,25 +236,37 @@ def train_model(
             batch_loss.backward() #--> backward pass: calcula como cambia cada peso
             optimizer.step()
 
+        train_pred_epoch = predict_array(model, x_train_t)
+        val_pred_epoch = predict_array(model, x_val_t)
+        train_epoch_metrics = regression_metrics(y_train, train_pred_epoch)
+        val_epoch_metrics = regression_metrics(y_val, val_pred_epoch)
+
+        history.append(
+            {
+                "epoch": float(epoch),
+                "train_loss": float(np.mean((y_train - train_pred_epoch) ** 2)),
+                "val_loss": float(np.mean((y_val - val_pred_epoch) ** 2)),
+                "train_rmse": train_epoch_metrics["rmse"],
+                "val_rmse": val_epoch_metrics["rmse"],
+                "train_mae": train_epoch_metrics["mae"],
+                "val_mae": val_epoch_metrics["mae"],
+            }
+        )
+
     model.eval()
-    with torch.no_grad():
-        pred_train = model(x_train_t)
-        train_mse = nn.functional.mse_loss(pred_train, y_train_t).item()
-        train_rmse = float(np.sqrt(train_mse))
-        train_mae = nn.functional.l1_loss(pred_train, y_train_t).item()
+    pred_train = predict_array(model, x_train_t)
+    pred_val = predict_array(model, x_val_t)
+    pred_test = predict_array(model, x_test_t)
 
-        pred_val = model(x_val_t)
-        val_mse = nn.functional.mse_loss(pred_val, y_val_t).item()
-        val_rmse = float(np.sqrt(val_mse))
-        val_mae = nn.functional.l1_loss(pred_val, y_val_t).item()
-
-        pred_test = model(x_test_t)
-        mse = nn.functional.mse_loss(pred_test, y_test_t).item()
-        rmse = float(np.sqrt(mse))
-        mae = nn.functional.l1_loss(pred_test, y_test_t).item()
+    train_metrics = regression_metrics(y_train, pred_train)
+    val_metrics = regression_metrics(y_val, pred_val)
+    test_metrics = regression_metrics(y_test, pred_test)
 
     out = Path(output_dir)
     out.mkdir(parents=True, exist_ok=True)
+
+    curves_path = out / "training_curves.png"
+    plot_training_curves(history, curves_path)
 
 
     metadata = {
@@ -204,10 +278,11 @@ def train_model(
         "n_test": int(len(test_df)),
         "random_state": int(random_state),
         "adduct_categories": get_adduct_categories(adduct_encoder),
+        "history": history,
         "metrics": {
-            "train": {"rmse": train_rmse, "mae": train_mae},
-            "val": {"rmse": val_rmse, "mae": val_mae},
-            "test": {"rmse": rmse, "mae": mae},
+            "train": train_metrics,
+            "val": val_metrics,
+            "test": test_metrics,
         },
         "architecture": {
             "layers_total": 5,

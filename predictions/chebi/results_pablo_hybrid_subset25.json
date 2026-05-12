@@ -1,0 +1,4203 @@
+{
+  "input_count": 25,
+  "results": [
+    {
+      "attempts": [
+        {
+          "error": "ChEBI API error: HTTP 500 - \n<!doctype html>\n<html lang=\"en\">\n<head>\n  <title>Server Error (500)</title>\n</head>\n<body>\n  <h1>Server Error (500)</h1><p></p>\n</body>\n</html>\n",
+          "source": "input_smiles",
+          "value": "\ufeff{\"row_id\": 1, \"smiles\": \"CCCCC/C=C\\\\C/C=C\\\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O\", \"inchi\": \"InChI=1/C37H69O8P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-37(39)45-35(34-44-46(40,41)42)33-43-36(38)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,35H,3-10,12,14-16,19-34H2,1-2H3,(H2,40,41,42)/b13-11-,18-17-/t35-/m1/s1\"}",
+          "value_type": "smiles"
+        }
+      ],
+      "error": "No ChEBI match found",
+      "input": {
+        "inchi": null,
+        "inchikey": null,
+        "smiles": "\ufeff{\"row_id\": 1, \"smiles\": \"CCCCC/C=C\\\\C/C=C\\\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O\", \"inchi\": \"InChI=1/C37H69O8P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-37(39)45-35(34-44-46(40,41)42)33-43-36(38)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,35H,3-10,12,14-16,19-34H2,1-2H3,(H2,40,41,42)/b13-11-,18-17-/t35-/m1/s1\"}"
+      },
+      "row_id": 1
+    },
+    {
+      "attempts": [
+        {
+          "match": false,
+          "source": "input_inchi",
+          "value": "InChI=1/C37H69O8P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-37(39)45-35(34-44-46(40,41)42)33-43-36(38)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,35H,3-10,12,14-16,19-34H2,1-2H3,(H2,40,41,42)/b13-11-,18-17-/t35-/m1/s1",
+          "value_type": "inchi"
+        }
+      ],
+      "classifications": [
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:16337",
+          "name": "phosphatidic acid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:22297",
+          "name": "alditol phosphate"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26706",
+          "name": "sn-glycerol 3-phosphates"
+        },
+        {
+          "id": "CHEBI:26707",
+          "name": "glycerol phosphate"
+        },
+        {
+          "id": "CHEBI:26816",
+          "name": "carbohydrate phosphate"
+        },
+        {
+          "id": "CHEBI:29089",
+          "name": "1,2-diacyl-sn-glycerol 3-phosphate"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:63299",
+          "name": "carbohydrate derivative"
+        },
+        {
+          "id": "CHEBI:63423",
+          "name": "alditol derivative"
+        },
+        {
+          "id": "CHEBI:78616",
+          "name": "carbohydrates and carbohydrate derivatives"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1/C37H69O8P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-37(39)45-35(34-44-46(40,41)42)33-43-36(38)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,35H,3-10,12,14-16,19-34H2,1-2H3,(H2,40,41,42)/b13-11-,18-17-/t35-/m1/s1",
+        "inchikey": null,
+        "smiles": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:73259",
+        "inchi": "InChI=1S/C37H69O8P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-37(39)45-35(34-44-46(40,41)42)33-43-36(38)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,35H,3-10,12,14-16,19-34H2,1-2H3,(H2,40,41,42)/b13-11-,18-17-/t35-/m1/s1",
+        "inchikey": "YQMUIZXKIKXZHD-UMKNCJEQSA-N",
+        "match_source": "input_smiles",
+        "name": "1-hexadecanoyl-2-(9<i>Z</i>,12<i>Z</i>-octadecadienoyl)-<em>sn</em>-glycero-3-phosphate",
+        "query_type": "smiles",
+        "query_value": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O",
+        "smiles": "CCCCC/C=CC/C=CCCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "row_id": 2
+    },
+    {
+      "attempts": [
+        {
+          "match": false,
+          "source": "input_inchi",
+          "value": "InChI=1/C37H69O8P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-37(39)45-35(34-44-46(40,41)42)33-43-36(38)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,35H,3-10,12,14-16,19-34H2,1-2H3,(H2,40,41,42)/b13-11-,18-17-/t35-/m1/s1",
+          "value_type": "inchi"
+        }
+      ],
+      "classifications": [
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:16337",
+          "name": "phosphatidic acid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:22297",
+          "name": "alditol phosphate"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26706",
+          "name": "sn-glycerol 3-phosphates"
+        },
+        {
+          "id": "CHEBI:26707",
+          "name": "glycerol phosphate"
+        },
+        {
+          "id": "CHEBI:26816",
+          "name": "carbohydrate phosphate"
+        },
+        {
+          "id": "CHEBI:29089",
+          "name": "1,2-diacyl-sn-glycerol 3-phosphate"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:63299",
+          "name": "carbohydrate derivative"
+        },
+        {
+          "id": "CHEBI:63423",
+          "name": "alditol derivative"
+        },
+        {
+          "id": "CHEBI:78616",
+          "name": "carbohydrates and carbohydrate derivatives"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1/C37H69O8P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-37(39)45-35(34-44-46(40,41)42)33-43-36(38)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,35H,3-10,12,14-16,19-34H2,1-2H3,(H2,40,41,42)/b13-11-,18-17-/t35-/m1/s1",
+        "inchikey": null,
+        "smiles": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:73259",
+        "inchi": "InChI=1S/C37H69O8P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-37(39)45-35(34-44-46(40,41)42)33-43-36(38)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,35H,3-10,12,14-16,19-34H2,1-2H3,(H2,40,41,42)/b13-11-,18-17-/t35-/m1/s1",
+        "inchikey": "YQMUIZXKIKXZHD-UMKNCJEQSA-N",
+        "match_source": "input_smiles",
+        "name": "1-hexadecanoyl-2-(9<i>Z</i>,12<i>Z</i>-octadecadienoyl)-<em>sn</em>-glycero-3-phosphate",
+        "query_type": "smiles",
+        "query_value": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O",
+        "smiles": "CCCCC/C=CC/C=CCCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "row_id": 3
+    },
+    {
+      "attempts": [
+        {
+          "match": false,
+          "source": "input_inchi",
+          "value": "InChI=1/C37H69O8P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-37(39)45-35(34-44-46(40,41)42)33-43-36(38)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,35H,3-10,12,14-16,19-34H2,1-2H3,(H2,40,41,42)/b13-11-,18-17-/t35-/m1/s1",
+          "value_type": "inchi"
+        }
+      ],
+      "classifications": [
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:16337",
+          "name": "phosphatidic acid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:22297",
+          "name": "alditol phosphate"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26706",
+          "name": "sn-glycerol 3-phosphates"
+        },
+        {
+          "id": "CHEBI:26707",
+          "name": "glycerol phosphate"
+        },
+        {
+          "id": "CHEBI:26816",
+          "name": "carbohydrate phosphate"
+        },
+        {
+          "id": "CHEBI:29089",
+          "name": "1,2-diacyl-sn-glycerol 3-phosphate"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:63299",
+          "name": "carbohydrate derivative"
+        },
+        {
+          "id": "CHEBI:63423",
+          "name": "alditol derivative"
+        },
+        {
+          "id": "CHEBI:78616",
+          "name": "carbohydrates and carbohydrate derivatives"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1/C37H69O8P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-37(39)45-35(34-44-46(40,41)42)33-43-36(38)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,35H,3-10,12,14-16,19-34H2,1-2H3,(H2,40,41,42)/b13-11-,18-17-/t35-/m1/s1",
+        "inchikey": null,
+        "smiles": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:73259",
+        "inchi": "InChI=1S/C37H69O8P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-37(39)45-35(34-44-46(40,41)42)33-43-36(38)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,35H,3-10,12,14-16,19-34H2,1-2H3,(H2,40,41,42)/b13-11-,18-17-/t35-/m1/s1",
+        "inchikey": "YQMUIZXKIKXZHD-UMKNCJEQSA-N",
+        "match_source": "input_smiles",
+        "name": "1-hexadecanoyl-2-(9<i>Z</i>,12<i>Z</i>-octadecadienoyl)-<em>sn</em>-glycero-3-phosphate",
+        "query_type": "smiles",
+        "query_value": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O",
+        "smiles": "CCCCC/C=CC/C=CCCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "row_id": 4
+    },
+    {
+      "attempts": [],
+      "classifications": [
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:17517",
+          "name": "phosphatidylglycerol"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24360",
+          "name": "glycerophosphoglycerols"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:64961",
+          "name": "1,2-diacyl-sn-glycero-3-phospho-(1'-sn-glycerol)"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1S/C40H75O10P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-40(44)50-38(36-49-51(45,46)48-34-37(42)33-41)35-47-39(43)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,37-38,41-42H,3-10,12,14-16,19-36H2,1-2H3,(H,45,46)/b13-11-,18-17-/t37-,38+/m0/s1",
+        "inchikey": null,
+        "smiles": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@@H](O)CO"
+      },
+      "match": {
+        "chebi_id": "CHEBI:73238",
+        "inchi": "InChI=1S/C40H75O10P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-40(44)50-38(36-49-51(45,46)48-34-37(42)33-41)35-47-39(43)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,37-38,41-42H,3-10,12,14-16,19-36H2,1-2H3,(H,45,46)/b13-11-,18-17-/t37-,38+/m0/s1",
+        "inchikey": "ATBOMIWRCZXYSZ-WLGRLVTESA-N",
+        "match_source": "input_inchi",
+        "name": "1-hexadecanoyl-2-(9<i>Z</i>,12<i>Z</i>-octadecadienoyl)-<em>sn</em>-glycero-3-phospho-(1'-<em>sn</em>-glycerol)",
+        "query_type": "inchi",
+        "query_value": "InChI=1S/C40H75O10P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-40(44)50-38(36-49-51(45,46)48-34-37(42)33-41)35-47-39(43)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,37-38,41-42H,3-10,12,14-16,19-36H2,1-2H3,(H,45,46)/b13-11-,18-17-/t37-,38+/m0/s1",
+        "smiles": "CCCCC/C=CC/C=CCCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@@H](O)CO"
+      },
+      "row_id": 5
+    },
+    {
+      "attempts": [],
+      "classifications": [
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:17517",
+          "name": "phosphatidylglycerol"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24360",
+          "name": "glycerophosphoglycerols"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:64961",
+          "name": "1,2-diacyl-sn-glycero-3-phospho-(1'-sn-glycerol)"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1S/C40H75O10P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-40(44)50-38(36-49-51(45,46)48-34-37(42)33-41)35-47-39(43)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,37-38,41-42H,3-10,12,14-16,19-36H2,1-2H3,(H,45,46)/b13-11-,18-17-/t37-,38+/m0/s1",
+        "inchikey": null,
+        "smiles": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@@H](O)CO"
+      },
+      "match": {
+        "chebi_id": "CHEBI:73238",
+        "inchi": "InChI=1S/C40H75O10P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-40(44)50-38(36-49-51(45,46)48-34-37(42)33-41)35-47-39(43)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,37-38,41-42H,3-10,12,14-16,19-36H2,1-2H3,(H,45,46)/b13-11-,18-17-/t37-,38+/m0/s1",
+        "inchikey": "ATBOMIWRCZXYSZ-WLGRLVTESA-N",
+        "match_source": "input_inchi",
+        "name": "1-hexadecanoyl-2-(9<i>Z</i>,12<i>Z</i>-octadecadienoyl)-<em>sn</em>-glycero-3-phospho-(1'-<em>sn</em>-glycerol)",
+        "query_type": "inchi",
+        "query_value": "InChI=1S/C40H75O10P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-40(44)50-38(36-49-51(45,46)48-34-37(42)33-41)35-47-39(43)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,37-38,41-42H,3-10,12,14-16,19-36H2,1-2H3,(H,45,46)/b13-11-,18-17-/t37-,38+/m0/s1",
+        "smiles": "CCCCC/C=CC/C=CCCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@@H](O)CO"
+      },
+      "row_id": 6
+    },
+    {
+      "attempts": [],
+      "classifications": [
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:17517",
+          "name": "phosphatidylglycerol"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24360",
+          "name": "glycerophosphoglycerols"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:64961",
+          "name": "1,2-diacyl-sn-glycero-3-phospho-(1'-sn-glycerol)"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1S/C40H75O10P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-40(44)50-38(36-49-51(45,46)48-34-37(42)33-41)35-47-39(43)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,37-38,41-42H,3-10,12,14-16,19-36H2,1-2H3,(H,45,46)/b13-11-,18-17-/t37-,38+/m0/s1",
+        "inchikey": null,
+        "smiles": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@@H](O)CO"
+      },
+      "match": {
+        "chebi_id": "CHEBI:73238",
+        "inchi": "InChI=1S/C40H75O10P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-40(44)50-38(36-49-51(45,46)48-34-37(42)33-41)35-47-39(43)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,37-38,41-42H,3-10,12,14-16,19-36H2,1-2H3,(H,45,46)/b13-11-,18-17-/t37-,38+/m0/s1",
+        "inchikey": "ATBOMIWRCZXYSZ-WLGRLVTESA-N",
+        "match_source": "input_inchi",
+        "name": "1-hexadecanoyl-2-(9<i>Z</i>,12<i>Z</i>-octadecadienoyl)-<em>sn</em>-glycero-3-phospho-(1'-<em>sn</em>-glycerol)",
+        "query_type": "inchi",
+        "query_value": "InChI=1S/C40H75O10P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-40(44)50-38(36-49-51(45,46)48-34-37(42)33-41)35-47-39(43)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,37-38,41-42H,3-10,12,14-16,19-36H2,1-2H3,(H,45,46)/b13-11-,18-17-/t37-,38+/m0/s1",
+        "smiles": "CCCCC/C=CC/C=CCCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@@H](O)CO"
+      },
+      "row_id": 7
+    },
+    {
+      "attempts": [],
+      "classifications": [
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:17517",
+          "name": "phosphatidylglycerol"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24360",
+          "name": "glycerophosphoglycerols"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:64961",
+          "name": "1,2-diacyl-sn-glycero-3-phospho-(1'-sn-glycerol)"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1S/C40H75O10P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-40(44)50-38(36-49-51(45,46)48-34-37(42)33-41)35-47-39(43)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,37-38,41-42H,3-10,12,14-16,19-36H2,1-2H3,(H,45,46)/b13-11-,18-17-/t37-,38+/m0/s1",
+        "inchikey": null,
+        "smiles": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@@H](O)CO"
+      },
+      "match": {
+        "chebi_id": "CHEBI:73238",
+        "inchi": "InChI=1S/C40H75O10P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-40(44)50-38(36-49-51(45,46)48-34-37(42)33-41)35-47-39(43)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,37-38,41-42H,3-10,12,14-16,19-36H2,1-2H3,(H,45,46)/b13-11-,18-17-/t37-,38+/m0/s1",
+        "inchikey": "ATBOMIWRCZXYSZ-WLGRLVTESA-N",
+        "match_source": "input_inchi",
+        "name": "1-hexadecanoyl-2-(9<i>Z</i>,12<i>Z</i>-octadecadienoyl)-<em>sn</em>-glycero-3-phospho-(1'-<em>sn</em>-glycerol)",
+        "query_type": "inchi",
+        "query_value": "InChI=1S/C40H75O10P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-40(44)50-38(36-49-51(45,46)48-34-37(42)33-41)35-47-39(43)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,37-38,41-42H,3-10,12,14-16,19-36H2,1-2H3,(H,45,46)/b13-11-,18-17-/t37-,38+/m0/s1",
+        "smiles": "CCCCC/C=CC/C=CCCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@@H](O)CO"
+      },
+      "row_id": 8
+    },
+    {
+      "attempts": [
+        {
+          "match": false,
+          "source": "input_inchi",
+          "value": "InChI=1S/C40H74NO10P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-39(43)51-36(34-49-52(46,47)50-35-37(41)40(44)45)33-48-38(42)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,36-37H,3-10,12,14-16,19-35,41H2,1-2H3,(H,44,45)(H,46,47)/b13-11-,18-17-/t36-,37+/m1/s1",
+          "value_type": "inchi"
+        }
+      ],
+      "classifications": [
+        {
+          "id": "CHEBI:11750",
+          "name": "3-sn-phosphatidyl-L-serine"
+        },
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:18303",
+          "name": "phosphatidyl-L-serine"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26649",
+          "name": "serine derivative"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35352",
+          "name": "organonitrogen compound"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:35766",
+          "name": "glycerophosphoserine"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50047",
+          "name": "organic amino compound"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:51143",
+          "name": "nitrogen molecular entity"
+        },
+        {
+          "id": "CHEBI:52565",
+          "name": "acylglycerophosphoserine"
+        },
+        {
+          "id": "CHEBI:60971",
+          "name": "aminophospholipid"
+        },
+        {
+          "id": "CHEBI:83811",
+          "name": "proteinogenic amino acid derivative"
+        },
+        {
+          "id": "CHEBI:83821",
+          "name": "amino-acid derivative"
+        },
+        {
+          "id": "CHEBI:84135",
+          "name": "L-serine derivative"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1S/C40H74NO10P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-39(43)51-36(34-49-52(46,47)50-35-37(41)40(44)45)33-48-38(42)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,36-37H,3-10,12,14-16,19-35,41H2,1-2H3,(H,44,45)(H,46,47)/b13-11-,18-17-/t36-,37+/m1/s1",
+        "inchikey": null,
+        "smiles": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@H](N)C(=O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:34086",
+        "inchi": "InChI=1S/C40H76NO10P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-39(43)51-36(34-49-52(46,47)50-35-37(41)40(44)45)33-48-38(42)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h17-18,36-37H,3-16,19-35,41H2,1-2H3,(H,44,45)(H,46,47)/b18-17-/t36-,37+/m1/s1",
+        "inchikey": "OIWCYIUQAVBPGV-DAQGAKHBSA-N",
+        "match_source": "input_smiles",
+        "name": "{1-<em>O</em>-hexadecanoyl-2-<em>O</em>-[(<i>Z</i>)-octadec-9-enoyl]-<em>sn</em>-glycero-3-phospho}serine",
+        "query_type": "smiles",
+        "query_value": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@H](N)C(=O)O",
+        "smiles": "CCCCCCCC/C=CCCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@H](N)C(=O)O"
+      },
+      "row_id": 9
+    },
+    {
+      "attempts": [
+        {
+          "match": false,
+          "source": "input_inchi",
+          "value": "InChI=1S/C40H74NO10P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-39(43)51-36(34-49-52(46,47)50-35-37(41)40(44)45)33-48-38(42)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,36-37H,3-10,12,14-16,19-35,41H2,1-2H3,(H,44,45)(H,46,47)/b13-11-,18-17-/t36-,37+/m1/s1",
+          "value_type": "inchi"
+        }
+      ],
+      "classifications": [
+        {
+          "id": "CHEBI:11750",
+          "name": "3-sn-phosphatidyl-L-serine"
+        },
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:18303",
+          "name": "phosphatidyl-L-serine"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26649",
+          "name": "serine derivative"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35352",
+          "name": "organonitrogen compound"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:35766",
+          "name": "glycerophosphoserine"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50047",
+          "name": "organic amino compound"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:51143",
+          "name": "nitrogen molecular entity"
+        },
+        {
+          "id": "CHEBI:52565",
+          "name": "acylglycerophosphoserine"
+        },
+        {
+          "id": "CHEBI:60971",
+          "name": "aminophospholipid"
+        },
+        {
+          "id": "CHEBI:83811",
+          "name": "proteinogenic amino acid derivative"
+        },
+        {
+          "id": "CHEBI:83821",
+          "name": "amino-acid derivative"
+        },
+        {
+          "id": "CHEBI:84135",
+          "name": "L-serine derivative"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1S/C40H74NO10P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-39(43)51-36(34-49-52(46,47)50-35-37(41)40(44)45)33-48-38(42)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h11,13,17-18,36-37H,3-10,12,14-16,19-35,41H2,1-2H3,(H,44,45)(H,46,47)/b13-11-,18-17-/t36-,37+/m1/s1",
+        "inchikey": null,
+        "smiles": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@H](N)C(=O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:34086",
+        "inchi": "InChI=1S/C40H76NO10P/c1-3-5-7-9-11-13-15-17-18-20-22-24-26-28-30-32-39(43)51-36(34-49-52(46,47)50-35-37(41)40(44)45)33-48-38(42)31-29-27-25-23-21-19-16-14-12-10-8-6-4-2/h17-18,36-37H,3-16,19-35,41H2,1-2H3,(H,44,45)(H,46,47)/b18-17-/t36-,37+/m1/s1",
+        "inchikey": "OIWCYIUQAVBPGV-DAQGAKHBSA-N",
+        "match_source": "input_smiles",
+        "name": "{1-<em>O</em>-hexadecanoyl-2-<em>O</em>-[(<i>Z</i>)-octadec-9-enoyl]-<em>sn</em>-glycero-3-phospho}serine",
+        "query_type": "smiles",
+        "query_value": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@H](N)C(=O)O",
+        "smiles": "CCCCCCCC/C=CCCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@H](N)C(=O)O"
+      },
+      "row_id": 10
+    },
+    {
+      "attempts": [
+        {
+          "match": false,
+          "source": "input_inchi",
+          "value": "InChI=1/C39H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-22-24-26-28-30-32-34-39(41)47-37(36-46-48(42,43)44)35-45-38(40)33-31-29-27-25-23-21-16-14-12-10-8-6-4-2/h11,13,17-18,20,22,26,28,37H,3-10,12,14-16,19,21,23-25,27,29-36H2,1-2H3,(H2,42,43,44)/b13-11-,18-17-,22-20-,28-26-/t37-/m1/s1",
+          "value_type": "inchi"
+        }
+      ],
+      "classifications": [
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:16337",
+          "name": "phosphatidic acid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:22297",
+          "name": "alditol phosphate"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26706",
+          "name": "sn-glycerol 3-phosphates"
+        },
+        {
+          "id": "CHEBI:26707",
+          "name": "glycerol phosphate"
+        },
+        {
+          "id": "CHEBI:26816",
+          "name": "carbohydrate phosphate"
+        },
+        {
+          "id": "CHEBI:29089",
+          "name": "1,2-diacyl-sn-glycerol 3-phosphate"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:63299",
+          "name": "carbohydrate derivative"
+        },
+        {
+          "id": "CHEBI:63423",
+          "name": "alditol derivative"
+        },
+        {
+          "id": "CHEBI:78616",
+          "name": "carbohydrates and carbohydrate derivatives"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1/C39H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-22-24-26-28-30-32-34-39(41)47-37(36-46-48(42,43)44)35-45-38(40)33-31-29-27-25-23-21-16-14-12-10-8-6-4-2/h11,13,17-18,20,22,26,28,37H,3-10,12,14-16,19,21,23-25,27,29-36H2,1-2H3,(H2,42,43,44)/b13-11-,18-17-,22-20-,28-26-/t37-/m1/s1",
+        "inchikey": null,
+        "smiles": "CCCCC/C=C\\C/C=C\\C/C=C\\C/C=C\\CCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:73262",
+        "inchi": "InChI=1S/C39H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-22-24-26-28-30-32-34-39(41)47-37(36-46-48(42,43)44)35-45-38(40)33-31-29-27-25-23-21-16-14-12-10-8-6-4-2/h11,13,17-18,20,22,26,28,37H,3-10,12,14-16,19,21,23-25,27,29-36H2,1-2H3,(H2,42,43,44)/b13-11-,18-17-,22-20-,28-26-/t37-/m1/s1",
+        "inchikey": "SPYWWYSOADUXOQ-YABMZCMSSA-N",
+        "match_source": "input_smiles",
+        "name": "1-hexadecanoyl-2-(5<i>Z</i>,8<i>Z</i>,11<i>Z</i>,14<i>Z</i>-eicosatetraenoyl)-<em>sn</em>-glycero-3-phosphate",
+        "query_type": "smiles",
+        "query_value": "CCCCC/C=C\\C/C=C\\C/C=C\\C/C=C\\CCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O",
+        "smiles": "CCCCC/C=CC/C=CC/C=CC/C=CCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "row_id": 11
+    },
+    {
+      "attempts": [
+        {
+          "match": false,
+          "source": "input_inchi",
+          "value": "InChI=1/C39H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-22-24-26-28-30-32-34-39(41)47-37(36-46-48(42,43)44)35-45-38(40)33-31-29-27-25-23-21-16-14-12-10-8-6-4-2/h11,13,17-18,20,22,26,28,37H,3-10,12,14-16,19,21,23-25,27,29-36H2,1-2H3,(H2,42,43,44)/b13-11-,18-17-,22-20-,28-26-/t37-/m1/s1",
+          "value_type": "inchi"
+        }
+      ],
+      "classifications": [
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:16337",
+          "name": "phosphatidic acid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:22297",
+          "name": "alditol phosphate"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26706",
+          "name": "sn-glycerol 3-phosphates"
+        },
+        {
+          "id": "CHEBI:26707",
+          "name": "glycerol phosphate"
+        },
+        {
+          "id": "CHEBI:26816",
+          "name": "carbohydrate phosphate"
+        },
+        {
+          "id": "CHEBI:29089",
+          "name": "1,2-diacyl-sn-glycerol 3-phosphate"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:63299",
+          "name": "carbohydrate derivative"
+        },
+        {
+          "id": "CHEBI:63423",
+          "name": "alditol derivative"
+        },
+        {
+          "id": "CHEBI:78616",
+          "name": "carbohydrates and carbohydrate derivatives"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1/C39H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-22-24-26-28-30-32-34-39(41)47-37(36-46-48(42,43)44)35-45-38(40)33-31-29-27-25-23-21-16-14-12-10-8-6-4-2/h11,13,17-18,20,22,26,28,37H,3-10,12,14-16,19,21,23-25,27,29-36H2,1-2H3,(H2,42,43,44)/b13-11-,18-17-,22-20-,28-26-/t37-/m1/s1",
+        "inchikey": null,
+        "smiles": "CCCCC/C=C\\C/C=C\\C/C=C\\C/C=C\\CCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:73262",
+        "inchi": "InChI=1S/C39H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-22-24-26-28-30-32-34-39(41)47-37(36-46-48(42,43)44)35-45-38(40)33-31-29-27-25-23-21-16-14-12-10-8-6-4-2/h11,13,17-18,20,22,26,28,37H,3-10,12,14-16,19,21,23-25,27,29-36H2,1-2H3,(H2,42,43,44)/b13-11-,18-17-,22-20-,28-26-/t37-/m1/s1",
+        "inchikey": "SPYWWYSOADUXOQ-YABMZCMSSA-N",
+        "match_source": "input_smiles",
+        "name": "1-hexadecanoyl-2-(5<i>Z</i>,8<i>Z</i>,11<i>Z</i>,14<i>Z</i>-eicosatetraenoyl)-<em>sn</em>-glycero-3-phosphate",
+        "query_type": "smiles",
+        "query_value": "CCCCC/C=C\\C/C=C\\C/C=C\\C/C=C\\CCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O",
+        "smiles": "CCCCC/C=CC/C=CC/C=CC/C=CCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "row_id": 12
+    },
+    {
+      "attempts": [
+        {
+          "match": false,
+          "source": "input_inchi",
+          "value": "InChI=1/C39H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-22-24-26-28-30-32-34-39(41)47-37(36-46-48(42,43)44)35-45-38(40)33-31-29-27-25-23-21-16-14-12-10-8-6-4-2/h11,13,17-18,20,22,26,28,37H,3-10,12,14-16,19,21,23-25,27,29-36H2,1-2H3,(H2,42,43,44)/b13-11-,18-17-,22-20-,28-26-/t37-/m1/s1",
+          "value_type": "inchi"
+        }
+      ],
+      "classifications": [
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:16337",
+          "name": "phosphatidic acid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:22297",
+          "name": "alditol phosphate"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26706",
+          "name": "sn-glycerol 3-phosphates"
+        },
+        {
+          "id": "CHEBI:26707",
+          "name": "glycerol phosphate"
+        },
+        {
+          "id": "CHEBI:26816",
+          "name": "carbohydrate phosphate"
+        },
+        {
+          "id": "CHEBI:29089",
+          "name": "1,2-diacyl-sn-glycerol 3-phosphate"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:63299",
+          "name": "carbohydrate derivative"
+        },
+        {
+          "id": "CHEBI:63423",
+          "name": "alditol derivative"
+        },
+        {
+          "id": "CHEBI:78616",
+          "name": "carbohydrates and carbohydrate derivatives"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1/C39H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-22-24-26-28-30-32-34-39(41)47-37(36-46-48(42,43)44)35-45-38(40)33-31-29-27-25-23-21-16-14-12-10-8-6-4-2/h11,13,17-18,20,22,26,28,37H,3-10,12,14-16,19,21,23-25,27,29-36H2,1-2H3,(H2,42,43,44)/b13-11-,18-17-,22-20-,28-26-/t37-/m1/s1",
+        "inchikey": null,
+        "smiles": "CCCCC/C=C\\C/C=C\\C/C=C\\C/C=C\\CCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:73262",
+        "inchi": "InChI=1S/C39H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-22-24-26-28-30-32-34-39(41)47-37(36-46-48(42,43)44)35-45-38(40)33-31-29-27-25-23-21-16-14-12-10-8-6-4-2/h11,13,17-18,20,22,26,28,37H,3-10,12,14-16,19,21,23-25,27,29-36H2,1-2H3,(H2,42,43,44)/b13-11-,18-17-,22-20-,28-26-/t37-/m1/s1",
+        "inchikey": "SPYWWYSOADUXOQ-YABMZCMSSA-N",
+        "match_source": "input_smiles",
+        "name": "1-hexadecanoyl-2-(5<i>Z</i>,8<i>Z</i>,11<i>Z</i>,14<i>Z</i>-eicosatetraenoyl)-<em>sn</em>-glycero-3-phosphate",
+        "query_type": "smiles",
+        "query_value": "CCCCC/C=C\\C/C=C\\C/C=C\\C/C=C\\CCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O",
+        "smiles": "CCCCC/C=CC/C=CC/C=CC/C=CCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "row_id": 13
+    },
+    {
+      "attempts": [
+        {
+          "match": false,
+          "source": "input_inchi",
+          "value": "InChI=1/C39H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-22-24-26-28-30-32-34-39(41)47-37(36-46-48(42,43)44)35-45-38(40)33-31-29-27-25-23-21-16-14-12-10-8-6-4-2/h11,13,17-18,20,22,26,28,37H,3-10,12,14-16,19,21,23-25,27,29-36H2,1-2H3,(H2,42,43,44)/b13-11-,18-17-,22-20-,28-26-/t37-/m1/s1",
+          "value_type": "inchi"
+        }
+      ],
+      "classifications": [
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:16337",
+          "name": "phosphatidic acid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:22297",
+          "name": "alditol phosphate"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26706",
+          "name": "sn-glycerol 3-phosphates"
+        },
+        {
+          "id": "CHEBI:26707",
+          "name": "glycerol phosphate"
+        },
+        {
+          "id": "CHEBI:26816",
+          "name": "carbohydrate phosphate"
+        },
+        {
+          "id": "CHEBI:29089",
+          "name": "1,2-diacyl-sn-glycerol 3-phosphate"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:63299",
+          "name": "carbohydrate derivative"
+        },
+        {
+          "id": "CHEBI:63423",
+          "name": "alditol derivative"
+        },
+        {
+          "id": "CHEBI:78616",
+          "name": "carbohydrates and carbohydrate derivatives"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1/C39H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-22-24-26-28-30-32-34-39(41)47-37(36-46-48(42,43)44)35-45-38(40)33-31-29-27-25-23-21-16-14-12-10-8-6-4-2/h11,13,17-18,20,22,26,28,37H,3-10,12,14-16,19,21,23-25,27,29-36H2,1-2H3,(H2,42,43,44)/b13-11-,18-17-,22-20-,28-26-/t37-/m1/s1",
+        "inchikey": null,
+        "smiles": "CCCCC/C=C\\C/C=C\\C/C=C\\C/C=C\\CCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:73262",
+        "inchi": "InChI=1S/C39H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-22-24-26-28-30-32-34-39(41)47-37(36-46-48(42,43)44)35-45-38(40)33-31-29-27-25-23-21-16-14-12-10-8-6-4-2/h11,13,17-18,20,22,26,28,37H,3-10,12,14-16,19,21,23-25,27,29-36H2,1-2H3,(H2,42,43,44)/b13-11-,18-17-,22-20-,28-26-/t37-/m1/s1",
+        "inchikey": "SPYWWYSOADUXOQ-YABMZCMSSA-N",
+        "match_source": "input_smiles",
+        "name": "1-hexadecanoyl-2-(5<i>Z</i>,8<i>Z</i>,11<i>Z</i>,14<i>Z</i>-eicosatetraenoyl)-<em>sn</em>-glycero-3-phosphate",
+        "query_type": "smiles",
+        "query_value": "CCCCC/C=C\\C/C=C\\C/C=C\\C/C=C\\CCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O",
+        "smiles": "CCCCC/C=CC/C=CC/C=CC/C=CCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "row_id": 14
+    },
+    {
+      "attempts": [
+        {
+          "match": false,
+          "source": "input_inchi",
+          "value": "InChI=1/C41H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-41(43)49-39(38-48-50(44,45)46)37-47-40(42)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,39H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-38H2,1-2H3,(H2,44,45,46)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t39-/m1/s1",
+          "value_type": "inchi"
+        }
+      ],
+      "classifications": [
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:16337",
+          "name": "phosphatidic acid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:22297",
+          "name": "alditol phosphate"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26706",
+          "name": "sn-glycerol 3-phosphates"
+        },
+        {
+          "id": "CHEBI:26707",
+          "name": "glycerol phosphate"
+        },
+        {
+          "id": "CHEBI:26816",
+          "name": "carbohydrate phosphate"
+        },
+        {
+          "id": "CHEBI:29089",
+          "name": "1,2-diacyl-sn-glycerol 3-phosphate"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:63299",
+          "name": "carbohydrate derivative"
+        },
+        {
+          "id": "CHEBI:63423",
+          "name": "alditol derivative"
+        },
+        {
+          "id": "CHEBI:78616",
+          "name": "carbohydrates and carbohydrate derivatives"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1/C41H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-41(43)49-39(38-48-50(44,45)46)37-47-40(42)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,39H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-38H2,1-2H3,(H2,44,45,46)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t39-/m1/s1",
+        "inchikey": null,
+        "smiles": "CC/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\CCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:83785",
+        "inchi": "InChI=1S/C41H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-41(43)49-39(38-48-50(44,45)46)37-47-40(42)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,39H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-38H2,1-2H3,(H2,44,45,46)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t39-/m1/s1",
+        "inchikey": "NXXSEGVRTTVEEI-QPKMWZFCSA-N",
+        "match_source": "input_smiles",
+        "name": "1-palmitoyl-2-[(4<i>Z</i>,7<i>Z</i>,10<i>Z</i>,13<i>Z</i>,16<i>Z</i>,19<i>Z</i>)-docosahexaenoyl]-<em>sn</em>-glycero-3-phosphate",
+        "query_type": "smiles",
+        "query_value": "CC/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\CCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O",
+        "smiles": "CC/C=CC/C=CC/C=CC/C=CC/C=CC/C=CCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "row_id": 15
+    },
+    {
+      "attempts": [
+        {
+          "match": false,
+          "source": "input_inchi",
+          "value": "InChI=1/C41H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-41(43)49-39(38-48-50(44,45)46)37-47-40(42)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,39H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-38H2,1-2H3,(H2,44,45,46)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t39-/m1/s1",
+          "value_type": "inchi"
+        }
+      ],
+      "classifications": [
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:16337",
+          "name": "phosphatidic acid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:22297",
+          "name": "alditol phosphate"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26706",
+          "name": "sn-glycerol 3-phosphates"
+        },
+        {
+          "id": "CHEBI:26707",
+          "name": "glycerol phosphate"
+        },
+        {
+          "id": "CHEBI:26816",
+          "name": "carbohydrate phosphate"
+        },
+        {
+          "id": "CHEBI:29089",
+          "name": "1,2-diacyl-sn-glycerol 3-phosphate"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:63299",
+          "name": "carbohydrate derivative"
+        },
+        {
+          "id": "CHEBI:63423",
+          "name": "alditol derivative"
+        },
+        {
+          "id": "CHEBI:78616",
+          "name": "carbohydrates and carbohydrate derivatives"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1/C41H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-41(43)49-39(38-48-50(44,45)46)37-47-40(42)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,39H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-38H2,1-2H3,(H2,44,45,46)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t39-/m1/s1",
+        "inchikey": null,
+        "smiles": "CC/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\CCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:83785",
+        "inchi": "InChI=1S/C41H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-41(43)49-39(38-48-50(44,45)46)37-47-40(42)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,39H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-38H2,1-2H3,(H2,44,45,46)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t39-/m1/s1",
+        "inchikey": "NXXSEGVRTTVEEI-QPKMWZFCSA-N",
+        "match_source": "input_smiles",
+        "name": "1-palmitoyl-2-[(4<i>Z</i>,7<i>Z</i>,10<i>Z</i>,13<i>Z</i>,16<i>Z</i>,19<i>Z</i>)-docosahexaenoyl]-<em>sn</em>-glycero-3-phosphate",
+        "query_type": "smiles",
+        "query_value": "CC/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\CCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O",
+        "smiles": "CC/C=CC/C=CC/C=CC/C=CC/C=CC/C=CCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "row_id": 16
+    },
+    {
+      "attempts": [
+        {
+          "match": false,
+          "source": "input_inchi",
+          "value": "InChI=1/C41H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-41(43)49-39(38-48-50(44,45)46)37-47-40(42)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,39H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-38H2,1-2H3,(H2,44,45,46)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t39-/m1/s1",
+          "value_type": "inchi"
+        }
+      ],
+      "classifications": [
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:16337",
+          "name": "phosphatidic acid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:22297",
+          "name": "alditol phosphate"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26706",
+          "name": "sn-glycerol 3-phosphates"
+        },
+        {
+          "id": "CHEBI:26707",
+          "name": "glycerol phosphate"
+        },
+        {
+          "id": "CHEBI:26816",
+          "name": "carbohydrate phosphate"
+        },
+        {
+          "id": "CHEBI:29089",
+          "name": "1,2-diacyl-sn-glycerol 3-phosphate"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:63299",
+          "name": "carbohydrate derivative"
+        },
+        {
+          "id": "CHEBI:63423",
+          "name": "alditol derivative"
+        },
+        {
+          "id": "CHEBI:78616",
+          "name": "carbohydrates and carbohydrate derivatives"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1/C41H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-41(43)49-39(38-48-50(44,45)46)37-47-40(42)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,39H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-38H2,1-2H3,(H2,44,45,46)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t39-/m1/s1",
+        "inchikey": null,
+        "smiles": "CC/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\CCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:83785",
+        "inchi": "InChI=1S/C41H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-41(43)49-39(38-48-50(44,45)46)37-47-40(42)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,39H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-38H2,1-2H3,(H2,44,45,46)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t39-/m1/s1",
+        "inchikey": "NXXSEGVRTTVEEI-QPKMWZFCSA-N",
+        "match_source": "input_smiles",
+        "name": "1-palmitoyl-2-[(4<i>Z</i>,7<i>Z</i>,10<i>Z</i>,13<i>Z</i>,16<i>Z</i>,19<i>Z</i>)-docosahexaenoyl]-<em>sn</em>-glycero-3-phosphate",
+        "query_type": "smiles",
+        "query_value": "CC/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\CCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O",
+        "smiles": "CC/C=CC/C=CC/C=CC/C=CC/C=CC/C=CCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "row_id": 17
+    },
+    {
+      "attempts": [
+        {
+          "match": false,
+          "source": "input_inchi",
+          "value": "InChI=1/C41H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-41(43)49-39(38-48-50(44,45)46)37-47-40(42)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,39H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-38H2,1-2H3,(H2,44,45,46)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t39-/m1/s1",
+          "value_type": "inchi"
+        }
+      ],
+      "classifications": [
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:16337",
+          "name": "phosphatidic acid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:22297",
+          "name": "alditol phosphate"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26706",
+          "name": "sn-glycerol 3-phosphates"
+        },
+        {
+          "id": "CHEBI:26707",
+          "name": "glycerol phosphate"
+        },
+        {
+          "id": "CHEBI:26816",
+          "name": "carbohydrate phosphate"
+        },
+        {
+          "id": "CHEBI:29089",
+          "name": "1,2-diacyl-sn-glycerol 3-phosphate"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:63299",
+          "name": "carbohydrate derivative"
+        },
+        {
+          "id": "CHEBI:63423",
+          "name": "alditol derivative"
+        },
+        {
+          "id": "CHEBI:78616",
+          "name": "carbohydrates and carbohydrate derivatives"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1/C41H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-41(43)49-39(38-48-50(44,45)46)37-47-40(42)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,39H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-38H2,1-2H3,(H2,44,45,46)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t39-/m1/s1",
+        "inchikey": null,
+        "smiles": "CC/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\CCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:83785",
+        "inchi": "InChI=1S/C41H69O8P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-41(43)49-39(38-48-50(44,45)46)37-47-40(42)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,39H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-38H2,1-2H3,(H2,44,45,46)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t39-/m1/s1",
+        "inchikey": "NXXSEGVRTTVEEI-QPKMWZFCSA-N",
+        "match_source": "input_smiles",
+        "name": "1-palmitoyl-2-[(4<i>Z</i>,7<i>Z</i>,10<i>Z</i>,13<i>Z</i>,16<i>Z</i>,19<i>Z</i>)-docosahexaenoyl]-<em>sn</em>-glycero-3-phosphate",
+        "query_type": "smiles",
+        "query_value": "CC/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\CCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O",
+        "smiles": "CC/C=CC/C=CC/C=CC/C=CC/C=CC/C=CCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "row_id": 18
+    },
+    {
+      "attempts": [],
+      "classifications": [
+        {
+          "id": "CHEBI:11750",
+          "name": "3-sn-phosphatidyl-L-serine"
+        },
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:18303",
+          "name": "phosphatidyl-L-serine"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26649",
+          "name": "serine derivative"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35352",
+          "name": "organonitrogen compound"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:35766",
+          "name": "glycerophosphoserine"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50047",
+          "name": "organic amino compound"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:51143",
+          "name": "nitrogen molecular entity"
+        },
+        {
+          "id": "CHEBI:52565",
+          "name": "acylglycerophosphoserine"
+        },
+        {
+          "id": "CHEBI:60971",
+          "name": "aminophospholipid"
+        },
+        {
+          "id": "CHEBI:83811",
+          "name": "proteinogenic amino acid derivative"
+        },
+        {
+          "id": "CHEBI:83821",
+          "name": "amino-acid derivative"
+        },
+        {
+          "id": "CHEBI:84135",
+          "name": "L-serine derivative"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1S/C44H74NO10P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-43(47)55-40(38-53-56(50,51)54-39-41(45)44(48)49)37-52-42(46)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,40-41H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-39,45H2,1-2H3,(H,48,49)(H,50,51)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t40-,41+/m1/s1",
+        "inchikey": null,
+        "smiles": "CC/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\CCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@H](N)C(=O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:79103",
+        "inchi": "InChI=1S/C44H74NO10P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-43(47)55-40(38-53-56(50,51)54-39-41(45)44(48)49)37-52-42(46)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,40-41H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-39,45H2,1-2H3,(H,48,49)(H,50,51)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t40-,41+/m1/s1",
+        "inchikey": "PWBBJQOVCTWPIM-FAYDGCQZSA-N",
+        "match_source": "input_inchi",
+        "name": "1-hexadecanoyl-2-(4<i>Z</i>,7<i>Z</i>,10<i>Z</i>,13<i>Z</i>,16<i>Z</i>,19<i>Z</i>-docosahexaenoyl)-<em>sn</em>-glycero-3-phosphoserine",
+        "query_type": "inchi",
+        "query_value": "InChI=1S/C44H74NO10P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-43(47)55-40(38-53-56(50,51)54-39-41(45)44(48)49)37-52-42(46)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,40-41H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-39,45H2,1-2H3,(H,48,49)(H,50,51)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t40-,41+/m1/s1",
+        "smiles": "CC/C=CC/C=CC/C=CC/C=CC/C=CC/C=CCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@H](N)C(=O)O"
+      },
+      "row_id": 19
+    },
+    {
+      "attempts": [],
+      "classifications": [
+        {
+          "id": "CHEBI:11750",
+          "name": "3-sn-phosphatidyl-L-serine"
+        },
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:18303",
+          "name": "phosphatidyl-L-serine"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26649",
+          "name": "serine derivative"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35352",
+          "name": "organonitrogen compound"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:35766",
+          "name": "glycerophosphoserine"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50047",
+          "name": "organic amino compound"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:51143",
+          "name": "nitrogen molecular entity"
+        },
+        {
+          "id": "CHEBI:52565",
+          "name": "acylglycerophosphoserine"
+        },
+        {
+          "id": "CHEBI:60971",
+          "name": "aminophospholipid"
+        },
+        {
+          "id": "CHEBI:83811",
+          "name": "proteinogenic amino acid derivative"
+        },
+        {
+          "id": "CHEBI:83821",
+          "name": "amino-acid derivative"
+        },
+        {
+          "id": "CHEBI:84135",
+          "name": "L-serine derivative"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1S/C44H74NO10P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-43(47)55-40(38-53-56(50,51)54-39-41(45)44(48)49)37-52-42(46)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,40-41H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-39,45H2,1-2H3,(H,48,49)(H,50,51)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t40-,41+/m1/s1",
+        "inchikey": null,
+        "smiles": "CC/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\CCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@H](N)C(=O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:79103",
+        "inchi": "InChI=1S/C44H74NO10P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-43(47)55-40(38-53-56(50,51)54-39-41(45)44(48)49)37-52-42(46)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,40-41H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-39,45H2,1-2H3,(H,48,49)(H,50,51)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t40-,41+/m1/s1",
+        "inchikey": "PWBBJQOVCTWPIM-FAYDGCQZSA-N",
+        "match_source": "input_inchi",
+        "name": "1-hexadecanoyl-2-(4<i>Z</i>,7<i>Z</i>,10<i>Z</i>,13<i>Z</i>,16<i>Z</i>,19<i>Z</i>-docosahexaenoyl)-<em>sn</em>-glycero-3-phosphoserine",
+        "query_type": "inchi",
+        "query_value": "InChI=1S/C44H74NO10P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-43(47)55-40(38-53-56(50,51)54-39-41(45)44(48)49)37-52-42(46)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,40-41H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-39,45H2,1-2H3,(H,48,49)(H,50,51)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t40-,41+/m1/s1",
+        "smiles": "CC/C=CC/C=CC/C=CC/C=CC/C=CC/C=CCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@H](N)C(=O)O"
+      },
+      "row_id": 20
+    },
+    {
+      "attempts": [],
+      "classifications": [
+        {
+          "id": "CHEBI:11750",
+          "name": "3-sn-phosphatidyl-L-serine"
+        },
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:18303",
+          "name": "phosphatidyl-L-serine"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26649",
+          "name": "serine derivative"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35352",
+          "name": "organonitrogen compound"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:35766",
+          "name": "glycerophosphoserine"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50047",
+          "name": "organic amino compound"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:51143",
+          "name": "nitrogen molecular entity"
+        },
+        {
+          "id": "CHEBI:52565",
+          "name": "acylglycerophosphoserine"
+        },
+        {
+          "id": "CHEBI:60971",
+          "name": "aminophospholipid"
+        },
+        {
+          "id": "CHEBI:83811",
+          "name": "proteinogenic amino acid derivative"
+        },
+        {
+          "id": "CHEBI:83821",
+          "name": "amino-acid derivative"
+        },
+        {
+          "id": "CHEBI:84135",
+          "name": "L-serine derivative"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1S/C44H74NO10P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-43(47)55-40(38-53-56(50,51)54-39-41(45)44(48)49)37-52-42(46)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,40-41H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-39,45H2,1-2H3,(H,48,49)(H,50,51)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t40-,41+/m1/s1",
+        "inchikey": null,
+        "smiles": "CC/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\C/C=C\\CCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@H](N)C(=O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:79103",
+        "inchi": "InChI=1S/C44H74NO10P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-43(47)55-40(38-53-56(50,51)54-39-41(45)44(48)49)37-52-42(46)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,40-41H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-39,45H2,1-2H3,(H,48,49)(H,50,51)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t40-,41+/m1/s1",
+        "inchikey": "PWBBJQOVCTWPIM-FAYDGCQZSA-N",
+        "match_source": "input_inchi",
+        "name": "1-hexadecanoyl-2-(4<i>Z</i>,7<i>Z</i>,10<i>Z</i>,13<i>Z</i>,16<i>Z</i>,19<i>Z</i>-docosahexaenoyl)-<em>sn</em>-glycero-3-phosphoserine",
+        "query_type": "inchi",
+        "query_value": "InChI=1S/C44H74NO10P/c1-3-5-7-9-11-13-15-17-18-19-20-21-22-24-26-28-30-32-34-36-43(47)55-40(38-53-56(50,51)54-39-41(45)44(48)49)37-52-42(46)35-33-31-29-27-25-23-16-14-12-10-8-6-4-2/h5,7,11,13,17-18,20-21,24,26,30,32,40-41H,3-4,6,8-10,12,14-16,19,22-23,25,27-29,31,33-39,45H2,1-2H3,(H,48,49)(H,50,51)/b7-5-,13-11-,18-17-,21-20-,26-24-,32-30-/t40-,41+/m1/s1",
+        "smiles": "CC/C=CC/C=CC/C=CC/C=CC/C=CC/C=CCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCC)COP(=O)(O)OC[C@H](N)C(=O)O"
+      },
+      "row_id": 21
+    },
+    {
+      "attempts": [
+        {
+          "match": false,
+          "source": "input_inchi",
+          "value": "InChI=1/C39H73O8P/c1-3-5-7-9-11-13-15-17-19-21-23-25-27-29-31-33-38(40)45-35-37(36-46-48(42,43)44)47-39(41)34-32-30-28-26-24-22-20-18-16-14-12-10-8-6-4-2/h12,14,18,20,37H,3-11,13,15-17,19,21-36H2,1-2H3,(H2,42,43,44)/b14-12-,20-18-/t37-/m1/s1",
+          "value_type": "inchi"
+        }
+      ],
+      "classifications": [
+        {
+          "id": "CHEBI:134237",
+          "name": "phosphatidic acid 36:2"
+        },
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:16337",
+          "name": "phosphatidic acid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:22297",
+          "name": "alditol phosphate"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26706",
+          "name": "sn-glycerol 3-phosphates"
+        },
+        {
+          "id": "CHEBI:26707",
+          "name": "glycerol phosphate"
+        },
+        {
+          "id": "CHEBI:26816",
+          "name": "carbohydrate phosphate"
+        },
+        {
+          "id": "CHEBI:29089",
+          "name": "1,2-diacyl-sn-glycerol 3-phosphate"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:63299",
+          "name": "carbohydrate derivative"
+        },
+        {
+          "id": "CHEBI:63423",
+          "name": "alditol derivative"
+        },
+        {
+          "id": "CHEBI:75110",
+          "name": "1-acyl-2-linoleoyl-sn-glycero-3-phosphate"
+        },
+        {
+          "id": "CHEBI:78616",
+          "name": "carbohydrates and carbohydrate derivatives"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1/C39H73O8P/c1-3-5-7-9-11-13-15-17-19-21-23-25-27-29-31-33-38(40)45-35-37(36-46-48(42,43)44)47-39(41)34-32-30-28-26-24-22-20-18-16-14-12-10-8-6-4-2/h12,14,18,20,37H,3-11,13,15-17,19,21-36H2,1-2H3,(H2,42,43,44)/b14-12-,20-18-/t37-/m1/s1",
+        "inchikey": null,
+        "smiles": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:77248",
+        "inchi": "InChI=1S/C39H73O8P/c1-3-5-7-9-11-13-15-17-19-21-23-25-27-29-31-33-38(40)45-35-37(36-46-48(42,43)44)47-39(41)34-32-30-28-26-24-22-20-18-16-14-12-10-8-6-4-2/h12,14,18,20,37H,3-11,13,15-17,19,21-36H2,1-2H3,(H2,42,43,44)/b14-12-,20-18-/t37-/m1/s1",
+        "inchikey": "QYYWMYCDFOLKKH-DAKWMOBOSA-N",
+        "match_source": "input_smiles",
+        "name": "1-stearoyl-2-linoleoyl-<em>sn</em>-glycero-3-phosphate",
+        "query_type": "smiles",
+        "query_value": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCCCC)COP(=O)(O)O",
+        "smiles": "CCCCC/C=CC/C=CCCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "row_id": 22
+    },
+    {
+      "attempts": [
+        {
+          "match": false,
+          "source": "input_inchi",
+          "value": "InChI=1/C39H73O8P/c1-3-5-7-9-11-13-15-17-19-21-23-25-27-29-31-33-38(40)45-35-37(36-46-48(42,43)44)47-39(41)34-32-30-28-26-24-22-20-18-16-14-12-10-8-6-4-2/h12,14,18,20,37H,3-11,13,15-17,19,21-36H2,1-2H3,(H2,42,43,44)/b14-12-,20-18-/t37-/m1/s1",
+          "value_type": "inchi"
+        }
+      ],
+      "classifications": [
+        {
+          "id": "CHEBI:134237",
+          "name": "phosphatidic acid 36:2"
+        },
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:16337",
+          "name": "phosphatidic acid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:22297",
+          "name": "alditol phosphate"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26706",
+          "name": "sn-glycerol 3-phosphates"
+        },
+        {
+          "id": "CHEBI:26707",
+          "name": "glycerol phosphate"
+        },
+        {
+          "id": "CHEBI:26816",
+          "name": "carbohydrate phosphate"
+        },
+        {
+          "id": "CHEBI:29089",
+          "name": "1,2-diacyl-sn-glycerol 3-phosphate"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:63299",
+          "name": "carbohydrate derivative"
+        },
+        {
+          "id": "CHEBI:63423",
+          "name": "alditol derivative"
+        },
+        {
+          "id": "CHEBI:75110",
+          "name": "1-acyl-2-linoleoyl-sn-glycero-3-phosphate"
+        },
+        {
+          "id": "CHEBI:78616",
+          "name": "carbohydrates and carbohydrate derivatives"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1/C39H73O8P/c1-3-5-7-9-11-13-15-17-19-21-23-25-27-29-31-33-38(40)45-35-37(36-46-48(42,43)44)47-39(41)34-32-30-28-26-24-22-20-18-16-14-12-10-8-6-4-2/h12,14,18,20,37H,3-11,13,15-17,19,21-36H2,1-2H3,(H2,42,43,44)/b14-12-,20-18-/t37-/m1/s1",
+        "inchikey": null,
+        "smiles": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:77248",
+        "inchi": "InChI=1S/C39H73O8P/c1-3-5-7-9-11-13-15-17-19-21-23-25-27-29-31-33-38(40)45-35-37(36-46-48(42,43)44)47-39(41)34-32-30-28-26-24-22-20-18-16-14-12-10-8-6-4-2/h12,14,18,20,37H,3-11,13,15-17,19,21-36H2,1-2H3,(H2,42,43,44)/b14-12-,20-18-/t37-/m1/s1",
+        "inchikey": "QYYWMYCDFOLKKH-DAKWMOBOSA-N",
+        "match_source": "input_smiles",
+        "name": "1-stearoyl-2-linoleoyl-<em>sn</em>-glycero-3-phosphate",
+        "query_type": "smiles",
+        "query_value": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCCCC)COP(=O)(O)O",
+        "smiles": "CCCCC/C=CC/C=CCCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "row_id": 23
+    },
+    {
+      "attempts": [
+        {
+          "match": false,
+          "source": "input_inchi",
+          "value": "InChI=1/C39H73O8P/c1-3-5-7-9-11-13-15-17-19-21-23-25-27-29-31-33-38(40)45-35-37(36-46-48(42,43)44)47-39(41)34-32-30-28-26-24-22-20-18-16-14-12-10-8-6-4-2/h12,14,18,20,37H,3-11,13,15-17,19,21-36H2,1-2H3,(H2,42,43,44)/b14-12-,20-18-/t37-/m1/s1",
+          "value_type": "inchi"
+        }
+      ],
+      "classifications": [
+        {
+          "id": "CHEBI:134237",
+          "name": "phosphatidic acid 36:2"
+        },
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:16337",
+          "name": "phosphatidic acid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:22297",
+          "name": "alditol phosphate"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26706",
+          "name": "sn-glycerol 3-phosphates"
+        },
+        {
+          "id": "CHEBI:26707",
+          "name": "glycerol phosphate"
+        },
+        {
+          "id": "CHEBI:26816",
+          "name": "carbohydrate phosphate"
+        },
+        {
+          "id": "CHEBI:29089",
+          "name": "1,2-diacyl-sn-glycerol 3-phosphate"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:63299",
+          "name": "carbohydrate derivative"
+        },
+        {
+          "id": "CHEBI:63423",
+          "name": "alditol derivative"
+        },
+        {
+          "id": "CHEBI:75110",
+          "name": "1-acyl-2-linoleoyl-sn-glycero-3-phosphate"
+        },
+        {
+          "id": "CHEBI:78616",
+          "name": "carbohydrates and carbohydrate derivatives"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1/C39H73O8P/c1-3-5-7-9-11-13-15-17-19-21-23-25-27-29-31-33-38(40)45-35-37(36-46-48(42,43)44)47-39(41)34-32-30-28-26-24-22-20-18-16-14-12-10-8-6-4-2/h12,14,18,20,37H,3-11,13,15-17,19,21-36H2,1-2H3,(H2,42,43,44)/b14-12-,20-18-/t37-/m1/s1",
+        "inchikey": null,
+        "smiles": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:77248",
+        "inchi": "InChI=1S/C39H73O8P/c1-3-5-7-9-11-13-15-17-19-21-23-25-27-29-31-33-38(40)45-35-37(36-46-48(42,43)44)47-39(41)34-32-30-28-26-24-22-20-18-16-14-12-10-8-6-4-2/h12,14,18,20,37H,3-11,13,15-17,19,21-36H2,1-2H3,(H2,42,43,44)/b14-12-,20-18-/t37-/m1/s1",
+        "inchikey": "QYYWMYCDFOLKKH-DAKWMOBOSA-N",
+        "match_source": "input_smiles",
+        "name": "1-stearoyl-2-linoleoyl-<em>sn</em>-glycero-3-phosphate",
+        "query_type": "smiles",
+        "query_value": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCCCC)COP(=O)(O)O",
+        "smiles": "CCCCC/C=CC/C=CCCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "row_id": 24
+    },
+    {
+      "attempts": [
+        {
+          "match": false,
+          "source": "input_inchi",
+          "value": "InChI=1/C39H73O8P/c1-3-5-7-9-11-13-15-17-19-21-23-25-27-29-31-33-38(40)45-35-37(36-46-48(42,43)44)47-39(41)34-32-30-28-26-24-22-20-18-16-14-12-10-8-6-4-2/h12,14,18,20,37H,3-11,13,15-17,19,21-36H2,1-2H3,(H2,42,43,44)/b14-12-,20-18-/t37-/m1/s1",
+          "value_type": "inchi"
+        }
+      ],
+      "classifications": [
+        {
+          "id": "CHEBI:134237",
+          "name": "phosphatidic acid 36:2"
+        },
+        {
+          "id": "CHEBI:16247",
+          "name": "phospholipid"
+        },
+        {
+          "id": "CHEBI:16337",
+          "name": "phosphatidic acid"
+        },
+        {
+          "id": "CHEBI:18059",
+          "name": "lipid"
+        },
+        {
+          "id": "CHEBI:22297",
+          "name": "alditol phosphate"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:25703",
+          "name": "organic phosphate"
+        },
+        {
+          "id": "CHEBI:25710",
+          "name": "organophosphorus compound"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:26020",
+          "name": "phosphate"
+        },
+        {
+          "id": "CHEBI:26079",
+          "name": "phosphoric acid derivative"
+        },
+        {
+          "id": "CHEBI:26082",
+          "name": "phosphorus molecular entity"
+        },
+        {
+          "id": "CHEBI:26706",
+          "name": "sn-glycerol 3-phosphates"
+        },
+        {
+          "id": "CHEBI:26707",
+          "name": "glycerol phosphate"
+        },
+        {
+          "id": "CHEBI:26816",
+          "name": "carbohydrate phosphate"
+        },
+        {
+          "id": "CHEBI:29089",
+          "name": "1,2-diacyl-sn-glycerol 3-phosphate"
+        },
+        {
+          "id": "CHEBI:33241",
+          "name": "oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:33285",
+          "name": "heteroorganic entity"
+        },
+        {
+          "id": "CHEBI:33302",
+          "name": "pnictogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:35701",
+          "name": "ester"
+        },
+        {
+          "id": "CHEBI:35741",
+          "name": "glycerolipid"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:36359",
+          "name": "phosphorus oxoacid derivative"
+        },
+        {
+          "id": "CHEBI:36360",
+          "name": "phosphorus oxoacids and derivatives"
+        },
+        {
+          "id": "CHEBI:36962",
+          "name": "organochalcogen compound"
+        },
+        {
+          "id": "CHEBI:36963",
+          "name": "organooxygen compound"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:37734",
+          "name": "phosphoric ester"
+        },
+        {
+          "id": "CHEBI:37739",
+          "name": "glycerophospholipid"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:63299",
+          "name": "carbohydrate derivative"
+        },
+        {
+          "id": "CHEBI:63423",
+          "name": "alditol derivative"
+        },
+        {
+          "id": "CHEBI:75110",
+          "name": "1-acyl-2-linoleoyl-sn-glycero-3-phosphate"
+        },
+        {
+          "id": "CHEBI:78616",
+          "name": "carbohydrates and carbohydrate derivatives"
+        }
+      ],
+      "input": {
+        "inchi": "InChI=1/C39H73O8P/c1-3-5-7-9-11-13-15-17-19-21-23-25-27-29-31-33-38(40)45-35-37(36-46-48(42,43)44)47-39(41)34-32-30-28-26-24-22-20-18-16-14-12-10-8-6-4-2/h12,14,18,20,37H,3-11,13,15-17,19,21-36H2,1-2H3,(H2,42,43,44)/b14-12-,20-18-/t37-/m1/s1",
+        "inchikey": null,
+        "smiles": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "match": {
+        "chebi_id": "CHEBI:77248",
+        "inchi": "InChI=1S/C39H73O8P/c1-3-5-7-9-11-13-15-17-19-21-23-25-27-29-31-33-38(40)45-35-37(36-46-48(42,43)44)47-39(41)34-32-30-28-26-24-22-20-18-16-14-12-10-8-6-4-2/h12,14,18,20,37H,3-11,13,15-17,19,21-36H2,1-2H3,(H2,42,43,44)/b14-12-,20-18-/t37-/m1/s1",
+        "inchikey": "QYYWMYCDFOLKKH-DAKWMOBOSA-N",
+        "match_source": "input_smiles",
+        "name": "1-stearoyl-2-linoleoyl-<em>sn</em>-glycero-3-phosphate",
+        "query_type": "smiles",
+        "query_value": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCCCC)COP(=O)(O)O",
+        "smiles": "CCCCC/C=CC/C=CCCCCCCCC(=O)O[C@H](COC(=O)CCCCCCCCCCCCCCCCC)COP(=O)(O)O"
+      },
+      "row_id": 25
+    }
+  ],
+  "summary": {
+    "coverage_pct": 96.0,
+    "matched": 24,
+    "matched_by_source": {
+      "input_inchi": 7,
+      "input_smiles": 17
+    },
+    "total_inputs": 25,
+    "unmatched": 1
+  }
+}

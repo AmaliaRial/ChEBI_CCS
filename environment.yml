@@ -1,0 +1,20 @@
+﻿name: chebi_ccs
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.13
+  - pip
+  - numpy
+  - pandas
+  - scikit-learn
+  - matplotlib
+  - pyyaml
+  - requests
+  - tqdm
+  - rdkit
+  - pytorch
+  - pip:
+      - -r assets/requirements/base_model.txt
+      - -r assets/requirements/pipeline.txt
+      - -r benchmark/requirements.txt

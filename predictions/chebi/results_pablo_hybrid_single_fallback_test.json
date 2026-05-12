@@ -1,0 +1,124 @@
+{
+  "input_count": 1,
+  "results": [
+    {
+      "attempts": [],
+      "classifications": [
+        {
+          "id": "CHEBI:134179",
+          "name": "volatile organic compound"
+        },
+        {
+          "id": "CHEBI:15734",
+          "name": "primary alcohol"
+        },
+        {
+          "id": "CHEBI:23367",
+          "name": "molecular entity"
+        },
+        {
+          "id": "CHEBI:23982",
+          "name": "ethanols"
+        },
+        {
+          "id": "CHEBI:24431",
+          "name": "chemical entity"
+        },
+        {
+          "id": "CHEBI:24651",
+          "name": "hydroxides"
+        },
+        {
+          "id": "CHEBI:25367",
+          "name": "molecule"
+        },
+        {
+          "id": "CHEBI:2571",
+          "name": "aliphatic alcohol"
+        },
+        {
+          "id": "CHEBI:25806",
+          "name": "oxygen molecular entity"
+        },
+        {
+          "id": "CHEBI:30879",
+          "name": "alcohol"
+        },
+        {
+          "id": "CHEBI:33304",
+          "name": "chalcogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33579",
+          "name": "main group molecular entity"
+        },
+        {
+          "id": "CHEBI:33582",
+          "name": "carbon group molecular entity"
+        },
+        {
+          "id": "CHEBI:33608",
+          "name": "hydrogen molecular entity"
+        },
+        {
+          "id": "CHEBI:33674",
+          "name": "s-block molecular entity"
+        },
+        {
+          "id": "CHEBI:33675",
+          "name": "p-block molecular entity"
+        },
+        {
+          "id": "CHEBI:33822",
+          "name": "organic hydroxy compound"
+        },
+        {
+          "id": "CHEBI:36357",
+          "name": "polyatomic entity"
+        },
+        {
+          "id": "CHEBI:37577",
+          "name": "heteroatomic molecular entity"
+        },
+        {
+          "id": "CHEBI:50584",
+          "name": "alkyl alcohol"
+        },
+        {
+          "id": "CHEBI:50860",
+          "name": "organic molecular entity"
+        },
+        {
+          "id": "CHEBI:72695",
+          "name": "organic molecule"
+        }
+      ],
+      "input": {
+        "inchi": null,
+        "inchikey": null,
+        "smiles": "CCO"
+      },
+      "match": {
+        "chebi_id": "CHEBI:16236",
+        "inchi": "InChI=1S/C2H6O/c1-2-3/h3H,2H2,1H3",
+        "inchikey": "LFQSCWFLJHTTHZ-UHFFFAOYSA-N",
+        "match_backend": "web_api",
+        "match_source": "input_smiles",
+        "name": "ethanol",
+        "query_type": "smiles",
+        "query_value": "CCO",
+        "smiles": "CCO"
+      },
+      "row_id": 1
+    }
+  ],
+  "summary": {
+    "coverage_pct": 100.0,
+    "matched": 1,
+    "matched_by_source": {
+      "input_smiles": 1
+    },
+    "total_inputs": 1,
+    "unmatched": 0
+  }
+}
