@@ -23,6 +23,11 @@ if str(repo_root) not in sys.path:
 
 from model.enconders.adduct_encoder import AdductOneHotEncoder
 
+print(torch.cuda.is_available())  # Debe ser True
+print(torch.cuda.get_device_name(0))  # Debe mostrar tu GPU
+
+DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
 
 class CCSRegressor(nn.Module):
 
@@ -126,10 +131,10 @@ def regression_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> dict[str, floa
     }
 
 
-def predict_array(model: nn.Module, features: torch.Tensor) -> np.ndarray:
+def predict_array(model: nn.Module, features: torch.Tensor, device: torch.device) -> np.ndarray:
     model.eval()
     with torch.no_grad():
-        return model(features).detach().cpu().numpy()
+        return model(features.to(device)).detach().cpu().numpy()
 
 
 def plot_training_curves(
@@ -217,6 +222,7 @@ def train_model(
 
     #Aqui definimos la "forma" de la res, pero aun no se han aprendido los pesos.
     model = CCSRegressor(input_dim=x_train.shape[1])
+    model.to(DEVICE)
 
     loss_fn = nn.MSELoss()# medimos el error cuadrático medio entre las predicciones y los valores reales
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)# actualiza los pesos del modelo para minimizar la función de pérdida
@@ -227,6 +233,8 @@ def train_model(
     for epoch in range(1, epochs + 1):
         model.train()
         for xb, yb in train_loader: #batch
+            xb = xb.to(DEVICE)
+            yb = yb.to(DEVICE)
 
             #aqui se aprende el modelo, se hace un forward pass, se calcula la pérdida, se hace un backward pass y se actualizan los pesos
             optimizer.zero_grad() #--> forward pass
@@ -236,8 +244,8 @@ def train_model(
             batch_loss.backward() #--> backward pass: calcula como cambia cada peso
             optimizer.step()
 
-        train_pred_epoch = predict_array(model, x_train_t)
-        val_pred_epoch = predict_array(model, x_val_t)
+        train_pred_epoch = predict_array(model, x_train_t, DEVICE)
+        val_pred_epoch = predict_array(model, x_val_t, DEVICE)
         train_epoch_metrics = regression_metrics(y_train, train_pred_epoch)
         val_epoch_metrics = regression_metrics(y_val, val_pred_epoch)
 
@@ -254,9 +262,9 @@ def train_model(
         )
 
     model.eval()
-    pred_train = predict_array(model, x_train_t)
-    pred_val = predict_array(model, x_val_t)
-    pred_test = predict_array(model, x_test_t)
+    pred_train = predict_array(model, x_train_t, DEVICE)
+    pred_val = predict_array(model, x_val_t, DEVICE)
+    pred_test = predict_array(model, x_test_t, DEVICE)
 
     train_metrics = regression_metrics(y_train, pred_train)
     val_metrics = regression_metrics(y_val, pred_val)
