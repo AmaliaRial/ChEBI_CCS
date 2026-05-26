@@ -9,6 +9,8 @@ This project covers four main components:
 	- cleaning and unification
 	- reconstruction of subset covered by ChEBI
 	- generation of final fingerprint dataset (no descriptors)
+	- CCS replicate consistency check and averaging
+	- ontology label binarization for multilabel training
 
 2. ChEBI Classification:
 	- local classification over `chebi.obo`
@@ -55,9 +57,11 @@ conda activate chebi_ccs
 ## 4) Relevant Project Structure
 
 - `model/base_model.py`: base model training
-- `model/chebi_model.py`: ontology model training
+- `model/chebi_model.py`: ontology-aware multitask model training
 - `model/encoders/`: adduct encoder
 - `model/scripts/chebi/chebi_classify_pipeline.py`: local ChEBI classification pipeline
+- `model/scripts/data_management/prepare_chebi_multilabel_dataset.py`: convert ChEBI lists into binary ontology labels
+- `model/scripts/chebi/check_ccs_replicates.py`: inspect CCS replicate columns and filter by CV
 - `benchmark/scripts/run_benchmark.py`: runs benchmark wrappers
 - `benchmark/scripts/aggregate_metrics.py`: aggregates benchmark metrics
 - `assets/requirements/`: per-component requirements
@@ -79,10 +83,26 @@ conda run -n chebi_ccs python model/scripts/chebi/build_final_fingerprint_datase
 ### 5.3 Create 80/10/10 Splits
 
 ```
-conda run -n chebi_ccs python model/scripts/chebi/split_final_fingerprints.py
+conda run -n chebi_ccs python model/scripts/data_management/splitter.py
 ```
 
-### 5.4 Train Base Model
+### 5.4 Build Ontology Labels from ChEBI
+
+``` 
+conda run -n chebi_ccs python model/scripts/data_management/prepare_chebi_multilabel_dataset.py --min-class-count 30
+```
+
+This creates a compact multilabel table keyed by `row_id` with `ontology__*` columns.
+
+### 5.5 Check CCS Replicates in Raw Datasets
+
+``` 
+conda run -n chebi_ccs python model/scripts/chebi/check_ccs_replicates.py --input-dir data/raw_datasets --output-dir data/clean_datasets/ccs_replicate_check --cv-threshold 5
+```
+
+Accepted and discarded rows are written separately, together with `ccs_average`, `ccs_std` and `ccs_cv_percent`.
+
+### 5.6 Train Base Model
 
 ```
 conda run -n chebi_ccs python model/base_model.py --epochs 30 --batch-size 128 --output-dir predictions/base
@@ -92,6 +112,22 @@ Expected outputs in `predictions/base`:
 - `training_summary.json`
 - `training_curves.png`
 - `test_predictions.csv`
+- `train_split.csv`, `val_split.csv`, `test_split.csv`
+
+### 5.7 Train Ontology-Aware Model
+
+``` 
+conda run -n chebi_ccs python model/chebi_model.py --train-input data/model/train_ccs_fingerprints.csv --val-input data/model/val_ccs_fingerprints.csv --test-input data/model/test_ccs_fingerprints.csv --ontology-input data/model/chebi_ontology_labels.csv --output-dir predictions/chebi --lambda-ontology 0.1
+```
+
+The ontology trainer merges labels by `row_id`, so it uses the exact same train/val/test splits as the baseline model.
+
+Expected outputs in `predictions/chebi`:
+- `training_summary.json`
+- `ontology_metrics.json`
+- `training_curves.png`
+- `test_predictions.csv`
+- `embeddings_test.csv`
 - `train_split.csv`, `val_split.csv`, `test_split.csv`
 
 ## 6) Base Model Metrics
