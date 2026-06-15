@@ -1,20 +1,29 @@
-﻿name: chebi_ccs
+﻿name: tfg_amalia
 channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.13
+  - python=3.12
   - pip
   - numpy
   - pandas
   - scikit-learn
+  - scipy
   - matplotlib
+  - seaborn
+  - pillow
   - pyyaml
   - requests
   - tqdm
+  - jupyter
+  - ipython
   - rdkit
-  - pytorch
+  - pytorch::pytorch=2.9
+  - pytorch::pytorch-cuda=12.1
+  - umap-learn
   - pip:
-      - -r assets/requirements/base_model.txt
-      - -r assets/requirements/pipeline.txt
-      - -r benchmark/requirements.txt
+      - torch==2.9.1
+      - torchvision==0.24.1
+      - torchaudio==2.9.1
+      - networkx
+      - sympy

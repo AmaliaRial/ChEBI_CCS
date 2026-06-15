@@ -1,43 +1,142 @@
 # ChEBI_CCS Repository Technical Map
 
-**Last Updated:** May 13, 2026  
+**Last Updated:** June 15, 2026  
 **Project:** Biomedical Engineering Thesis - CCS Prediction with ChEBI Ontology Integration
+
+---
+
+## 0. Environment & Setup
+
+### Conda Environment: `tfg_amalia`
+
+**Location**: `C:\Users\amali\miniconda3\envs\tfg_amalia`
+
+**Python Version**: 3.12
+
+**Setup Instructions**: See [ENVIRONMENT_SETUP.md](ENVIRONMENT_SETUP.md)
+
+**Quick Install**:
+```bash
+conda env create -f environment.yml
+conda activate tfg_amalia
+```
+
+**Key Packages**:
+- PyTorch 2.9.1 (with GPU support)
+- RDKit 2025.9.6
+- Pandas 3.0.1
+- Scikit-learn 1.8.0
+- UMAP-learn 0.5.11
 
 ---
 
 ## 1. Project Overview
 
-This repository implements a machine learning pipeline for Collision Cross Section (CCS) prediction that integrates chemical ontology information from ChEBI. The project has four main components:
+This repository implements a complete machine learning pipeline for Collision Cross Section (CCS) prediction with chemical ontology integration from ChEBI. The project comprises:
 
-1. **CCS Data Preparation**: Dataset cleaning, unification, ChEBI matching, fingerprint generation, and train/val/test splitting
-2. **ChEBI Classification**: Local classification over ChEBI ontology with optional HTTP variants
-3. **Base Model Training**: Baseline CCS regression without ontology features
-4. **Ontology-Aware Model Training**: Multitask neural network (CCS regression + multilabel classification)
-5. **External Model Benchmarking**: Wrapper execution for DeepCCS and DarkChem
-
----
-
-## 2. Repository Structure (Updated)
-
-```
-model/scripts/
-├── data_management/    ← Data processing & splitting
-│   ├── splitter.py
-│   ├── build_final_covered_dataset.py
-│   ├── build_final_fingerprint_dataset.py
-│   └── check_and_correct_metlin_ims_ccs.py
-└── chebi/             ← ChEBI classification & validation
-    ├── chebi_classify.py
-    ├── chebi_classify_pipeline.py
-    ├── check_ccs_replicates.py
-    ├── prepare_chebi_multilabel_dataset.py
-    ├── chebi_classify_pablo_http.py
-    └── chebi_classify_pablo_hybrid_http.py
-```
+1. **CCS Data Preparation**: Dataset cleaning, unification, ChEBI matching, fingerprint extraction, CCS replicate validation, and deterministic train/val/test splitting
+2. **ChEBI Classification & Ontology Integration**: Local OBO-based classification, ancestor hierarchy traversal, multilabel label generation with filtering
+3. **Base Model Training**: Baseline CCS regression (fingerprints + adduct + m/z → CCS) for reference comparison
+4. **Ontology-Aware Model Training**: Multitask neural network (shared embedding space with CCS regression + ChEBI multilabel classification tasks)
+5. **External Model Benchmarking**: Wrapper execution and metric aggregation for DeepCCS and DarkChem
 
 ---
 
-## 3. Core Active Dataset Files
+## 2. Essential Pipeline Scripts (10 Core Files)
+
+All scripts required for training either model:
+
+| Script | Module | Purpose | Input | Output |
+|--------|--------|---------|-------|--------|
+| `splitter.py` | data_management | Create 80/10/10 splits (deterministic) | `final_covered_ccs_fingerprints.csv` | train/val/test CSVs + manifest |
+| `build_final_covered_dataset.py` | data_management | Merge ChEBI chunks, filter covered molecules | `unified_ccs.csv` + chunk JSONs | `final_covered_ccs.csv` + manifest |
+| `build_final_fingerprint_dataset.py` | data_management | Append fingerprint vectors (no descriptors) | `final_covered_ccs.csv` + raw fingerprints | `final_covered_ccs_fingerprints.csv` + manifest |
+| `check_and_correct_metlin_ims_ccs.py` | data_management | Validate CCS replicates, compute CV%, filter | Raw METLIN_IMS file | Corrected CSV + reports |
+| `check_ccs_replicates.py` | data_management | Detect replicate CCS columns in raw datasets | Raw datasets | Reports per source (CV%, avg, std) |
+| `chebi_classify.py` | chebi | Local ChEBI classifier (OBO-based, no HTTP) | JSONL with SMILES/InChI + chebi.obo | JSON with matches + ancestors |
+| `chebi_classify_pipeline.py` | chebi | Orchestrate full classification pipeline | `unified_ccs.csv` | `unified_ccs_chebi.csv` + result.json |
+| `prepare_chebi_multilabel_dataset.py` | chebi | Create multilabel ontology columns from ChEBI | Chunk JSONs + `final_covered_ccs_fingerprints.csv` + chebi.obo | `final_covered_ccs_fingerprints_multilabel_all_ancestors.csv` + manifest |
+| `filter_ontology_multilabel_dataset.py` | chebi | Filter ontology labels (min count, blacklist, frequency) | Multilabel CSV with all ancestors | `final_covered_ccs_fingerprints_multilabel_filtered.csv` + manifest |
+| `run_multitask_train.py` | classification_model | Train ontology-aware multitask model | Train/val/test splits + ontology labels | Artifacts (weights, metrics, embeddings, predictions) |
+
+---
+
+## 3. Repository Structure (Updated)
+
+```
+model/
+├── base_model.py                           ← Base model training (reference)
+├── chebi_model.py                          ← Ontology-aware model (multitask)
+├── scripts/
+│   ├── data_management/
+│   │   ├── splitter.py                     ✓ ESSENTIAL
+│   │   ├── build_final_covered_dataset.py  ✓ ESSENTIAL
+│   │   ├── build_final_fingerprint_dataset.py ✓ ESSENTIAL
+│   │   ├── check_and_correct_metlin_ims_ccs.py ✓ ESSENTIAL
+│   │   └── check_ccs_replicates.py        ✓ ESSENTIAL
+│   ├── chebi/
+│   │   ├── chebi_classify.py               ✓ ESSENTIAL (LOCAL)
+│   │   ├── chebi_classify_pipeline.py      ✓ ESSENTIAL
+│   │   ├── prepare_chebi_multilabel_dataset.py ✓ ESSENTIAL
+│   │   ├── filter_ontology_multilabel_dataset.py ✓ ESSENTIAL
+│   │   ├── prepare_chebi_multilabel_all_ancestors.py  ⚠ OPTIONAL (intermediate)
+│   │   ├── merge_covered_chunks.py         ⚠ OPTIONAL (functionality in build_final_covered_dataset.py)
+│   │   ├── ontology_hierarchy_overview.py  ⚠ OPTIONAL (analysis only)
+│   │   ├── visualize_embeddings.py         ⚠ OPTIONAL (post-training analysis)
+│   │   ├── chebi_classify_pablo_http.py    ✗ DEPRECATED (HTTP-based, slow)
+│   │   └── chebi_classify_pablo_hybrid_http.py ✗ DEPRECATED (HTTP-based)
+│   └── classification_model/
+│       ├── run_multitask_train.py          ✓ ESSENTIAL
+│       └── analyze_cooccurrence.py         ⚠ OPTIONAL (post-training analysis)
+├── enconders/
+│   ├── adduct_encoder.py                   ✓ ESSENTIAL (used by both models)
+│   └── chebi_encoder.py                    ⚠ OPTIONAL (research only, not implemented)
+└── ...
+
+benchmark/
+├── scripts/
+│   ├── run_benchmark.py                    ⚠ OPTIONAL (external comparisons)
+│   ├── aggregate_metrics.py                ⚠ OPTIONAL (external comparisons)
+│   └── wrappers/
+│       ├── deepccs.py                      ⚠ OPTIONAL
+│       └── darkchem.py                     ⚠ OPTIONAL
+└── ...
+```
+
+---
+
+## 4. Scripts Classification
+
+### ESSENTIAL (Required for Both Models)
+- **✓ splitter.py** — Creates identical train/val/test splits for both models
+- **✓ build_final_covered_dataset.py** — Merges ChEBI chunks into covered dataset
+- **✓ build_final_fingerprint_dataset.py** — Appends fingerprint vectors
+- **✓ check_and_correct_metlin_ims_ccs.py** — Validates CCS data quality
+- **✓ check_ccs_replicates.py** — Detects replicate CCS columns
+- **✓ chebi_classify.py** — Local OBO-based classifier (NO HTTP dependency)
+- **✓ chebi_classify_pipeline.py** — Orchestrates classification
+- **✓ prepare_chebi_multilabel_dataset.py** — Generates multilabel targets
+- **✓ filter_ontology_multilabel_dataset.py** — Filters multilabel dataset
+- **✓ run_multitask_train.py** — Trains ontology model
+- **✓ base_model.py** — Trains baseline model
+- **✓ adduct_encoder.py** — One-hot encodes adducts
+
+### OPTIONAL (Post-Training Analysis Only)
+- **⚠ prepare_chebi_multilabel_all_ancestors.py** — Intermediate step (input to filter_ontology_multilabel_dataset.py)
+- **⚠ merge_covered_chunks.py** — Functionality merged into build_final_covered_dataset.py
+- **⚠ ontology_hierarchy_overview.py** — Exploratory analysis tool (not needed for training)
+- **⚠ visualize_embeddings.py** — Post-training embedding visualization
+- **⚠ analyze_cooccurrence.py** — Post-training label co-occurrence analysis
+- **⚠ run_benchmark.py** — External model comparison (separate workflow)
+- **⚠ aggregate_metrics.py** — Benchmark metric aggregation
+
+### DEPRECATED (Never Use)
+- **✗ chebi_classify_pablo_http.py** — HTTP-based, slow, rate-limited (REPLACED by chebi_classify.py)
+- **✗ chebi_classify_pablo_hybrid_http.py** — HTTP-based, still slower than local (REPLACED by chebi_classify.py)
+
+---
+
+## 5. Core Active Dataset Files
 
 | File | Purpose | Rows | Columns | Notes |
 |------|---------|------|---------|-------|
@@ -47,7 +146,10 @@ model/scripts/
 | `data/model/train_ccs_fingerprints.csv` | Training split (80%) | ~41-44k | Same as above | Deterministic split, random_state=42 |
 | `data/model/val_ccs_fingerprints.csv` | Validation split (10%) | ~5-5.5k | Same as above | Deterministic split, random_state=42 |
 | `data/model/test_ccs_fingerprints.csv` | Test split (10%) | ~5-5.5k | Same as above | Deterministic split, random_state=42 |
-| `data/model/chebi_ontology_labels.csv` | Binary multilabel ontology columns | Same as final_covered_ccs | row_id, source_dataset, chebi_* columns, ontology__*labels | Uses min_class_count filtering |
+| `data/model/final_covered_ccs_fingerprints_multilabel_all_ancestors.csv` | Complete multilabel dataset (all ChEBI ancestors) | ~50-55k | fingerprint cols + ont_CHEBI:* (binary) | Generated by prepare_chebi_multilabel_dataset.py |
+| `data/model/final_covered_ccs_fingerprints_multilabel_filtered.csv` | Filtered multilabel dataset (rare/generic removed) | ~50-55k | fingerprint cols + ont_* (selected labels) | Generated by filter_ontology_multilabel_dataset.py (RECOMMENDED) |
+| `predictions/base/` | Base model output directory | — | weights.pt, training_summary.json, test_predictions.csv, etc. | Baseline reference |
+| `predictions/ontology_model/` | Ontology model output directory | — | weights.pt, training_summary.json, ontology_metrics.json, embeddings_test.csv, predictions, etc. | Main ontology-aware model |
 
 ---
 
@@ -97,7 +199,7 @@ model/scripts/
 
 ---
 
-#### `model/scripts/data_management/splitter.py`
+#### `model/scripts/data_management/split_final_fingerprints.py`
 - **Purpose**: Split final fingerprints dataset into 80/10/10 train/val/test
 - **Input**: `data/model/final_covered_ccs_fingerprints.csv` (16,892 rows × 2,221 columns)
 - **Output**:
@@ -105,7 +207,7 @@ model/scripts/
   - `data/model/val_ccs_fingerprints.csv` (10%)
   - `data/model/test_ccs_fingerprints.csv` (10%)
   - `data/model/split_manifest.json` (metadata)
-- **Key Functions**: `split_train_val_test()`, `save_split_train_val_test()`, `main()`
+- **Key Functions**: Wraps `splitter.save_split_train_val_test()`
 - **Parameters**: `val_size=0.1`, `test_size=0.1`, `random_state=42`
 - **Status**: **ACTIVE** - Part of recommended workflow
 - **Notes**: Deterministic splits for reproducibility
@@ -119,7 +221,7 @@ model/scripts/
   - `split_train_val_test(df, val_size=0.1, test_size=0.1, random_state=42)` → (train_df, val_df, test_df)
   - `save_split()` → saves 80/20 split CSVs
   - `save_split_train_val_test()` → saves 80/10/10 split CSVs with optional manifest
-- **Status**: **DEPRECATED** - Functionality consolidated into `splitter.py`
+- **Status**: **ACTIVE** - Library used by `split_final_fingerprints.py`
 - **Notes**: Not meant to be run directly; imported by other scripts
 
 ---
@@ -140,7 +242,7 @@ model/scripts/
 
 ### B. ChEBI Classification & Validation Scripts (in `model/scripts/chebi/`)
 
-#### `model/scripts/data_management/prepare_chebi_multilabel_dataset.py`
+#### `model/scripts/chebi/prepare_chebi_multilabel_dataset.py`
 - **Purpose**: Convert ChEBI classes (stored as JSON strings) into binary multilabel columns
 - **Input**: `data/model/final_covered_ccs.csv` (with chebi_classes column as JSON)
 - **Output**: 
@@ -441,7 +543,7 @@ conda run -n chebi_ccs python model/scripts/data_management/build_final_fingerpr
 
 ### Step 4: Create 80/10/10 Train/Val/Test Splits
 ```bash
-conda run -n chebi_ccs python model/scripts/data_management/splitter.py
+conda run -n chebi_ccs python model/scripts/data_management/split_final_fingerprints.py
 ```
 **Input**: `data/model/final_covered_ccs_fingerprints.csv`  
 **Output**: 
@@ -454,7 +556,7 @@ conda run -n chebi_ccs python model/scripts/data_management/splitter.py
 
 ### Step 5: Prepare ChEBI Multilabel Ontology Labels (For Ontology Model Only)
 ```bash
-conda run -n chebi_ccs python model/scripts/data_management/prepare_chebi_multilabel_dataset.py \
+conda run -n chebi_ccs python model/scripts/chebi/prepare_chebi_multilabel_dataset.py \
   --input-csv data/model/final_covered_ccs.csv \
   --output-csv data/model/chebi_ontology_labels.csv \
   --min-class-count 25
@@ -524,21 +626,23 @@ python benchmark/scripts/aggregate_metrics.py \
 
 ---
 
-### `model/scripts/data_management/splitter.py`
-- **Type**: Standalone executable script
-- **Purpose**: Split the final fingerprints dataset into 80/10/10 train/val/test
-- **Contains**: Both utility functions and entry point (not a wrapper)
-- **Inputs**: Hardcoded paths (can be parameterized via function arguments)
+### `model/scripts/data_management/split_final_fingerprints.py`
+- **Type**: Executable script
+- **Purpose**: Split the final fingerprints dataset specifically (80/10/10)
+- **Uses**: `splitter.save_split_train_val_test()` function
+- **Inputs**: Hardcoded paths (can be parameterized)
   - INPUT: `data/model/final_covered_ccs_fingerprints.csv`
   - OUTPUT: Train/Val/Test in `data/model/`
 - **Parameters**: Hardcoded (val_size=0.1, test_size=0.1, random_state=42)
 - **Status**: **CURRENTLY USED** - This is the official split script for the project
-- **Command**: `python model/scripts/data_management/splitter.py`
+- **Command**: `python model/scripts/data_management/split_final_fingerprints.py`
 
 ---
 
 ### Summary
-- **`splitter.py`** = Standalone executable script for splitting the final model dataset (includes both functions and entry point)
+- **`splitter.py`** = Toolkit for splitting any CSV with configurable parameters
+- **`split_final_fingerprints.py`** = Specific entry point for splitting the final model dataset (hardcoded paths, deterministic random_state=42)
+- **Current Workflow**: Use `split_final_fingerprints.py` directly; `splitter.py` is the reusable helper layer underneath
 
 ---
 
@@ -552,10 +656,10 @@ python benchmark/scripts/aggregate_metrics.py \
 | `model/encoders/adduct_encoder.py` | One-hot encode adducts | adduct strings | one-hot matrix | **ACTIVE** | Used by both models |
 | `model/encoders/chebi_encoder.py` | ChEBI embedding (conceptual) | N/A | N/A | **NOT IMPLEMENTED** | Research idea only |
 | `model/scripts/data_management/splitter.py` | Split utilities library | CSV dataframe | train/val/test splits | **ACTIVE** | Imported, not run directly |
-| `model/scripts/data_management/splitter.py` | Final dataset 80/10/10 split | `final_covered_ccs_fingerprints.csv` | train/val/test CSVs + manifest | **ACTIVE** | Official split script (standalone) |
+| `model/scripts/data_management/split_final_fingerprints.py` | Final dataset 80/10/10 split | `final_covered_ccs_fingerprints.csv` | train/val/test CSVs | **ACTIVE** | Official split script (moved) |
 | `model/scripts/data_management/build_final_covered_dataset.py` | Rebuild with ChEBI matches | unified_ccs + ChEBI JSON | final_covered_ccs.csv | **ACTIVE** | Part of pipeline (moved) |
 | `model/scripts/data_management/build_final_fingerprint_dataset.py` | Append fingerprints | final_covered_ccs + raw fingerprints | final_covered_ccs_fingerprints.csv | **ACTIVE** | Part of pipeline (moved) |
-| `model/scripts/data_management/prepare_chebi_multilabel_dataset.py` | ChEBI labels → binary multilabel | final_covered_ccs_fingerprints.csv | final_covered_ccs_fingerprints_multilabel.csv | **ACTIVE** | For ontology model training |
+| `model/scripts/chebi/prepare_chebi_multilabel_dataset.py` | ChEBI labels → binary multilabel | final_covered_ccs.csv | chebi_ontology_labels.csv | **ACTIVE** | For ontology model training |
 | `model/scripts/chebi/check_ccs_replicates.py` | Validate CCS replicates | raw CSV/TSV files | clean datasets + reports | **ACTIVE** | General validation |
 | `model/scripts/data_management/check_and_correct_metlin_ims_ccs.py` | METLIN_IMS-specific CCS handling | METLIN raw TSV | corrected CSV + reports | **PROBABLY OBSOLETE** | Superseded by check_ccs_replicates.py (moved) |
 | `model/scripts/chebi/chebi_classify.py` | Local ChEBI classifier | JSONL (smiles/inchi) + chebi.obo | JSON with classifications | **ACTIVE** | Used by pipeline |
@@ -579,6 +683,7 @@ python benchmark/scripts/aggregate_metrics.py \
 model/scripts/
 ├── data_management/     ← Scripts for data processing & splitting
 │   ├── splitter.py
+│   ├── split_final_fingerprints.py
 │   ├── build_final_covered_dataset.py
 │   ├── build_final_fingerprint_dataset.py
 │   └── check_and_correct_metlin_ims_ccs.py
@@ -657,7 +762,7 @@ These files should be examined or updated but are not critical for current opera
 
 ### Random State for Reproducibility
 - **Value**: `random_state=42`
-- **Used in**: `splitter.py`
+- **Used in**: `splitter.py`, `split_final_fingerprints.py`
 - **Importance**: CRITICAL - Ensures identical train/val/test splits across model comparisons
 
 ### Splits: Train/Val/Test

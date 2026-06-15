@@ -1,0 +1,37 @@
+# Core Data Science & ML
+numpy>=2.4.3
+pandas>=3.0.1
+scikit-learn>=1.8.0
+scipy>=1.17.1
+matplotlib>=3.10.9
+seaborn>=0.13.2
+pillow>=12.1.1
+
+# PyTorch (GPU with CUDA 12.1)
+torch==2.9.1
+torchvision==0.24.1
+torchaudio==2.9.1
+
+# Chemistry & Ontology
+rdkit>=2025.9.6
+
+# Utilities
+pyyaml>=6.0.3
+requests>=2.32.5
+tqdm>=4.66.0
+networkx>=3.6.1
+sympy>=1.13.0
+
+# Jupyter & IPython
+jupyter>=1.0.0
+ipython>=9.14.1
+jupyter-client>=8.9.1
+ipykernel>=7.3.0
+
+# Dimensionality Reduction (optional, for embeddings visualization)
+umap-learn>=0.5.11
+
+# Development Tools (optional)
+black>=24.0.0
+isort>=8.0.1
+pytest>=8.0.0
