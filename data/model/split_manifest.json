@@ -1,0 +1,13 @@
+{
+  "input_csv": "data\\model\\final_covered_ccs_fingerprints.csv",
+  "train_csv": "data\\model\\train_ccs_fingerprints.csv",
+  "val_csv": "data\\model\\val_ccs_fingerprints.csv",
+  "test_csv": "data\\model\\test_ccs_fingerprints.csv",
+  "total_rows": 16892,
+  "train_rows": 13514,
+  "val_rows": 1689,
+  "test_rows": 1689,
+  "val_size": 0.1,
+  "test_size": 0.1,
+  "random_state": 42
+}

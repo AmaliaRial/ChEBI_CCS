@@ -4,13 +4,12 @@ import argparse
 from model.chebi_model import train_model
 
 
-REPO_ROOT = Path(__file__).resolve().parent
+REPO_ROOT = Path(__file__).resolve().parents[3]  # Up to project root
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train the CCS + ChEBI multitask model.")
-    parser.add_argument("--train-input", default=str(REPO_ROOT / "predictions" / "base" / "train_split.csv"), help="Training CSV with fingerprints, adduct, mz and CCS.",
-    )
+    parser.add_argument("--train-input", default=str(REPO_ROOT / "predictions" / "base" / "train_split.csv"), help="Training CSV with fingerprints, adduct, mz and CCS.")
     parser.add_argument("--val-input", default=str(REPO_ROOT / "predictions" / "base" / "val_split.csv"), help="Validation CSV with the same schema as the training split.")
     parser.add_argument("--test-input", default=str(REPO_ROOT / "predictions" / "base" / "test_split.csv"), help="Test CSV with the same schema as the training split.")
     parser.add_argument("--ontology-input",default=str(REPO_ROOT / "data" / "model" / "final_covered_ccs_fingerprints_multilabel_filtered.csv"), help="Multilabel ontology CSV generated from the ChEBI preprocessing pipeline.")
