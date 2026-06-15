@@ -1,10 +1,10 @@
 from __future__ import annotations
 
 import argparse
-import ast
 import json
 import re
 import sys
+import warnings
 from pathlib import Path
 
 import matplotlib
@@ -33,18 +33,12 @@ if str(repo_root) not in sys.path:
 from model.enconders.adduct_encoder import AdductOneHotEncoder
 
 
-ONTOLOGY_PREFIX = "ont_"
 ONTOLOGY_PREFIXES = ("ont_", "ontology__")
 
 
 class CCSRegressor(nn.Module):
 
-    def __init__(
-        self,
-        input_dim: int,
-        hidden_dims: tuple[int, int, int] = (1024, 256, 64),
-        num_ontology_labels: int = 1,
-    ):
+    def __init__(self, input_dim: int, hidden_dims: tuple[int, int, int] = (1024, 256, 64), num_ontology_labels: int = 1):
         super().__init__()
 
         self.fc1 = nn.Linear(input_dim, hidden_dims[0])
@@ -140,6 +134,24 @@ def get_ontology_label_columns(df: pd.DataFrame) -> list[str]:
     return label_columns
 
 
+def read_ontology_dataset(ontology_csv: str, row_id_column: str) -> pd.DataFrame:
+    header = pd.read_csv(ontology_csv, nrows=0)
+    if row_id_column not in header.columns:
+        raise ValueError(f"El dataset ontologico no contiene la columna {row_id_column}.")
+
+    label_columns = get_ontology_label_columns(header)
+    if not label_columns:
+        raise ValueError("El dataset ontologico no contiene columnas ont_ ni ontology__.")
+
+    label_dtypes = {column: np.float32 for column in label_columns}
+    return pd.read_csv(
+        ontology_csv,
+        usecols=[row_id_column, *label_columns],
+        dtype=label_dtypes,
+        low_memory=False,
+    )
+
+
 def build_ontology_targets(df: pd.DataFrame, label_columns: list[str] | None = None) -> tuple[np.ndarray, list[str]]:
     if label_columns is None:
         label_columns = get_ontology_label_columns(df)
@@ -156,11 +168,7 @@ def build_ontology_targets(df: pd.DataFrame, label_columns: list[str] | None = N
     return ontology_matrix, label_columns
 
 
-def merge_ontology_labels(
-    split_df: pd.DataFrame,
-    ontology_df: pd.DataFrame | None,
-    row_id_column: str = "row_id",
-) -> pd.DataFrame:
+def merge_ontology_labels(split_df: pd.DataFrame, ontology_df: pd.DataFrame | None, row_id_column: str = "row_id") -> pd.DataFrame:
     if get_ontology_label_columns(split_df):
         return split_df.copy()
 
@@ -202,32 +210,48 @@ def regression_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> dict[str, floa
     }
 
 
-def predict_array(model: nn.Module, features: torch.Tensor) -> np.ndarray:
+def predict_outputs(model: nn.Module, features: torch.Tensor, batch_size: int = 2048) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     model.eval()
+    ccs_batches: list[np.ndarray] = []
+    ontology_batches: list[np.ndarray] = []
+    embedding_batches: list[np.ndarray] = []
+    model_device = next(model.parameters()).device
+
     with torch.no_grad():
-        ccs_pred, _, _ = model(features)
-        return ccs_pred.detach().cpu().numpy()
+        for start in range(0, len(features), batch_size):
+            feature_batch = features[start : start + batch_size].to(model_device)
+            ccs_pred, ontology_logits, embedding = model(feature_batch)
+            ccs_batches.append(ccs_pred.detach().cpu().numpy())
+            ontology_batches.append(ontology_logits.detach().cpu().numpy())
+            embedding_batches.append(embedding.detach().cpu().numpy())
+
+    return (
+        np.concatenate(ccs_batches, axis=0),
+        np.concatenate(ontology_batches, axis=0),
+        np.concatenate(embedding_batches, axis=0),
+    )
 
 
-def predict_outputs(model: nn.Module, features: torch.Tensor) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-    model.eval()
-    with torch.no_grad():
-        ccs_pred, ontology_logits, embedding = model(features)
-        return (
-            ccs_pred.detach().cpu().numpy(),
-            ontology_logits.detach().cpu().numpy(),
-            embedding.detach().cpu().numpy(),
-        )
+def predict_array(model: nn.Module, features: torch.Tensor, batch_size: int = 2048) -> np.ndarray:
+    ccs_pred, _, _ = predict_outputs(model, features, batch_size=batch_size)
+    return ccs_pred
 
 
-def ontology_metrics(
-    y_true: np.ndarray,
-    logits: np.ndarray,
-    threshold: float = 0.5,
-) -> dict[str, float | None]:
+def sigmoid_probabilities(logits: np.ndarray) -> np.ndarray:
+    logits = np.asarray(logits, dtype=np.float32)
+    return 1.0 / (1.0 + np.exp(-np.clip(logits, -80.0, 80.0)))
+
+
+def binary_cross_entropy_with_logits(y_true: np.ndarray, logits: np.ndarray) -> float:
     y_true = np.asarray(y_true, dtype=np.float32)
     logits = np.asarray(logits, dtype=np.float32)
-    probabilities = 1.0 / (1.0 + np.exp(-logits))
+    return float(np.mean(np.logaddexp(0.0, logits) - y_true * logits))
+
+
+def ontology_metrics(y_true: np.ndarray, logits: np.ndarray, threshold: float = 0.5) -> dict[str, float | None]:
+    y_true = np.asarray(y_true, dtype=np.float32)
+    logits = np.asarray(logits, dtype=np.float32)
+    probabilities = sigmoid_probabilities(logits)
     y_pred = (probabilities >= threshold).astype(np.int32)
 
     micro_precision, micro_recall, micro_f1, _ = precision_recall_fscore_support(
@@ -268,33 +292,80 @@ def ontology_metrics(
         "roc_auc_macro": None,
     }
 
-    try:
-        metrics["average_precision_micro"] = float(average_precision_score(y_true, probabilities, average="micro"))
-    except ValueError:
-        pass
+    def safe_score(score_function) -> float | None:
+        try:
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore")
+                value = float(score_function())
+        except ValueError:
+            return None
+        return value if np.isfinite(value) else None
 
-    try:
-        metrics["average_precision_macro"] = float(average_precision_score(y_true, probabilities, average="macro"))
-    except ValueError:
-        pass
-
-    try:
-        metrics["roc_auc_micro"] = float(roc_auc_score(y_true, probabilities, average="micro"))
-    except ValueError:
-        pass
-
-    try:
-        metrics["roc_auc_macro"] = float(roc_auc_score(y_true, probabilities, average="macro"))
-    except ValueError:
-        pass
+    metrics["average_precision_micro"] = safe_score(
+        lambda: average_precision_score(y_true, probabilities, average="micro")
+    )
+    metrics["average_precision_macro"] = safe_score(
+        lambda: average_precision_score(y_true, probabilities, average="macro")
+    )
+    metrics["roc_auc_micro"] = safe_score(
+        lambda: roc_auc_score(y_true, probabilities, average="micro")
+    )
+    metrics["roc_auc_macro"] = safe_score(
+        lambda: roc_auc_score(y_true, probabilities, average="macro")
+    )
 
     return metrics
 
 
-def plot_training_curves(
-    history: list[dict[str, float]],
-    output_path: Path,
-) -> None:
+def readable_ontology_label(label: str) -> str:
+    readable = str(label)
+    for prefix in ("ontology_true__", "ontology_logit__", "ontology_prob__"):
+        if readable.startswith(prefix):
+            readable = readable[len(prefix) :]
+            break
+    for prefix in ONTOLOGY_PREFIXES:
+        if readable.startswith(prefix):
+            readable = readable[len(prefix) :]
+            break
+    return readable
+
+
+def build_readable_predictions(row_ids: np.ndarray, y_true_ccs: np.ndarray, y_pred_ccs: np.ndarray, y_true_ontology: np.ndarray, ontology_probabilities: np.ndarray, ontology_label_columns: list[str], threshold: float, max_predicted_classes: int | None = None) -> pd.DataFrame:
+    readable_labels = [readable_ontology_label(label) for label in ontology_label_columns]
+    true_classes: list[str] = []
+    predicted_classes: list[str] = []
+    predicted_with_probabilities: list[str] = []
+
+    for true_row, probability_row in zip(y_true_ontology, ontology_probabilities):
+        true_indices = np.flatnonzero(true_row == 1)
+        predicted_indices = np.flatnonzero(probability_row >= threshold)
+        predicted_indices = predicted_indices[np.argsort(probability_row[predicted_indices])[::-1]]
+        if max_predicted_classes is not None:
+            predicted_indices = predicted_indices[:max_predicted_classes]
+
+        true_classes.append(";".join(readable_labels[index] for index in true_indices))
+        predicted_classes.append(";".join(readable_labels[index] for index in predicted_indices))
+        predicted_with_probabilities.append(
+            ";".join(
+                f"{readable_labels[index]} ({probability_row[index]:.6f})"
+                for index in predicted_indices
+            )
+        )
+
+    return pd.DataFrame(
+        {
+            "row_id": row_ids,
+            "CCS_true": y_true_ccs,
+            "CCS_pred": y_pred_ccs,
+            "CCS_error_abs": np.abs(y_true_ccs - y_pred_ccs),
+            "true_classes": true_classes,
+            "predicted_classes": predicted_classes,
+            "predicted_classes_with_probabilities": predicted_with_probabilities,
+        }
+    )
+
+
+def plot_training_curves(history: list[dict[str, float]], output_path: Path) -> None:
     epochs = [item["epoch"] for item in history]
     train_total_loss = [item["train_total_loss"] for item in history]
     val_total_loss = [item["val_total_loss"] for item in history]
@@ -334,28 +405,24 @@ def plot_training_curves(
     plt.close(fig)
 
 
-def train_model(
-    train_csv: str,
-    output_dir: str,
-    val_csv: str | None = None,
-    test_csv: str | None = None,
-    random_state: int = 42,
-    epochs: int = 40,
-    batch_size: int = 64,
-    lr: float = 1e-3,
-    lambda_ontology: float = 0.1,
-    ontology_threshold: float = 0.5,
-    ontology_csv: str | None = None,
-    row_id_column: str = "row_id",
-) -> None:
+def resolve_device(device_arg: str) -> torch.device:
+    if device_arg == "cpu":
+        return torch.device("cpu")
+    if device_arg == "cuda":
+        return torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    return torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+
+def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, test_csv: str | None = None, random_state: int = 42, epochs: int = 40, batch_size: int = 64, lr: float = 1e-3, lambda_ontology: float = 0.1, ontology_threshold: float = 0.5, ontology_csv: str | None = None, row_id_column: str = "row_id", device: str = "auto") -> None:
 
     torch.manual_seed(random_state)
     np.random.seed(random_state)
+    resolved_device = resolve_device(device)
 
     train_df = pd.read_csv(train_csv, low_memory=False)
     val_df = pd.read_csv(val_csv, low_memory=False) if val_csv else None
     test_df = pd.read_csv(test_csv, low_memory=False) if test_csv else None
-    ontology_df = pd.read_csv(ontology_csv, low_memory=False) if ontology_csv else None
+    ontology_df = read_ontology_dataset(ontology_csv, row_id_column) if ontology_csv else None
 
     if val_df is None or test_df is None:
         raise ValueError("Este entrenamiento requiere train, val y test explícitos.")
@@ -383,24 +450,23 @@ def train_model(
         "Train/val/test rows: "
         f"{len(train_df)} / {len(val_df)} / {len(test_df)}"
     )
+    print(f"Training device: {resolved_device}")
 
     x_train_t = torch.tensor(x_train, dtype=torch.float32)
     y_train_ccs_t = torch.tensor(y_train_ccs, dtype=torch.float32)
     y_train_ontology_t = torch.tensor(y_train_ontology, dtype=torch.float32)
     x_val_t = torch.tensor(x_val, dtype=torch.float32)
-    y_val_ccs_t = torch.tensor(y_val_ccs, dtype=torch.float32)
-    y_val_ontology_t = torch.tensor(y_val_ontology, dtype=torch.float32)
     x_test_t = torch.tensor(x_test, dtype=torch.float32)
-    y_test_ccs_t = torch.tensor(y_test_ccs, dtype=torch.float32)
-    y_test_ontology_t = torch.tensor(y_test_ontology, dtype=torch.float32)
 
     train_loader = DataLoader(
         TensorDataset(x_train_t, y_train_ccs_t, y_train_ontology_t),
         batch_size=batch_size,
         shuffle=True,
+        pin_memory=resolved_device.type == "cuda",
     )
 
     model = CCSRegressor(input_dim=x_train.shape[1], num_ontology_labels=len(ontology_label_columns))
+    model = model.to(resolved_device)
 
     ccs_loss_fn = nn.MSELoss()
     ontology_loss_fn = nn.BCEWithLogitsLoss()
@@ -411,11 +477,12 @@ def train_model(
     for epoch in range(1, epochs + 1):
         model.train()
         running_total_loss = 0.0
-        running_ccs_loss = 0.0
-        running_ontology_loss = 0.0
         n_samples = 0
 
         for xb, yb_ccs, yb_ontology in train_loader:
+            xb = xb.to(resolved_device, non_blocking=True)
+            yb_ccs = yb_ccs.to(resolved_device, non_blocking=True)
+            yb_ontology = yb_ontology.to(resolved_device, non_blocking=True)
             optimizer.zero_grad()
             ccs_pred, ontology_logits, _ = model(xb)
             ccs_loss = ccs_loss_fn(ccs_pred, yb_ccs)
@@ -426,12 +493,18 @@ def train_model(
 
             batch_size_actual = xb.size(0)
             running_total_loss += float(total_loss.item()) * batch_size_actual
-            running_ccs_loss += float(ccs_loss.item()) * batch_size_actual
-            running_ontology_loss += float(ontology_loss.item()) * batch_size_actual
             n_samples += batch_size_actual
 
-        train_ccs_pred_epoch, train_ontology_logits_epoch, _ = predict_outputs(model, x_train_t)
-        val_ccs_pred_epoch, val_ontology_logits_epoch, _ = predict_outputs(model, x_val_t)
+        train_ccs_pred_epoch, train_ontology_logits_epoch, _ = predict_outputs(
+            model,
+            x_train_t,
+            batch_size=batch_size,
+        )
+        val_ccs_pred_epoch, val_ontology_logits_epoch, _ = predict_outputs(
+            model,
+            x_val_t,
+            batch_size=batch_size,
+        )
 
         train_ccs_metrics = regression_metrics(y_train_ccs, train_ccs_pred_epoch)
         val_ccs_metrics = regression_metrics(y_val_ccs, val_ccs_pred_epoch)
@@ -439,17 +512,13 @@ def train_model(
         val_ontology_metrics = ontology_metrics(y_val_ontology, val_ontology_logits_epoch, threshold=ontology_threshold)
         train_ccs_loss_epoch = float(np.mean((y_train_ccs - train_ccs_pred_epoch) ** 2))
         val_ccs_loss_epoch = float(np.mean((y_val_ccs - val_ccs_pred_epoch) ** 2))
-        train_ontology_loss_epoch = float(
-            ontology_loss_fn(
-                torch.tensor(train_ontology_logits_epoch, dtype=torch.float32),
-                y_train_ontology_t,
-            ).item()
+        train_ontology_loss_epoch = binary_cross_entropy_with_logits(
+            y_train_ontology,
+            train_ontology_logits_epoch,
         )
-        val_ontology_loss_epoch = float(
-            ontology_loss_fn(
-                torch.tensor(val_ontology_logits_epoch, dtype=torch.float32),
-                y_val_ontology_t,
-            ).item()
+        val_ontology_loss_epoch = binary_cross_entropy_with_logits(
+            y_val_ontology,
+            val_ontology_logits_epoch,
         )
 
         history.append(
@@ -470,9 +539,13 @@ def train_model(
             }
         )
 
-    pred_train, pred_train_logits, train_embeddings = predict_outputs(model, x_train_t)
-    pred_val, pred_val_logits, val_embeddings = predict_outputs(model, x_val_t)
-    pred_test, pred_test_logits, test_embeddings = predict_outputs(model, x_test_t)
+    pred_train, pred_train_logits, _ = predict_outputs(model, x_train_t, batch_size=batch_size)
+    pred_val, pred_val_logits, _ = predict_outputs(model, x_val_t, batch_size=batch_size)
+    pred_test, pred_test_logits, test_embeddings = predict_outputs(
+        model,
+        x_test_t,
+        batch_size=batch_size,
+    )
 
     train_metrics = regression_metrics(y_train_ccs, pred_train)
     val_metrics = regression_metrics(y_val_ccs, pred_val)
@@ -497,6 +570,7 @@ def train_model(
         "n_val": int(len(val_df)),
         "n_test": int(len(test_df)),
         "random_state": int(random_state),
+        "device": str(resolved_device),
         "lambda_ontology": float(lambda_ontology),
         "ontology_threshold": float(ontology_threshold),
         "adduct_categories": get_adduct_categories(adduct_encoder),
@@ -534,26 +608,68 @@ def train_model(
             indent=2,
         )
 
-    test_probabilities = 1.0 / (1.0 + np.exp(-pred_test_logits))
+    test_probabilities = sigmoid_probabilities(pred_test_logits)
     row_ids = test_df[row_id_column] if row_id_column in test_df.columns else pd.Series(np.arange(len(test_df)))
 
-    test_pred_data: dict[str, np.ndarray] = {
-        row_id_column: row_ids.to_numpy(),
-        "CCS_true": y_test_ccs,
-        "CCS_pred": pred_test,
-    }
-    for index, label in enumerate(ontology_label_columns):
-        test_pred_data[f"ontology_true__{label}"] = y_test_ontology[:, index]
-        test_pred_data[f"ontology_logit__{label}"] = pred_test_logits[:, index]
-        test_pred_data[f"ontology_prob__{label}"] = test_probabilities[:, index]
+    # Prepare base prediction data with identifiers
+    base_pred_data: dict[str, np.ndarray] = {}
+    
+    # Add identifier columns if available
+    if "row_id" in test_df.columns:
+        base_pred_data["row_id"] = test_df["row_id"].values
+    if "name" in test_df.columns:
+        base_pred_data["name"] = test_df["name"].values
+    if "smiles" in test_df.columns:
+        base_pred_data["smiles"] = test_df["smiles"].values
+    
+    base_pred_data["CCS_true"] = y_test_ccs
+    base_pred_data["CCS_pred"] = pred_test
 
-    pred_df = pd.DataFrame(test_pred_data)
-    pred_df.to_csv(out / "test_predictions.csv", index=False)
+    test_pred_data_full: dict[str, np.ndarray] = base_pred_data.copy()
+    test_pred_data_clean: dict[str, np.ndarray] = base_pred_data.copy()
+    
+    for index, label in enumerate(ontology_label_columns):
+        test_pred_data_full[f"ontology_true__{label}"] = y_test_ontology[:, index]
+        test_pred_data_full[f"ontology_logit__{label}"] = pred_test_logits[:, index]
+        test_pred_data_full[f"ontology_prob__{label}"] = test_probabilities[:, index]
+        test_pred_data_clean[f"ontology_true__{label}"] = y_test_ontology[:, index]
+        test_pred_data_clean[f"ontology_prob__{label}"] = test_probabilities[:, index]
+
+    pred_df_full = pd.DataFrame(test_pred_data_full)
+    pred_df_full.to_csv(out / "test_predictions_full.csv", index=False)
+
+    pred_df_clean = pd.DataFrame(test_pred_data_clean)
+    pred_df_clean.to_csv(out / "test_predictions_clean.csv", index=False)
+
+    pred_df_full.to_csv(out / "test_predictions.csv", index=False)
+
+    readable_df = build_readable_predictions(
+        row_ids=row_ids.to_numpy(),
+        y_true_ccs=y_test_ccs,
+        y_pred_ccs=pred_test,
+        y_true_ontology=y_test_ontology,
+        ontology_probabilities=test_probabilities,
+        ontology_label_columns=ontology_label_columns,
+        threshold=ontology_threshold,
+    )
+    readable_df.to_csv(out / "test_predictions_readable.csv", index=False)
+
+    readable_top10_df = build_readable_predictions(
+        row_ids=row_ids.to_numpy(),
+        y_true_ccs=y_test_ccs,
+        y_pred_ccs=pred_test,
+        y_true_ontology=y_test_ontology,
+        ontology_probabilities=test_probabilities,
+        ontology_label_columns=ontology_label_columns,
+        threshold=ontology_threshold,
+        max_predicted_classes=10,
+    )
+    readable_top10_df.to_csv(out / "test_predictions_readable_top10.csv", index=False)
 
     embedding_columns = {f"embedding_{index}": test_embeddings[:, index] for index in range(test_embeddings.shape[1])}
     embedding_df = pd.DataFrame(
         {
-            row_id_column: row_ids.to_numpy(),
+            "row_id": row_ids.to_numpy(),
             "CCS_true": y_test_ccs,
             "CCS_pred": pred_test,
             **embedding_columns,
@@ -580,13 +696,19 @@ def parse_args() -> argparse.Namespace:
         default="data/model/final_covered_ccs_fingerprints_multilabel_filtered.csv",
         help="CSV con row_id y columnas ont_ o ontology__ generadas por el preprocesado de ChEBI.",
     )
-    parser.add_argument("--output-dir", default="predictions/chebi", help="Directorio de salida.")
+    parser.add_argument("--output-dir", default="predictions/ontology_model", help="Directorio de salida.")
     parser.add_argument("--epochs", type=int, default=30)
     parser.add_argument("--batch-size", type=int, default=128)
     parser.add_argument("--lr", type=float, default=1e-3)
     parser.add_argument("--lambda-ontology", type=float, default=0.1)
     parser.add_argument("--ontology-threshold", type=float, default=0.5)
     parser.add_argument("--row-id-column", default="row_id")
+    parser.add_argument(
+        "--device",
+        choices=("auto", "cpu", "cuda"),
+        default="auto",
+        help="Dispositivo para el entrenamiento multitarea.",
+    )
     return parser.parse_args()
 
 
@@ -604,4 +726,5 @@ if __name__ == "__main__":
         ontology_threshold=args.ontology_threshold,
         ontology_csv=args.ontology_input,
         row_id_column=args.row_id_column,
+        device=getattr(args, "device", "auto"),
     )

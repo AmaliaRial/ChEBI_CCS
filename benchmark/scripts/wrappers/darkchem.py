@@ -75,12 +75,7 @@ def _normalize_group(adduct: str) -> str:
     return "protonated"
 
 
-def _predict_subset(
-    df_subset: pd.DataFrame,
-    smiles_col: str,
-    network_dir: Path,
-    property_index: int,
-) -> pd.DataFrame:
+def _predict_subset(df_subset: pd.DataFrame, smiles_col: str, network_dir: Path, property_index: int) -> pd.DataFrame:
     if df_subset.empty:
         return pd.DataFrame(columns=["_row_id", "predicted_ccs"])
 

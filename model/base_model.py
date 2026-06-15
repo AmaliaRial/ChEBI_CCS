@@ -137,10 +137,7 @@ def predict_array(model: nn.Module, features: torch.Tensor, device: torch.device
         return model(features.to(device)).detach().cpu().numpy()
 
 
-def plot_training_curves(
-    history: list[dict[str, float]],
-    output_path: Path,
-) -> None:
+def plot_training_curves(history: list[dict[str, float]], output_path: Path) -> None:
     epochs = [item["epoch"] for item in history]
     train_rmse = [item["train_rmse"] for item in history]
     val_rmse = [item["val_rmse"] for item in history]
@@ -170,17 +167,7 @@ def plot_training_curves(
     plt.close(fig)
 
 
-def train_model(
-    train_csv: str,
-    output_dir: str,
-    val_csv: str | None = None,
-    test_csv: str | None = None,
-    test_size: float = 0.2,
-    random_state: int = 42,
-    epochs: int = 40,
-    batch_size: int = 64,
-    lr: float = 1e-3,
-) -> None:
+def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, test_csv: str | None = None, test_size: float = 0.2, random_state: int = 42, epochs: int = 40, batch_size: int = 64, lr: float = 1e-3) -> None:
     
     #Se fijan semillas aletorias para garantizar el mismo resultado al entrenar varias veces el modelo
     torch.manual_seed(random_state)
@@ -302,12 +289,32 @@ def train_model(
     with (out / "training_summary.json").open("w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=2)
 
-    pred_df = pd.DataFrame(
-        {
-            "CCS_true": y_test,
-            "CCS_pred": pred_test,
-        }
-    )
+    # Prepare identifier columns from test_df if available
+    pred_data = {
+        "CCS_true": y_test,
+        "CCS_pred": pred_test,
+    }
+    
+    # Add identifier columns (row_id, name, smiles) if available
+    if "row_id" in test_df.columns:
+        pred_data["row_id"] = test_df["row_id"].values
+    if "name" in test_df.columns:
+        pred_data["name"] = test_df["name"].values
+    if "smiles" in test_df.columns:
+        pred_data["smiles"] = test_df["smiles"].values
+    
+    # Reorder columns to put identifiers first
+    pred_df = pd.DataFrame(pred_data)
+    column_order = []
+    if "row_id" in pred_df.columns:
+        column_order.append("row_id")
+    if "name" in pred_df.columns:
+        column_order.append("name")
+    if "smiles" in pred_df.columns:
+        column_order.append("smiles")
+    column_order.extend(["CCS_true", "CCS_pred"])
+    pred_df = pred_df[column_order]
+    
     pred_df.to_csv(out / "test_predictions.csv", index=False)
 
     train_df.to_csv(out / "train_split.csv", index=False)

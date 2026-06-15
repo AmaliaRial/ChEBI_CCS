@@ -132,11 +132,7 @@ def collect_needed_keys(source_rows: list[dict[str, str]]) -> dict[str, set[tupl
     return needed
 
 
-def build_fingerprint_index(
-    dataset_name: str,
-    path: Path,
-    needed_keys: set[tuple[str, ...]],
-) -> tuple[dict[tuple[str, ...], dict[str, str]], dict[str, Any], list[str]]:
+def build_fingerprint_index(dataset_name: str, path: Path, needed_keys: set[tuple[str, ...]]) -> tuple[dict[tuple[str, ...], dict[str, str]], dict[str, Any], list[str]]:
     rows, headers, _ = read_table(path)
     fp_cols = fingerprint_columns(headers)
     index: dict[tuple[str, ...], dict[str, str]] = {}
@@ -164,11 +160,7 @@ def build_fingerprint_index(
     return index, manifest, fp_cols
 
 
-def merge_rows(
-    source_rows: list[dict[str, str]],
-    dataset_indexes: dict[str, dict[tuple[str, ...], dict[str, str]]],
-    fingerprint_columns_union: list[str],
-) -> tuple[list[dict[str, str]], dict[str, Any]]:
+def merge_rows(source_rows: list[dict[str, str]], dataset_indexes: dict[str, dict[tuple[str, ...], dict[str, str]]], fingerprint_columns_union: list[str]) -> tuple[list[dict[str, str]], dict[str, Any]]:
     output_rows: list[dict[str, str]] = []
     stats = {
         "matched": 0,

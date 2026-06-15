@@ -200,15 +200,7 @@ def split_columns(df: pd.DataFrame) -> tuple[list[str], list[str]]:
     return base_columns, ontology_columns
 
 
-def filter_labels(
-    labels: list[LabelRecord],
-    total_rows: int,
-    min_class_count: int,
-    max_class_frequency_ratio: float,
-    exclude_generic: bool,
-    blacklist_values: set[str],
-    max_labels: int | None,
-) -> tuple[list[LabelRecord], list[dict[str, Any]], dict[str, int]]:
+def filter_labels(labels: list[LabelRecord], total_rows: int, min_class_count: int, max_class_frequency_ratio: float, exclude_generic: bool, blacklist_values: set[str], max_labels: int | None) -> tuple[list[LabelRecord], list[dict[str, Any]], dict[str, int]]:
     removed: list[dict[str, Any]] = []
     selected: list[LabelRecord] = []
     summary = {
@@ -282,25 +274,14 @@ def filter_labels(
     return selected, removed, summary
 
 
-def build_filtered_dataset(
-    df: pd.DataFrame,
-    selected_labels: list[LabelRecord],
-) -> pd.DataFrame:
+def build_filtered_dataset(df: pd.DataFrame, selected_labels: list[LabelRecord]) -> pd.DataFrame:
     base_columns, ontology_columns = split_columns(df)
     selected_columns = [label.column for label in selected_labels if label.column in ontology_columns]
     keep_columns = base_columns + selected_columns
     return df.loc[:, keep_columns].copy()
 
 
-def save_manifest(
-    output_manifest: Path,
-    input_manifest_path: Path,
-    input_manifest: dict[str, Any],
-    selected_labels: list[LabelRecord],
-    removed_labels: list[dict[str, Any]],
-    filtering_parameters: dict[str, Any],
-    total_rows: int,
-) -> None:
+def save_manifest(output_manifest: Path, input_manifest_path: Path, input_manifest: dict[str, Any], selected_labels: list[LabelRecord], removed_labels: list[dict[str, Any]], filtering_parameters: dict[str, Any], total_rows: int) -> None:
     manifest = {
         "input_manifest": str(input_manifest_path),
         "filtering_parameters": filtering_parameters,
@@ -316,13 +297,7 @@ def save_manifest(
         json.dump(manifest, handle, indent=2, ensure_ascii=True)
 
 
-def print_summary(
-    labels: list[LabelRecord],
-    selected_labels: list[LabelRecord],
-    summary: dict[str, int],
-    output_csv: Path,
-    output_manifest: Path,
-) -> None:
+def print_summary(labels: list[LabelRecord], selected_labels: list[LabelRecord], summary: dict[str, int], output_csv: Path, output_manifest: Path) -> None:
     print(f"Number of original ontology labels: {len(labels)}")
     print(f"Number removed because count < min_class_count: {summary['removed_count_below_min_class_count']}")
     print(

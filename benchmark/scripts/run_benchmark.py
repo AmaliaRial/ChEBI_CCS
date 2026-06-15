@@ -50,14 +50,7 @@ def _build_extra_wrapper_args(info: Dict[str, Any]) -> List[str]:
     return extra_args
 
 
-def _run_model(
-    wrapper_path: Path,
-    conda_env: str,
-    input_csv: Path,
-    output_csv: Path,
-    repo_path: Path,
-    extra_wrapper_args: List[str],
-) -> None:
+def _run_model(wrapper_path: Path, conda_env: str, input_csv: Path, output_csv: Path, repo_path: Path, extra_wrapper_args: List[str]) -> None:
     output_csv.parent.mkdir(parents=True, exist_ok=True)
     command = [
         "conda",
@@ -69,7 +62,7 @@ def _run_model(
         "--input",
         str(input_csv),
         "--output",
-        str(output_csv),
+            output_csv.parent.mkdir(parents=True, exist_ok=True)
         "--repo",
         str(repo_path),
     ] + extra_wrapper_args

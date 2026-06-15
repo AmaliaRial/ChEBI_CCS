@@ -170,13 +170,7 @@ def load_inputs(input_arg: str) -> list[dict[str, Any]]:
 
 #empezamos a mapear una fila a un Termino
 #primero intenta con inchi exacto, luego con smiles exacto o canonical, y si no con el inchi derivado del smiles. Si encuentra un match, devuelve el chebi_id, el nombre, la fuente del match (smiles o inchi) y el valor que matcheó. Luego con el chebi_id busca sus ancestros y devuelve la lista de clasificaciones (ancestros + el propio chebi_id)
-def classify_one( 
-    row: dict[str, Any],
-    parents: dict[str, list[str]],
-    names: dict[str, str],
-    smiles_map: dict[str, list[str]],
-    inchi_map: dict[str, list[str]],
-) -> dict[str, Any]:
+def classify_one(row: dict[str, Any], parents: dict[str, list[str]], names: dict[str, str], smiles_map: dict[str, list[str]], inchi_map: dict[str, list[str]]) -> dict[str, Any]:
     row_id = row.get("row_id")
     smiles = row.get("smiles")
     inchi = row.get("inchi")

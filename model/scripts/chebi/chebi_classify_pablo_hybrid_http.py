@@ -14,7 +14,7 @@ Input formats:
 - JSONL records with row_id, smiles, inchi, and/or inchikey fields
 - plain text files with one value per line
 - a single value passed directly on the command line
-
+    """Look up a candidate in local maps."""
 Output:
 - JSON payload with summary and per-row results
 """
@@ -314,11 +314,7 @@ def build_candidates(row: dict[str, Any]) -> list[dict[str, str]]:
     return candidates
 
 
-def local_lookup_candidate(
-    candidate: dict[str, str],
-    smiles_map: dict[str, list[str]],
-    inchi_map: dict[str, list[str]],
-) -> str | None:
+def local_lookup_candidate(candidate: dict[str, str], smiles_map: dict[str, list[str]], inchi_map: dict[str, list[str]]) -> str | None:
     value_type = candidate["value_type"]
     value = candidate["value"]
 
@@ -333,14 +329,7 @@ def local_lookup_candidate(
     return None
 
 
-def classify_one(
-    row: dict[str, Any],
-    session: requests.Session,
-    parents: dict[str, list[str]],
-    names: dict[str, str],
-    smiles_map: dict[str, list[str]],
-    inchi_map: dict[str, list[str]],
-) -> dict[str, Any]:
+def classify_one(row: dict[str, Any], session: requests.Session, parents: dict[str, list[str]], names: dict[str, str], smiles_map: dict[str, list[str]], inchi_map: dict[str, list[str]]) -> dict[str, Any]:
     row_id = row.get("row_id")
     smiles = row.get("smiles")
     inchi = row.get("inchi")

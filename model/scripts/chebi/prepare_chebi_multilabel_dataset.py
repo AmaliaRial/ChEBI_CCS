@@ -91,7 +91,6 @@ def parse_obo_terms(obo_path: Path) -> tuple[dict[str, list[str]], dict[str, str
     with obo_path.open("r", encoding="utf-8") as handle:
         for raw_line in handle:
             line = raw_line.rstrip("\n")
-
             if line == "[Term]":
                 flush_term()
                 in_term = True
@@ -143,11 +142,7 @@ def sanitize_chebi_id(chebi_id: str) -> str:
     return chebi_id.replace(":", "_")
 
 
-def build_ontology_assignments(
-    row_to_chebi_id: dict[int, str],
-    term_to_parents: dict[str, list[str]],
-    term_names: dict[str, str],
-) -> tuple[dict[int, set[str]], dict[str, str], Counter[str]]:
+def build_ontology_assignments(row_to_chebi_id: dict[int, str], term_to_parents: dict[str, list[str]], term_names: dict[str, str]) -> tuple[dict[int, set[str]], dict[str, str], Counter[str]]:
     """Build ontology assignments by traversing ancestor hierarchy up to depth 4.
     
     For each matched molecule, we traverse upward through is_a relationships
@@ -203,11 +198,7 @@ def build_ontology_assignments(
     return row_to_classes, class_names, class_counts
 
 
-def build_selected_labels(
-    class_counts: Counter[str],
-    class_names: dict[str, str],
-    min_class_count: int,
-) -> list[dict[str, Any]]:
+def build_selected_labels(class_counts: Counter[str], class_names: dict[str, str], min_class_count: int) -> list[dict[str, Any]]:
     selected = []
     for chebi_id, count in class_counts.items():
         if count >= min_class_count:
@@ -224,11 +215,7 @@ def build_selected_labels(
     return selected
 
 
-def build_top_class_summary(
-    class_counts: Counter[str],
-    class_names: dict[str, str],
-    top_n: int = 20,
-) -> list[dict[str, Any]]:
+def build_top_class_summary(class_counts: Counter[str], class_names: dict[str, str], top_n: int = 20) -> list[dict[str, Any]]:
     summary = []
     for chebi_id, count in sorted(class_counts.items(), key=lambda item: (-item[1], item[0]))[:top_n]:
         summary.append(
@@ -241,11 +228,7 @@ def build_top_class_summary(
     return summary
 
 
-def build_ontology_matrix(
-    fingerprint_df: pd.DataFrame,
-    row_to_classes: dict[int, set[str]],
-    selected_labels: list[dict[str, Any]],
-) -> tuple[pd.DataFrame, int]:
+def build_ontology_matrix(fingerprint_df: pd.DataFrame, row_to_classes: dict[int, set[str]], selected_labels: list[dict[str, Any]]) -> tuple[pd.DataFrame, int]:
     selected_columns = [item["column"] for item in selected_labels]
     ontology_matrix = pd.DataFrame(0, index=fingerprint_df.index, columns=selected_columns, dtype="uint8")
 
@@ -267,18 +250,7 @@ def build_ontology_matrix(
     return ontology_matrix, rows_with_labels
 
 
-def save_manifest(
-    manifest_json: Path,
-    fingerprint_csv: Path,
-    chunks_dir: Path,
-    ontology_obo: Path,
-    output_csv: Path,
-    min_class_count: int,
-    fingerprint_rows: int,
-    rows_with_ontology_labels: int,
-    selected_labels: list[dict[str, Any]],
-    top_classes: list[dict[str, Any]],
-) -> None:
+def save_manifest(manifest_json: Path, fingerprint_csv: Path, chunks_dir: Path, ontology_obo: Path, output_csv: Path, min_class_count: int, fingerprint_rows: int, rows_with_ontology_labels: int, selected_labels: list[dict[str, Any]], top_classes: list[dict[str, Any]]) -> None:
     manifest = {
         "fingerprint_csv": str(fingerprint_csv),
         "chunks_dir": str(chunks_dir),

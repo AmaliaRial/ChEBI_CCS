@@ -14,18 +14,13 @@ from sklearn.model_selection import train_test_split
 repo_root = Path(__file__).resolve().parents[4]
 
 INPUT_CSV = repo_root / "data" / "model" / "final_covered_ccs_fingerprints.csv"
-TRAIN_CSV = repo_root / "data" / "model" / "train_ccs_fingerprints.csv"
 VAL_CSV = repo_root / "data" / "model" / "val_ccs_fingerprints.csv"
 TEST_CSV = repo_root / "data" / "model" / "test_ccs_fingerprints.csv"
+TRAIN_CSV = repo_root / "data" / "model" / "train_ccs_fingerprints.csv"
 MANIFEST_JSON = repo_root / "data" / "model" / "split_manifest.json"
 
 
-def split_train_val_test(
-    df: pd.DataFrame,
-    val_size: float = 0.1,
-    test_size: float = 0.1,
-    random_state: int = 42,
-) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+def split_train_val_test(df: pd.DataFrame, val_size: float = 0.1, test_size: float = 0.1, random_state: int = 42) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """Split 80/10/10: train, val, test."""
     train_df, temp_df = train_test_split(
         df,
@@ -46,17 +41,7 @@ def split_train_val_test(
     )
 
 
-def save_split_train_val_test(
-    input_csv: str | Path,
-    train_csv: str | Path,
-    val_csv: str | Path,
-    test_csv: str | Path,
-    val_size: float = 0.1,
-    test_size: float = 0.1,
-    random_state: int = 42,
-    manifest_path: str | Path | None = None,
-) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    
+def save_split_train_val_test(input_csv: str | Path, train_csv: str | Path, val_csv: str | Path, test_csv: str | Path, val_size: float = 0.1, test_size: float = 0.1, random_state: int = 42, manifest_path: str | Path | None = None) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     df = pd.read_csv(input_csv, low_memory=False)
     train_df, val_df, test_df = split_train_val_test(
         df, val_size=val_size, test_size=test_size, random_state=random_state
