@@ -46,7 +46,7 @@ Located in `predictions/base/`:
 - `row_id`: Unique identifier
 - `smiles`: SMILES string
 - `adduct`: Ionization adduct (e.g., "[M+H]+")
-- `ccs`: CCS target value (Ų)
+- `ccs`: CCS target value 
 - `m/z`: Mass-to-charge ratio
 - `V1` to `V2048`: Morgan fingerprint features (radius 2, 2048 bits)
 - `ontology_true__ont_*`: Binary ontology labels (546 columns in multilabel CSV)
