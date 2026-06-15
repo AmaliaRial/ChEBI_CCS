@@ -1,121 +1,75 @@
-# ChEBI_CCS
+# ChEBI_CCS: CCS Prediction with ChEBI Ontology Integration
 
+A multitask deep learning framework for predicting Collision Cross Section (CCS) values with optional ChEBI chemical ontology supervision.
 
-## 1) What This Repository Contains
+## Overview
 
-This project covers five main components:
+This repository contains two trainable models:
 
-1. **CCS Data Preparation**:
-	- cleaning and unification
-	- reconstruction of subset covered by ChEBI
-	- generation of final fingerprint dataset (no descriptors)
-	- CCS replicate consistency check and averaging
-	- ontology label binarization for multilabel training
+1. **Base Model**: CCS regression only (baseline)
+   - Input: molecular fingerprints + adduct + m/z
+   - Output: CCS prediction
+   - Loss: MSE
 
-2. **ChEBI Classification & Ontology Integration**:
-	- local classification over `chebi.obo` (fast, no HTTP dependency)
-	- traversal of ChEBI is_a hierarchy for ancestor extraction
-	- multilabel ontology label generation with filtering
+2. **Ontology-Aware Model**: Multitask learning
+   - Input: fingerprints + adduct + m/z + ChEBI ontology labels
+   - Output: CCS prediction + multilabel classification
+   - Loss: MSE + λ × BCE (λ defaults to 0.1)
+   - Supports λ ∈ {0.1, 0.5, 1.0} for comparison
 
-3. **Base Model** (regression only, without ontology):
-	- training with 80/10/10 `train/val/test` split
-	- fingerprint + adduct + m/z → CCS prediction
-	- MSE loss, RMSE/MAE/R² metrics
-	- reference baseline for comparison
+Both models use identical 80/10/10 train/val/test splits on **16,892 molecules** (ChEBI-covered compounds) with **2,259 input features** and **546 ontology labels** (filtered).
 
-4. **Ontology-Aware Model** (multitask neural network):
-	- shared embedding space for both tasks
-	- Task 1: CCS regression (MSELoss)
-	- Task 2: ChEBI multilabel classification (BCEWithLogitsLoss)
-	- combined loss: MSE + λ × BCE (default λ = 0.1)
-	- latent embedding export for analysis
+## Data Files
 
-5. **Benchmark of External Models**:
-	- DeepCCS and DarkChem (external repos)
-	- aggregation of comparable metrics
+### Ready-to-Use Datasets
 
-## 2) Current Data Flow Status
+All datasets are pre-processed and available in `data/model/`:
 
-### Base Model Pipeline
+| File | Size | Columns | Used By |
+|------|------|---------|---------|
+| `final_covered_ccs_fingerprints.csv` | 16,892 rows | fingerprints (V1–V2048) + adduct + ccs + m/z | Reference dataset |
+| `final_covered_ccs_fingerprints_multilabel_filtered.csv` | 16,892 rows | above + 546 binary ontology labels | Ontology model training |
+| `ontology_label_manifest_filtered.json` | — | metadata for 546 ontology classes | Reference |
+| `split_manifest.json` | — | split indices and random_state | Reference |
 
-- **Input**: `data/model/final_covered_ccs_fingerprints.csv`
-  - schema: `row_id, smiles, adduct, ccs, inchi, name, mz, V1..V2211`
+### Train/Val/Test Splits
 
-- **Splits** (80/10/10 deterministic):
-  - `data/model/train_ccs_fingerprints.csv` (~41-44k rows)
-  - `data/model/val_ccs_fingerprints.csv` (~5-5.5k rows)
-  - `data/model/test_ccs_fingerprints.csv` (~5-5.5k rows)
-  - Manifest: `data/model/split_manifest.json`
+Located in `predictions/base/`:
 
-### Ontology-Aware Model Pipeline
+| File | Rows | Purpose |
+|------|------|---------|
+| `train_split.csv` | 13,514 (80%) | Training |
+| `val_split.csv` | 1,689 (10%) | Validation |
+| `test_split.csv` | 1,689 (10%) | Testing |
 
-- **ChEBI Matches**: `data/model/final_covered_ccs.csv`
-  - schema: + `chebi_classes` (JSON list), `chebi_count`, `chebi_name`, `chebi_match_source`
-  - produced by: `chebi_classify_pipeline.py`
+**Schema for all CSVs:**
+- `row_id`: Unique identifier
+- `smiles`: SMILES string
+- `adduct`: Ionization adduct (e.g., "[M+H]+")
+- `ccs`: CCS target value (Ų)
+- `m/z`: Mass-to-charge ratio
+- `V1` to `V2048`: Morgan fingerprint features (radius 2, 2048 bits)
+- `ontology_true__ont_*`: Binary ontology labels (546 columns in multilabel CSV)
 
-- **Ontology Labels**: `data/model/final_covered_ccs_fingerprints_multilabel.csv`
-  - schema: base fingerprint columns + `ont_lipid`, `ont_steroid`, `ont_benzenes`, etc.
-  - multilabel binary columns for each ChEBI ancestor
-  - produced by: `prepare_chebi_multilabel_dataset.py`
+## Installation
 
-- **Filtered Ontology Labels** (recommended for training): 
-  - `data/model/final_covered_ccs_fingerprints_multilabel_filtered.csv`
-  - removes generic/sparse ontology classes using configurable filters
-  - produced by: `filter_ontology_multilabel_dataset.py`
-
-- **Shared Splits**: Uses the same train/val/test splits as base model
-  - ensures fair comparison between both models
-
-## 3) Installation
-
-### Important: Environment Location
-
-The `tfg_amalia` conda environment is installed locally at:
-```
-C:\Users\amali\miniconda3\envs\tfg_amalia
-```
-
-**For detailed setup instructions, see [ENVIRONMENT_SETUP.md](ENVIRONMENT_SETUP.md)**
-
-All training commands in this repository use this environment. If you're working on a different machine, you'll need to create or recreate this environment.
-
-### Quick Start: Option A (Existing Environment)
+### 1. Clone & Navigate
 
 ```bash
-conda activate tfg_amalia
+git clone <repository_url>
+cd ChEBI_CCS
 ```
 
-Verify the environment is active (prompt should show `(tfg_amalia)`).
+### 2. Setup Environment
 
-### Quick Start: Option B (New Setup from YAML)
-
-This creates a fresh environment with all dependencies:
+**Option A: Use conda (recommended)**
 
 ```bash
 conda env create -f environment.yml
 conda activate tfg_amalia
 ```
 
-**Expected output:**
-```
-Collecting package metadata (repodata.json): done
-Solving environment: done
-Preparing transaction: done
-Verifying transaction: done
-Executing transaction: done
-#
-# To activate this environment, use
-#
-#     $ conda activate tfg_amalia
-#
-# To deactivate an active environment, use
-#
-#     $ conda deactivate
-```
-
-### Quick Start: Option C (pip-only setup)
-
-If you prefer pip-only installation or have conda issues:
+**Option B: Use pip**
 
 ```bash
 conda create -n tfg_amalia python=3.12
@@ -123,199 +77,67 @@ conda activate tfg_amalia
 pip install -r requirements.txt
 ```
 
-### Verify Installation
-
-After activation, verify all packages are installed:
+### 3. Verify Installation
 
 ```bash
-python -c "import torch; import pandas; import rdkit; print('✓ All core packages installed')"
+python -c "import torch; import pandas; import rdkit; print('✓ Ready')"
 ```
 
-Expected output:
-```
-✓ All core packages installed
+**GPU Check** (optional):
+```bash
+python -c "import torch; print(f'GPU: {torch.cuda.is_available()}')"
 ```
 
-### GPU Verification (Optional)
+### Key Dependencies
 
-To verify PyTorch GPU support:
+- Python 3.12
+- PyTorch 2.9.1 (CUDA 12.1)
+- RDKit 2025.9.6
+- Pandas, NumPy, scikit-learn
+- See `environment.yml` for full list
+
+## Quick Start: Training Models
+
+All datasets are pre-processed and ready to use. No data preparation needed.
+
+### Train Base Model (CCS Regression Only)
 
 ```bash
-python -c "import torch; print(f'GPU Available: {torch.cuda.is_available()}'); print(f'GPU Device: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else \"None\"}')"
-```
+conda activate tfg_amalia
 
----
-
-## 4) Environment Dependencies
-
-### Core Packages Included
-
-| Package | Version | Purpose |
-|---------|---------|---------|
-| **Python** | 3.12 | Base runtime |
-| **NumPy** | ≥2.4.3 | Numerical computing |
-| **Pandas** | ≥3.0.1 | Data manipulation |
-| **Scikit-Learn** | ≥1.8.0 | ML algorithms |
-| **SciPy** | ≥1.17.1 | Scientific computing |
-| **PyTorch** | 2.9.1 | Deep learning framework (CUDA 12.1) |
-| **PyTorch Vision** | 0.24.1 | Computer vision utilities |
-| **RDKit** | 2025.9.6 | Cheminformatics (SMILES, InChI) |
-| **Matplotlib** | ≥3.10.9 | Plotting & visualization |
-| **Seaborn** | ≥0.13.2 | Statistical visualization |
-| **Pillow** | ≥12.1.1 | Image processing |
-| **UMAP-Learn** | ≥0.5.11 | Dimensionality reduction (optional) |
-| **PyYAML** | ≥6.0.3 | YAML configuration parsing |
-| **Requests** | ≥2.32.5 | HTTP requests |
-| **NetworkX** | ≥3.6.1 | Graph algorithms |
-| **Jupyter** | ≥1.0.0 | Interactive notebooks |
-
-### GPU Support
-
-The environment includes **PyTorch with CUDA 12.1** support for GPU acceleration.
-
-- **Device**: GPU support for both NVIDIA (CUDA) and AMD (ROCm) architectures
-- **Memory**: For large datasets, GPU acceleration is recommended
-- **Alternative**: CPU-only mode works but is significantly slower
-
-To use CPU-only, modify the PyTorch installation:
-
-```bash
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
-```
-
----
-
-## 5) Relevant Project Structure
-
-### Essential Scripts (Both Models)
-
-**Data Management** (`model/scripts/data_management/`):
-- `splitter.py`: Create deterministic train/val/test splits (80/10/10)
-- `build_final_covered_dataset.py`: Merge ChEBI chunks into final dataset
-- `build_final_fingerprint_dataset.py`: Append fingerprint vectors to covered dataset
-- `check_and_correct_metlin_ims_ccs.py`: Validate CCS replicate data (CV% threshold)
-- `check_ccs_replicates.py`: Detect and handle replicate CCS columns in raw data
-
-**ChEBI Classification** (`model/scripts/chebi/`):
-- `chebi_classify.py`: Local ChEBI classifier (rdkit + chebi.obo, no HTTP)
-- `chebi_classify_pipeline.py`: Orchestrates classification pipeline
-- `prepare_chebi_multilabel_dataset.py`: Create binary ontology labels from ChEBI matches
-- `filter_ontology_multilabel_dataset.py`: Filter ontology labels (min count, blacklist, etc.)
-
-**Model Training** (`model/`):
-- `base_model.py`: Baseline CCS regression model
-- `chebi_model.py`: Ontology-aware multitask model
-
-### Supporting Files
-
-**Requirements**:
-- `assets/requirements/pipeline.txt`: Data preparation dependencies
-- `assets/requirements/base_model.txt`: Model training dependencies
-- `benchmark/requirements.txt`: External model benchmarking
-
-**Benchmark**:
-- `benchmark/scripts/run_benchmark.py`: Run external model predictions
-- `benchmark/scripts/aggregate_metrics.py`: Aggregate benchmark metrics
-
-## 6) Recommended End-to-End Workflow
-
-### 6.1 Validate CCS Replicates in Raw Datasets
-
-```
-conda run -n tfg_amalia python model/scripts/data_management/check_ccs_replicates.py \
-  --input-dir data/raw_datasets \
-  --output-dir data/clean_datasets/ccs_replicate_check \
-  --cv-threshold 5
-```
-
-Output: Reports per dataset with CV% statistics. Identifies rows to discard (CV > 5%).
-
-### 6.2 Reconstruct Covered Dataset with ChEBI Matches
-
-```
-conda run -n tfg_amalia python model/scripts/data_management/build_final_covered_dataset.py
-```
-
-Input: `data/unified/unified_ccs.csv` + ChEBI chunk results  
-Output: `data/model/final_covered_ccs.csv` (with ChEBI metadata)
-
-### 6.3 Build Final Fingerprint Dataset (no Descriptors)
-
-```
-conda run -n tfg_amalia python model/scripts/data_management/build_final_fingerprint_dataset.py
-```
-
-Input: `data/model/final_covered_ccs.csv` + raw fingerprint tables  
-Output: `data/model/final_covered_ccs_fingerprints.csv` (with V1..Vn columns)
-
-### 6.4 Create Deterministic 80/10/10 Splits
-
-```
-conda run -n tfg_amalia python model/scripts/data_management/splitter.py
-```
-
-Input: `data/model/final_covered_ccs_fingerprints.csv`  
-Output: 
-- `train_ccs_fingerprints.csv` (80%)
-- `val_ccs_fingerprints.csv` (10%)
-- `test_ccs_fingerprints.csv` (10%)
-- `split_manifest.json` (metadata)
-
-### 6.5 Build Ontology Labels from ChEBI
-
-**Step A: Create multilabel dataset with ChEBI ancestors**
-
-```
-conda run -n tfg_amalia python model/scripts/chebi/prepare_chebi_multilabel_dataset.py \
-  --chunks-dir predictions/chebi/chunks \
-  --ontology-obo data/ontology/chebi.obo \
-  --fingerprint-csv data/model/final_covered_ccs_fingerprints.csv \
-  --output-csv data/model/final_covered_ccs_fingerprints_multilabel_all_ancestors.csv \
-  --manifest-json data/model/ontology_label_manifest_all_ancestors.json
-```
-
-**Step B: Filter ontology labels** (recommended for better generalization)
-
-```
-conda run -n tfg_amalia python model/scripts/chebi/filter_ontology_multilabel_dataset.py \
-  --input-csv data/model/final_covered_ccs_fingerprints_multilabel_all_ancestors.csv \
-  --input-manifest data/model/ontology_label_manifest_all_ancestors.json \
-  --output-csv data/model/final_covered_ccs_fingerprints_multilabel_filtered.csv \
-  --output-manifest data/model/ontology_label_manifest_filtered.json \
-  --min-class-count 30 \
-  --max-frequency-ratio 0.9
-```
-
-Output: Binary multilabel columns (ont_*) with rare/generic classes removed.
-
-### 6.6 Train Base Model (Baseline)
-
-```
-conda run -n tfg_amalia python model/base_model.py \
-  --train-input data/model/train_ccs_fingerprints.csv \
-  --val-input data/model/val_ccs_fingerprints.csv \
-  --test-input data/model/test_ccs_fingerprints.csv \
-  --output-dir predictions/base \
+python model/base_model.py \
+  --train-input predictions/base/train_split.csv \
+  --val-input predictions/base/val_split.csv \
+  --test-input predictions/base/test_split.csv \
+  --output-dir predictions/base_new \
   --epochs 30 \
   --batch-size 128 \
   --lr 1e-3
 ```
 
-Expected outputs in `predictions/base`:
-- `training_summary.json`: Per-epoch metrics (loss, RMSE, MAE)
-- `training_curves.png`: Loss curves
-- `test_predictions.csv`: Final test set predictions
-- `train_split.csv`, `val_split.csv`, `test_split.csv`: Split info
+**Inputs:**
+- `predictions/base/train_split.csv` (13,514 rows)
+- `predictions/base/val_split.csv` (1,689 rows)
+- `predictions/base/test_split.csv` (1,689 rows)
 
-### 6.7 Train Ontology-Aware Model
+**Outputs in** `predictions/base_new/`:
+- `training_summary.json` — Per-epoch metrics (loss, RMSE, MAE, R²)
+- `training_curves.png` — Loss curves
+- `test_predictions.csv` — Predictions on test set
 
-```
-conda run -n tfg_amalia python model/scripts/classification_model/run_multitask_train.py \
-  --train-input data/model/train_ccs_fingerprints.csv \
-  --val-input data/model/val_ccs_fingerprints.csv \
-  --test-input data/model/test_ccs_fingerprints.csv \
+---
+
+### Train Ontology-Aware Model
+
+```bash
+conda activate tfg_amalia
+
+python model/scripts/classification_model/run_multitask_train.py \
+  --train-input predictions/base/train_split.csv \
+  --val-input predictions/base/val_split.csv \
+  --test-input predictions/base/test_split.csv \
   --ontology-input data/model/final_covered_ccs_fingerprints_multilabel_filtered.csv \
-  --output-dir predictions/ontology_model \
+  --output-dir predictions/ontology_model_new \
   --epochs 30 \
   --batch-size 128 \
   --lr 1e-3 \
@@ -323,118 +145,134 @@ conda run -n tfg_amalia python model/scripts/classification_model/run_multitask_
   --ontology-threshold 0.5
 ```
 
-The ontology model:
-- Uses **exact same train/val/test splits** as base model (row_id matching)
-- Merges ontology labels by row_id
-- Trains on: fingerprints + adduct + m/z + ontology labels (during training)
-- Total loss: `MSE_ccs + 0.1 × BCE_ontology`
+**Inputs:**
+- Base splits: same as above
+- Ontology labels: `data/model/final_covered_ccs_fingerprints_multilabel_filtered.csv` (546 binary labels)
 
-Expected outputs in `predictions/ontology_model`:
-- `training_summary.json`: Per-epoch metrics (CCS loss, ontology loss, CCS RMSE/MAE)
-- `ontology_metrics.json`: Ontology prediction metrics (F1, Hamming, subset accuracy, etc.)
-- `training_curves.png`: Loss curves for both tasks
-- `embeddings_test.csv`: Latent embeddings (64-dim) from shared fc3 layer
-- `test_predictions_full.csv`: All ontology predictions with logits
-- `test_predictions_clean.csv`: Binary ontology predictions (threshold 0.5)
-- `test_predictions_readable.csv`: Human-readable format with labels
-- `train_split.csv`, `val_split.csv`, `test_split.csv`: Split info
+**Outputs in** `predictions/ontology_model_new/`:
+- `training_summary.json` — Per-epoch metrics (CCS & ontology loss)
+- `ontology_metrics.json` — Classification metrics (F1, Hamming, subset accuracy)
+- `training_curves.png` — Loss curves for both tasks
+- `test_predictions_full.csv` — CCS predictions + ontology logits & probabilities
+- `embeddings_test.csv` — Latent embeddings (64-dim) from shared layer
 
-### 6.8 Post-Training Analysis
+**Key Parameters:**
+- `--lambda-ontology`: Weight for ontology loss (0.1, 0.5, or 1.0)
+- `--ontology-threshold`: Classification threshold for multilabel (default 0.5)
+- `--device`: "auto" (GPU if available), "cpu", or "cuda"
 
-**Visualize embeddings with PCA**
+---
 
-```
-conda run -n tfg_amalia python model/scripts/chebi/visualize_embeddings.py \
-  --embeddings-csv predictions/ontology_model/embeddings_test.csv \
-  --test-predictions-csv predictions/ontology_model/test_predictions_clean.csv \
-  --output-dir predictions/ontology_model/embedding_plots
-```
+### Compare Results
 
-**Optional: Visualize with UMAP** (requires `umap-learn` or `cuml`)
+Pre-trained models available in:
+- `predictions/base/` — Baseline (λ = N/A)
+- `predictions/ontology_model/` — λ = 0.1
+- `predictions/ontology_model_filtered_lambda05/` — λ = 0.5
+- `predictions/ontology_model_filtered_lambda10/` — λ = 1.0
 
-```
-conda run -n tfg_amalia python model/scripts/chebi/visualize_embeddings.py \
-  --embeddings-csv predictions/ontology_model/embeddings_test.csv \
-  --test-predictions-csv predictions/ontology_model/test_predictions_clean.csv \
-  --output-dir predictions/ontology_model/embedding_plots_umap \
-  --use-umap
-```
+All use identical train/val/test splits. Compare `test_predictions.csv` or `ontology_metrics.json` across directories.
 
-## 7) Base Model Metrics
 
-The `training_summary.json` stores per-epoch and final metrics:
+## Output Metrics & Files
 
-**Per epoch** (in `history`):
-- `train_loss`, `val_loss`: MSE loss
-- `train_rmse`, `val_rmse`: Root mean squared error
-- `train_mae`, `val_mae`: Mean absolute error
+### Base Model Outputs
 
-**Final metrics** (train/val/test):
-- RMSE: Root mean squared error
-- MAE: Mean absolute error
-- MEDAE: Median absolute error
-- R²: Coefficient of determination
-
-## 8) Ontology-Aware Model Metrics
-
-The `ontology_metrics.json` stores:
-
-**Per-task metrics** (CCS regression):
-- RMSE, MAE, MEDAE, R² (same as base model)
-
-**Multilabel classification metrics**:
-- Exact match ratio (subset accuracy)
-- Hamming loss
-- Macro F1 score
-- Micro F1 score
-- Sample F1 score
-
-**Threshold analysis**:
-- Metrics computed at threshold 0.5 (configurable)
-
-## 9) Benchmark (DeepCCS / DarkChem)
-
-1. Configure external repos and environments according to:
-	- `benchmark/README.md`
-	- `benchmark/configs/benchmark_models.yaml`
-
-2. Run benchmark:
-
-```
-cd benchmark
-python scripts/run_benchmark.py \
-  --input ../data/model/test_ccs_fingerprints.csv \
-  --config configs/benchmark_models.yaml
+**training_summary.json** (per-epoch):
+```json
+{
+  "history": {
+    "train_loss": [...],
+    "val_loss": [...],
+    "train_rmse": [...],
+    "val_rmse": [...]
+  },
+  "test_metrics": {
+    "rmse": 12.34,
+    "mae": 9.56,
+    "medae": 8.12,
+    "r2": 0.892
+  }
+}
 ```
 
-3. Aggregate metrics:
+**test_predictions.csv**:
+- `row_id`, `CCS_true`, `CCS_pred`, `error`
+
+---
+
+### Ontology Model Outputs
+
+**training_summary.json**:
+```json
+{
+  "history": {
+    "train_ccs_loss": [...],
+    "train_ontology_loss": [...],
+    "val_ccs_loss": [...],
+    "val_ontology_loss": [...]
+  },
+  "test_ccs_metrics": {
+    "rmse": 12.34,
+    "mae": 9.56,
+    "r2": 0.892
+  }
+}
+```
+
+**ontology_metrics.json**:
+```json
+{
+  "ontology_metrics": {
+    "exact_match_ratio": 0.234,
+    "hamming_loss": 0.156,
+    "f1_macro": 0.567,
+    "f1_micro": 0.678
+  },
+  "label_columns": 546,
+  "threshold": 0.5
+}
+```
+
+**test_predictions_full.csv**:
+- `row_id`, `CCS_true`, `CCS_pred`
+- `ontology_true__ont_*`: Ground truth (0/1)
+- `ontology_logit__ont_*`: Model logits
+- `ontology_prob__ont_*`: Probabilities (sigmoid of logits)
+
+**embeddings_test.csv**:
+- `row_id`, `embedding_0` to `embedding_63` (64-dim latent space)
+
+## Project Structure
 
 ```
-python scripts/aggregate_metrics.py \
-  --input ../data/model/test_ccs_fingerprints.csv \
-  --predictions-dir predictions \
-  --output-metrics reports/metrics.csv
-```
+data/
+├── model/
+│   ├── final_covered_ccs_fingerprints.csv                    [Main dataset, 16,892 × 2,259]
+│   ├── final_covered_ccs_fingerprints_multilabel_filtered.csv [+ 546 ontology labels]
+│   ├── ontology_label_manifest_filtered.json                 [Ontology metadata]
+│   └── split_manifest.json                                   [Split info]
+│
+└── ontology/
+    └── chebi.obo                                             [ChEBI hierarchy]
 
-## 10) Quick Reference: Critical Files
+model/
+├── base_model.py                      [Baseline model]
+├── chebi_model.py                     [Ontology-aware model]
+└── scripts/
+    └── classification_model/
+        └── run_multitask_train.py     [CLI for ontology model]
 
-| File | Purpose | Owner |
-|------|---------|-------|
-| `data/model/final_covered_ccs_fingerprints.csv` | Dataset with fingerprints | Both models |
-| `data/model/train_ccs_fingerprints.csv` | Training split (80%) | Both models |
-| `data/model/val_ccs_fingerprints.csv` | Validation split (10%) | Both models |
-| `data/model/test_ccs_fingerprints.csv` | Test split (10%) | Both models |
-| `data/model/final_covered_ccs_fingerprints_multilabel_filtered.csv` | Ontology labels | Ontology model only |
-| `predictions/base/` | Base model artifacts | Baseline |
-| `predictions/ontology_model/` | Ontology model artifacts | Ontology-aware |
-
-## 11) Environment Notes
-
-Use the conda environment: **`tfg_amalia`**
-
-All commands in this README use `conda run -n tfg_amalia python ...` for reproducibility.
-
-To activate manually:
-```
-conda activate tfg_amalia
+predictions/
+├── base/                              [Pre-trained baseline]
+│   ├── train_split.csv
+│   ├── val_split.csv
+│   ├── test_split.csv
+│   ├── training_summary.json
+│   ├── training_curves.png
+│   └── test_predictions.csv
+│
+├── ontology_model/                    [Pre-trained ontology model, λ=0.1]
+├── ontology_model_filtered_lambda05/  [λ=0.5]
+└── ontology_model_filtered_lambda10/  [λ=1.0]
 ```
