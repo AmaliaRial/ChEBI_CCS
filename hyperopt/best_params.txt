@@ -1,0 +1,13 @@
+Best Trial: 51
+Best MAE (validation): 4.6204
+
+Hyperparameters:
+  n_layers: 5
+  n_units_l0: 320
+  n_units_l1: 64
+  n_units_l2: 160
+  n_units_l3: 384
+  n_units_l4: 480
+  learning_rate: 0.0008733543414433369
+  epochs: 65
+  dropout: 0.0043597782845490735

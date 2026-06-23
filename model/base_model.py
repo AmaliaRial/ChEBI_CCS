@@ -26,32 +26,31 @@ from model.enconders.adduct_encoder import AdductOneHotEncoder
 print(torch.cuda.is_available())  # Debe ser True
 print(torch.cuda.get_device_name(0))  # Debe mostrar tu GPU
 
+#siempre correr codigo con este formato --> conda run -n tfg_amalia python , xq sino no reconoce la GPU
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 class CCSRegressor(nn.Module):
 
     #en el __init__ definimos las capas
-    def __init__(self, input_dim: int, hidden_dims: tuple[int, int, int] = (1024, 256, 64)):
+    def __init__(self, input_dim: int, hidden_dims: tuple[int, ...] | list[int] = (1024, 256, 64), dropout_rate: float = 0.2):
         super().__init__()
 
-        self.fc1 = nn.Linear(input_dim, hidden_dims[0])
-        self.fc2 = nn.Linear(hidden_dims[0], hidden_dims[1])
-        self.fc3 = nn.Linear(hidden_dims[1], hidden_dims[2])
-        self.output = nn.Linear(hidden_dims[2], 1)
-
-        self.activation = nn.LeakyReLU(negative_slope=0.01)
-        self.dropout = nn.Dropout(0.2)
+        layers = []
+        in_features = input_dim
+        
+        for out_features in hidden_dims:
+            layers.append(nn.Linear(in_features, out_features))
+            layers.append(nn.LeakyReLU(negative_slope=0.01))
+            layers.append(nn.Dropout(dropout_rate))
+            in_features = out_features
+        
+        layers.append(nn.Linear(in_features, 1))
+        self.model = nn.Sequential(*layers)
 
     #aqui unimos las capas
     def forward(self, x: torch.Tensor) -> torch.Tensor: #first stimation of CCS
-        x = self.activation(self.fc1(x))
-        x = self.dropout(x)
-        x = self.activation(self.fc2(x))
-        x = self.dropout(x)
-        x = self.activation(self.fc3(x))
-        x = self.output(x) 
-        return x.squeeze(-1)
+        return self.model(x).squeeze(-1)
 
 
 def get_fingerprint_columns(df: pd.DataFrame) -> list[str]:
@@ -69,6 +68,7 @@ def get_column_name(df: pd.DataFrame, candidates: tuple[str, ...], label: str) -
         if candidate in df.columns:
             return candidate
     raise ValueError(f"No existe la columna {label} en el dataset. Se intentaron: {candidates}")
+
 
 #contruimos la entrada del modelo (fingerprint, adduct y m/z)
 def build_feature_matrix(df: pd.DataFrame, adduct_encoder: AdductOneHotEncoder | None = None, fit_encoder: bool = True,) -> tuple[np.ndarray, AdductOneHotEncoder, list[str]]:
@@ -135,36 +135,6 @@ def predict_array(model: nn.Module, features: torch.Tensor, device: torch.device
     model.eval()
     with torch.no_grad():
         return model(features.to(device)).detach().cpu().numpy()
-
-
-def plot_training_curves(history: list[dict[str, float]], output_path: Path) -> None:
-    epochs = [item["epoch"] for item in history]
-    train_rmse = [item["train_rmse"] for item in history]
-    val_rmse = [item["val_rmse"] for item in history]
-    train_mae = [item["train_mae"] for item in history]
-    val_mae = [item["val_mae"] for item in history]
-
-    fig, axes = plt.subplots(1, 2, figsize=(12, 4.5), dpi=160)
-
-    axes[0].plot(epochs, train_rmse, label="Train RMSE", linewidth=2)
-    axes[0].plot(epochs, val_rmse, label="Val RMSE", linewidth=2)
-    axes[0].set_title("RMSE per epoch")
-    axes[0].set_xlabel("Epoch")
-    axes[0].set_ylabel("RMSE")
-    axes[0].grid(True, alpha=0.25)
-    axes[0].legend()
-
-    axes[1].plot(epochs, train_mae, label="Train MAE", linewidth=2)
-    axes[1].plot(epochs, val_mae, label="Val MAE", linewidth=2)
-    axes[1].set_title("MAE per epoch")
-    axes[1].set_xlabel("Epoch")
-    axes[1].set_ylabel("MAE")
-    axes[1].grid(True, alpha=0.25)
-    axes[1].legend()
-
-    fig.tight_layout()
-    fig.savefig(output_path)
-    plt.close(fig)
 
 
 def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, test_csv: str | None = None, test_size: float = 0.2, random_state: int = 42, epochs: int = 40, batch_size: int = 64, lr: float = 1e-3) -> None:
@@ -322,13 +292,150 @@ def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, tes
     test_df.to_csv(out / "test_split.csv", index=False)
 
 
+
+def plot_training_curves(history: list[dict[str, float]], output_path: Path) -> None:
+    epochs = [item["epoch"] for item in history]
+    train_rmse = [item["train_rmse"] for item in history]
+    val_rmse = [item["val_rmse"] for item in history]
+    train_mae = [item["train_mae"] for item in history]
+    val_mae = [item["val_mae"] for item in history]
+
+    fig, axes = plt.subplots(1, 2, figsize=(12, 4.5), dpi=160)
+
+    axes[0].plot(epochs, train_rmse, label="Train RMSE", linewidth=2)
+    axes[0].plot(epochs, val_rmse, label="Val RMSE", linewidth=2)
+    axes[0].set_title("RMSE per epoch")
+    axes[0].set_xlabel("Epoch")
+    axes[0].set_ylabel("RMSE")
+    axes[0].grid(True, alpha=0.25)
+    axes[0].legend()
+
+    axes[1].plot(epochs, train_mae, label="Train MAE", linewidth=2)
+    axes[1].plot(epochs, val_mae, label="Val MAE", linewidth=2)
+    axes[1].set_title("MAE per epoch")
+    axes[1].set_xlabel("Epoch")
+    axes[1].set_ylabel("MAE")
+    axes[1].grid(True, alpha=0.25)
+    axes[1].legend()
+
+    fig.tight_layout()
+    fig.savefig(output_path)
+    plt.close(fig)
+
+
+#OPTIMIZACION DE PARAMETROS CON OPTUNA
+def optimize_hyperparameters(train_df: pd.DataFrame, val_df: pd.DataFrame, test_df: pd.DataFrame | None = None, n_trials: int = 100, db_path: str = "hyperopt/baseline_optuna.db", batch_size: int = 128, random_state: int = 42) -> dict:
+
+    import optuna
+    from optuna.storages import RDBStorage
+    from optuna.pruners import MedianPruner
+    
+    torch.manual_seed(random_state)
+    np.random.seed(random_state)
+    
+    # Build feature matrices
+    x_train, adduct_encoder, _ = build_feature_matrix(train_df, fit_encoder=True)
+    y_train = build_target(train_df)
+    
+    x_val, _, _ = build_feature_matrix(val_df, adduct_encoder=adduct_encoder, fit_encoder=False)
+    y_val = build_target(val_df)
+    
+    # Convert to tensors
+    x_train_t = torch.tensor(x_train, dtype=torch.float32)
+    y_train_t = torch.tensor(y_train, dtype=torch.float32)
+    x_val_t = torch.tensor(x_val, dtype=torch.float32)
+    y_val_t = torch.tensor(y_val, dtype=torch.float32)
+    
+    print(f"Train shape: {x_train.shape}, Val shape: {x_val.shape}")
+    
+    def objective(trial):
+        #we dirst set the search space (define our parameters)
+        params = {
+            "n_layers": trial.suggest_int("n_layers", 1, 5),
+            "hidden_dims": [trial.suggest_int(f"n_units_l{i}", 32, 512, step=32) for i in range(trial.suggest_int("n_layers", 1, 5))],
+            "learning_rate": trial.suggest_float("learning_rate", 0.00001, 0.1, log=True),
+            "epochs": trial.suggest_int("epochs", 10, 100),
+            "dropout": trial.suggest_float("dropout", 0.0, 0.5)
+        }
+        
+        # Define our model
+        model = CCSRegressor(x_train.shape[1], params["hidden_dims"], dropout_rate=params["dropout"])
+        model.to(DEVICE) #xq sino corre en la CPU y como que no
+        loss = nn.MSELoss()
+        optimizer = torch.optim.Adam(model.parameters(), lr=params["learning_rate"])
+        
+        # Prepare data loader
+        train_loader = DataLoader(
+            TensorDataset(x_train_t, y_train_t),
+            batch_size=batch_size,
+            shuffle=True
+        )
+        
+        # Train
+        for epoch in range(params["epochs"]):
+            model.train()
+            for xb, yb in train_loader:
+                xb, yb = xb.to(DEVICE), yb.to(DEVICE)
+                optimizer.zero_grad()
+                pred = model(xb)
+                loss = loss(pred, yb)
+                loss.backward()
+                optimizer.step()
+        
+        # Evaluate on validation set
+        model.eval()
+        with torch.no_grad():
+            y_pred_val = predict_array(model, x_val_t, DEVICE)
+        
+    
+        mae_val = float(np.mean(np.abs(y_val - y_pred_val)))
+        return mae_val
+    
+   
+    db_path = Path(db_path)
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    storage = RDBStorage(f"sqlite:///{db_path}")
+
+
+    study = optuna.create_study(direction="minimize", storage=storage, study_name="baseline_ccs_optimization", load_if_exists=True, pruner=MedianPruner())
+      
+    # Run optimization
+    study.optimize(objective, n_trials=n_trials, show_progress_bar=True)
+    
+    best_trial = study.best_trial
+    print("\n" + "=" * 80)
+    print("OPTIMIZATION RESULTS")
+    print("=" * 80)
+    print(f"\nBest trial: {best_trial.number}")
+    print(f"Best MAE (validation): {best_trial.value:.4f}")
+    print(f"\nBest hyperparameters:")
+    for key, value in best_trial.params.items():
+        print(f"  {key}: {value}")
+    
+    output_dir = db_path.parent
+    with open(output_dir / "best_params.txt", "w") as f:
+        f.write(f"Best Trial: {best_trial.number}\n")
+        f.write(f"Best MAE (validation): {best_trial.value:.4f}\n\n")
+        f.write("Hyperparameters:\n")
+        for key, value in best_trial.params.items():
+            f.write(f"  {key}: {value}\n")
+    
+    print(f"\nResults saved to {db_path}")
+    print(f"Best params saved to {output_dir / 'best_params.txt'}")
+    
+    return {
+        "best_trial_number": best_trial.number,
+        "best_mae_val": best_trial.value,
+        "best_params": best_trial.params,
+        "best_Params": study.best_params,
+        "db_path": str(db_path),
+    }
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Entrena modelo base para predecir CCS.")
-    parser.add_argument(
-        "--train-input",
-        default="data/model/train_ccs_fingerprints.csv",
-        help="CSV de entrenamiento con columnas V1..Vn, adduct, mz y ccs.",
-    )
+    parser.add_argument("--train-input", default="data/model/train_ccs_fingerprints.csv", help="CSV de entrenamiento con columnas V1..Vn, adduct, mz y ccs." )
     parser.add_argument("--val-input", default="data/model/val_ccs_fingerprints.csv")
     parser.add_argument("--test-input", default="data/model/test_ccs_fingerprints.csv")
     parser.add_argument("--output-dir", default="predictions/base", help="Directorio de salida.")

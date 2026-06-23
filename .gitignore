@@ -1,7 +1,32 @@
 logs
-data
+
 data/raw/**
 data/raw_datasets/
 data/raw_datasets/**
 .github
+.vscode
 benchmark/logs
+model/scripts/chebi/visualize_embeddings.py
+model/scripts/chebi/merge_covered_chunks.py
+model/scripts/chebi/ontology_hierarchy_op
+
+# Model predictions (large, regenerable)
+predictions/ontology_model_baseline/
+predictions/ontology_model_smoke/
+predictions/ontology_model_filtered/
+predictions/ontology_model_filtered_trained/
+
+predictions/ontology_model*/embeddings_test.csv
+predictions/ontology_model*/embedding_plots/
+predictions/ontology_model*/embedding_plots_umap/
+
+# Benchmark outputs
+benchmark/predictions/
+
+# Model weights
+model/artifacts/*.pt
+
+# Python & Jupyter
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
