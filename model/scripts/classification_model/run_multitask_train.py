@@ -21,6 +21,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--ontology-threshold", type=float, default=0.5)
     parser.add_argument("--row-id-column", default="row_id")
     parser.add_argument("--device", choices=("auto", "cpu", "cuda"), default="auto", help="Training device.")
+    parser.add_argument("--hidden-dims", type=int, nargs="+", default=None, help="Neurons per shared hidden layer (defaults to 1024 256 64).")
+    parser.add_argument("--dropout", type=float, default=0.2, help="Dropout rate for the shared trunk.")
     return parser.parse_args()
 
 
@@ -39,4 +41,6 @@ if __name__ == "__main__":
         ontology_csv=args.ontology_input,
         row_id_column=args.row_id_column,
         device=args.device,
+        hidden_dims=args.hidden_dims,
+        dropout_rate=args.dropout,
     )

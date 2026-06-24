@@ -5,6 +5,7 @@ import json
 import re
 import sys
 import warnings
+from collections.abc import Sequence
 from pathlib import Path
 
 import matplotlib
@@ -38,9 +39,12 @@ ONTOLOGY_PREFIXES = ("ont_", "ontology__")
 
 class CCSRegressor(nn.Module):
 
-    def __init__(self, input_dim: int, hidden_dims: tuple[int, int, int] = (1024, 256, 64), num_ontology_labels: int = 1):
+    def __init__(self, input_dim: int, hidden_dims: Sequence[int] = (1024, 256, 64), num_ontology_labels: int = 1, dropout_rate: float = 0.2):
         super().__init__()
+        #Usamos Sequence[int] para permitir cualquier secuencia de enteros (lista, tupple, etc.) como hidden_dims
+        #Lista: [1024, 256, 64], Tupple: (1024, 256, 64), etc. De 3 capas
 
+        """ antes de la optimization, el modelo tenía una arquitectura fija de 3 capas ocultas con dimensiones 1024, 256 y 64
         self.fc1 = nn.Linear(input_dim, hidden_dims[0])
         self.fc2 = nn.Linear(hidden_dims[0], hidden_dims[1])
         self.fc3 = nn.Linear(hidden_dims[1], hidden_dims[2])
@@ -49,16 +53,37 @@ class CCSRegressor(nn.Module):
         self.dropout = nn.Dropout(0.2)
 
         self.ccs_head = nn.Linear(hidden_dims[2], 1)
-        self.ontology_head = nn.Linear(hidden_dims[2], num_ontology_labels)
+        self.ontology_head = nn.Linear(hidden_dims[2], num_ontology_labels)"""
+
+        if len(hidden_dims) == 0:
+            raise ValueError("hidden_dims debe contener al menos una capa.")
+
+        self.activation = nn.LeakyReLU(negative_slope=0.01)
+        self.dropout = nn.Dropout(dropout_rate)
+
+        # tronco compartido (para las 2 tareas) de N capas
+        self.hidden_layers = nn.ModuleList() #crea una lista especial vacía de PyTorch para guardar capas neuronales
+        in_features = input_dim #la primera capa recibe como entrada todas las variables del dataset (es decir, si hay 2058 columnas, entonces in_features = 2058)
+        for out_features in hidden_dims: #este for equivale a las self.fc1, self.fc2, self.fc3 de antes, pero ahora es dinámico según hidden_dims
+            self.hidden_layers.append(nn.Linear(in_features, out_features)) #por cada tamaño de hidden_dims, creo una capa linear
+            in_features = out_features #después actualizo in_features para que la siguiente capa reciba la salida de la anterior
+
+        embedding_dim = hidden_dims[-1] #embedding, ultimo elemento de las capas ocultas
+        self.ccs_head = nn.Linear(embedding_dim, 1) #para predecir CCS recibe el embedding y devuelve 1 numero
+        self.ontology_head = nn.Linear(embedding_dim, num_ontology_labels) #igual que arriba pero en vez de predecir 1 numero, predice tantos como etiquetas ontológicas haya
 
     def forward(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
-        x = self.activation(self.fc1(x))
-        x = self.dropout(x)
-        x = self.activation(self.fc2(x))
-        x = self.dropout(x)
-        embedding = self.activation(self.fc3(x))
+        # dropout tras cada capa oculta salvo la última (la capa de embedding).
+        # x es una matriz del nº de moleculas x nº de features (fingerprints + adduct + m/z)
+        last = len(self.hidden_layers) - 1
+        for index, layer in enumerate(self.hidden_layers):
+            x = self.activation(layer(x))
+            if index < last:
+                x = self.dropout(x)
+        
+        embedding = x #x ahora es la representacion final de la molecula 
 
-        ccs_pred = self.ccs_head(embedding).squeeze(-1)
+        ccs_pred = self.ccs_head(embedding).squeeze(-1) #usamos squeeze(-1) para eliminar la dimensión de salida de tamaño 1, dejando un vector de predicciones CCS seguidas y no separadas en vectores chiquititos de segunda dimension 1
         ontology_logits = self.ontology_head(embedding)
         return ccs_pred, ontology_logits, embedding
 
@@ -413,11 +438,12 @@ def resolve_device(device_arg: str) -> torch.device:
     return torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
-def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, test_csv: str | None = None, random_state: int = 42, epochs: int = 40, batch_size: int = 64, lr: float = 1e-3, lambda_ontology: float = 0.1, ontology_threshold: float = 0.5, ontology_csv: str | None = None, row_id_column: str = "row_id", device: str = "auto") -> None:
+def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, test_csv: str | None = None, random_state: int = 42, epochs: int = 40, batch_size: int = 64, lr: float = 1e-3, lambda_ontology: float = 0.1, ontology_threshold: float = 0.5, ontology_csv: str | None = None, row_id_column: str = "row_id", device: str = "auto", hidden_dims: Sequence[int] | None = None, dropout_rate: float = 0.2) -> None:
 
     torch.manual_seed(random_state)
     np.random.seed(random_state)
     resolved_device = resolve_device(device)
+    hidden_dims = tuple(int(dim) for dim in hidden_dims) if hidden_dims else (1024, 256, 64)
 
     train_df = pd.read_csv(train_csv, low_memory=False)
     val_df = pd.read_csv(val_csv, low_memory=False) if val_csv else None
@@ -465,7 +491,7 @@ def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, tes
         pin_memory=resolved_device.type == "cuda",
     )
 
-    model = CCSRegressor(input_dim=x_train.shape[1], num_ontology_labels=len(ontology_label_columns))
+    model = CCSRegressor(input_dim=x_train.shape[1], hidden_dims=hidden_dims, num_ontology_labels=len(ontology_label_columns), dropout_rate=dropout_rate)
     model = model.to(resolved_device)
 
     ccs_loss_fn = nn.MSELoss()
@@ -586,7 +612,8 @@ def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, tes
         },
         "architecture": {
             "input": "fingerprints + adduct one-hot + m/z",
-            "shared_layers": [1024, 256, 64],
+            "shared_layers": list(hidden_dims),
+            "dropout": float(dropout_rate),
             "heads": ["ccs_head", "ontology_head"],
             "activation": "LeakyReLU",
             "output_activation": "linear",
@@ -703,12 +730,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--lambda-ontology", type=float, default=0.1)
     parser.add_argument("--ontology-threshold", type=float, default=0.5)
     parser.add_argument("--row-id-column", default="row_id")
-    parser.add_argument(
-        "--device",
-        choices=("auto", "cpu", "cuda"),
-        default="auto",
-        help="Dispositivo para el entrenamiento multitarea.",
-    )
+    parser.add_argument("--device", choices=("auto", "cpu", "cuda"), default="auto", help="Dispositivo para el entrenamiento multitarea.")
+    parser.add_argument("--hidden-dims", type=int, nargs="+", default=None, help="Neuronas por capa oculta del tronco compartido (por defecto 1024 256 64).")
+    parser.add_argument("--dropout", type=float, default=0.2, help="Tasa de dropout del tronco compartido.")
     return parser.parse_args()
 
 
@@ -727,4 +751,6 @@ if __name__ == "__main__":
         ontology_csv=args.ontology_input,
         row_id_column=args.row_id_column,
         device=getattr(args, "device", "auto"),
+        hidden_dims=args.hidden_dims,
+        dropout_rate=args.dropout,
     )
