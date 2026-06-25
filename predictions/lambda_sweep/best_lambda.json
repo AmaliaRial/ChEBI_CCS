@@ -1,0 +1,19 @@
+{
+  "best_lambda": 1.8,
+  "best_val_mae": 4.587302207946777,
+  "selection_criterion": "validation MAE",
+  "hyperparameters": {
+    "hidden_dims": [
+      320,
+      64,
+      160,
+      384,
+      480
+    ],
+    "n_layers": 5,
+    "learning_rate": 0.0008733543414433369,
+    "epochs": 65,
+    "dropout": 0.0043597782845490735,
+    "batch_size": 128
+  }
+}

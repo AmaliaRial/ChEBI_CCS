@@ -350,9 +350,10 @@ def optimize_hyperparameters(train_df: pd.DataFrame, val_df: pd.DataFrame, test_
     
     def objective(trial):
         #we dirst set the search space (define our parameters)
+        n_layers = trial.suggest_int("n_layers", 1, 5)
         params = {
-            "n_layers": trial.suggest_int("n_layers", 1, 5),
-            "hidden_dims": [trial.suggest_int(f"n_units_l{i}", 32, 512, step=32) for i in range(trial.suggest_int("n_layers", 1, 5))],
+            "n_layers": n_layers,
+            "hidden_dims": [trial.suggest_int(f"n_units_l{i}", 32, 512, step=32) for i in range(n_layers)],
             "learning_rate": trial.suggest_float("learning_rate", 0.00001, 0.1, log=True),
             "epochs": trial.suggest_int("epochs", 10, 100),
             "dropout": trial.suggest_float("dropout", 0.0, 0.5)
@@ -414,7 +415,7 @@ def optimize_hyperparameters(train_df: pd.DataFrame, val_df: pd.DataFrame, test_
         print(f"  {key}: {value}")
     
     output_dir = db_path.parent
-    with open(output_dir / "best_params.txt", "w") as f:
+    with open(output_dir / "best_params_final.txt", "w") as f:
         f.write(f"Best Trial: {best_trial.number}\n")
         f.write(f"Best MAE (validation): {best_trial.value:.4f}\n\n")
         f.write("Hyperparameters:\n")
@@ -422,7 +423,7 @@ def optimize_hyperparameters(train_df: pd.DataFrame, val_df: pd.DataFrame, test_
             f.write(f"  {key}: {value}\n")
     
     print(f"\nResults saved to {db_path}")
-    print(f"Best params saved to {output_dir / 'best_params.txt'}")
+    print(f"Best params saved to {output_dir / 'best_params_final.txt'}")
     
     return {
         "best_trial_number": best_trial.number,

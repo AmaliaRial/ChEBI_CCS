@@ -26,7 +26,7 @@ if __name__ == "__main__":
         val_df=val_df,
         test_df=test_df,
         n_trials=100,
-        db_path="hyperopt/baseline_optuna2.db",
+        db_path="hyperopt/baseline_optuna3.db",
         batch_size=128,
         random_state=42
     )

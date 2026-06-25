@@ -1,0 +1,10 @@
+{
+  "n_train": 13513,
+  "n_val": 1689,
+  "n_test": 1690,
+  "n_categories_original": 546,
+  "n_categories_removed": 207,
+  "n_categories_kept": 339,
+  "threshold_min_freq": 100,
+  "random_state": 42
+}

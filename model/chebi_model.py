@@ -262,21 +262,10 @@ def predict_array(model: nn.Module, features: torch.Tensor, batch_size: int = 20
     return ccs_pred
 
 
-def sigmoid_probabilities(logits: np.ndarray) -> np.ndarray:
-    logits = np.asarray(logits, dtype=np.float32)
-    return 1.0 / (1.0 + np.exp(-np.clip(logits, -80.0, 80.0)))
-
-
-def binary_cross_entropy_with_logits(y_true: np.ndarray, logits: np.ndarray) -> float:
-    y_true = np.asarray(y_true, dtype=np.float32)
-    logits = np.asarray(logits, dtype=np.float32)
-    return float(np.mean(np.logaddexp(0.0, logits) - y_true * logits))
-
-
 def ontology_metrics(y_true: np.ndarray, logits: np.ndarray, threshold: float = 0.5) -> dict[str, float | None]:
     y_true = np.asarray(y_true, dtype=np.float32)
     logits = np.asarray(logits, dtype=np.float32)
-    probabilities = sigmoid_probabilities(logits)
+    probabilities = torch.sigmoid(torch.from_numpy(logits)).numpy()
     y_pred = (probabilities >= threshold).astype(np.int32)
 
     micro_precision, micro_recall, micro_f1, _ = precision_recall_fscore_support(
@@ -538,11 +527,11 @@ def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, tes
         val_ontology_metrics = ontology_metrics(y_val_ontology, val_ontology_logits_epoch, threshold=ontology_threshold)
         train_ccs_loss_epoch = float(np.mean((y_train_ccs - train_ccs_pred_epoch) ** 2))
         val_ccs_loss_epoch = float(np.mean((y_val_ccs - val_ccs_pred_epoch) ** 2))
-        train_ontology_loss_epoch = binary_cross_entropy_with_logits(
+        train_ontology_loss_epoch = torch.nn.functional.binary_cross_entropy_with_logits(
             y_train_ontology,
             train_ontology_logits_epoch,
-        )
-        val_ontology_loss_epoch = binary_cross_entropy_with_logits(
+        ) 
+        val_ontology_loss_epoch = torch.nn.functional.binary_cross_entropy_with_logits(
             y_val_ontology,
             val_ontology_logits_epoch,
         )
@@ -635,7 +624,7 @@ def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, tes
             indent=2,
         )
 
-    test_probabilities = sigmoid_probabilities(pred_test_logits)
+    test_probabilities = torch.sigmoid(torch.from_numpy(pred_test_logits)).numpy()
     row_ids = test_df[row_id_column] if row_id_column in test_df.columns else pd.Series(np.arange(len(test_df)))
 
     # Prepare base prediction data with identifiers

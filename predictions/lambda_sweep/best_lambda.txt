@@ -1,0 +1,11 @@
+Best Lambda: 1.8
+Validation MAE: 4.5873
+Selection criterion: validation MAE
+
+Optimized hyperparameters used:
+  Architecture (hidden_dims): [320, 64, 160, 384, 480]
+  Number of layers: 5
+  Learning rate: 0.0008733543414433369
+  Epochs: 65
+  Dropout: 0.0043597782845490735
+  Batch size: 128
