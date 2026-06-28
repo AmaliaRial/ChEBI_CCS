@@ -33,7 +33,7 @@ if str(repo_root) not in sys.path:
 
 from model.enconders.adduct_encoder import AdductOneHotEncoder
 
-
+DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ONTOLOGY_PREFIXES = ("ont_", "ontology__")
 
 
@@ -426,6 +426,11 @@ def resolve_device(device_arg: str) -> torch.device:
         return torch.device("cuda" if torch.cuda.is_available() else "cpu")
     return torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+def scalar_value(value):
+    if isinstance(value, torch.Tensor):
+        return float(value.detach().cpu().item())
+    return float(value)
+
 
 def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, test_csv: str | None = None, random_state: int = 42, epochs: int = 40, batch_size: int = 64, lr: float = 1e-3, lambda_ontology: float = 0.1, ontology_threshold: float = 0.5, ontology_csv: str | None = None, row_id_column: str = "row_id", device: str = "auto", hidden_dims: Sequence[int] | None = None, dropout_rate: float = 0.2) -> None:
 
@@ -527,28 +532,63 @@ def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, tes
         val_ontology_metrics = ontology_metrics(y_val_ontology, val_ontology_logits_epoch, threshold=ontology_threshold)
         train_ccs_loss_epoch = float(np.mean((y_train_ccs - train_ccs_pred_epoch) ** 2))
         val_ccs_loss_epoch = float(np.mean((y_val_ccs - val_ccs_pred_epoch) ** 2))
-        train_ontology_loss_epoch = torch.nn.functional.binary_cross_entropy_with_logits(
-            y_train_ontology,
-            train_ontology_logits_epoch,
-        ) 
-        val_ontology_loss_epoch = torch.nn.functional.binary_cross_entropy_with_logits(
-            y_val_ontology,
-            val_ontology_logits_epoch,
+
+        train_ontology_logits_tensor = torch.as_tensor(
+            np.asarray(train_ontology_logits_epoch, dtype=np.float32).copy(),
+            dtype=torch.float32,
+            device=DEVICE,
         )
+
+        y_train_ontology_tensor = torch.as_tensor(
+            np.asarray(y_train_ontology, dtype=np.float32).copy(),
+            dtype=torch.float32,
+            device=DEVICE,
+        )
+
+        train_ontology_loss_epoch = torch.nn.functional.binary_cross_entropy_with_logits(
+            train_ontology_logits_tensor,
+            y_train_ontology_tensor,
+        )
+        
+        val_ontology_logits_tensor = torch.as_tensor(
+            np.asarray(val_ontology_logits_epoch, dtype=np.float32).copy(),
+            dtype=torch.float32,
+            device=DEVICE,
+        )
+
+        y_val_ontology_tensor = torch.as_tensor(
+            np.asarray(y_val_ontology, dtype=np.float32).copy(),
+            dtype=torch.float32,
+            device=DEVICE,
+        )
+
+        val_ontology_loss_epoch = torch.nn.functional.binary_cross_entropy_with_logits(
+            val_ontology_logits_tensor,
+            y_val_ontology_tensor,
+        )
+
+
+    
 
         history.append(
             {
                 "epoch": float(epoch),
-                "train_total_loss": running_total_loss / n_samples,
-                "val_total_loss": val_ccs_loss_epoch + lambda_ontology * val_ontology_loss_epoch,
-                "train_ccs_loss": train_ccs_loss_epoch,
-                "val_ccs_loss": val_ccs_loss_epoch,
-                "train_ontology_loss": train_ontology_loss_epoch,
-                "val_ontology_loss": val_ontology_loss_epoch,
-                "train_rmse": train_ccs_metrics["rmse"],
-                "val_rmse": val_ccs_metrics["rmse"],
-                "train_mae": train_ccs_metrics["mae"],
-                "val_mae": val_ccs_metrics["mae"],
+
+                "train_total_loss": scalar_value(running_total_loss / n_samples),
+                "val_total_loss": scalar_value(val_ccs_loss_epoch + lambda_ontology * val_ontology_loss_epoch),
+
+                "train_ccs_loss": scalar_value(train_ccs_loss_epoch),
+                "val_ccs_loss": scalar_value(val_ccs_loss_epoch),
+
+                "train_ontology_loss": scalar_value(train_ontology_loss_epoch),
+                "val_ontology_loss": scalar_value(val_ontology_loss_epoch),
+
+                "train_rmse": float(train_ccs_metrics["rmse"]),
+                "val_rmse": float(val_ccs_metrics["rmse"]),
+
+                "train_mae": float(train_ccs_metrics["mae"]),
+                "val_mae": float(val_ccs_metrics["mae"]),
+
                 "train_ontology_f1_micro": float(train_ontology_metrics["micro_f1"]),
                 "val_ontology_f1_micro": float(val_ontology_metrics["micro_f1"]),
             }

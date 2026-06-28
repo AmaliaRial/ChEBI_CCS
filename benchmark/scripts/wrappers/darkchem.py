@@ -160,6 +160,7 @@ def main() -> None:
     df = pd.read_csv(input_path, low_memory=False)
     smiles_col = _find_column(df, "smiles")
     adduct_col = _find_column(df, "adduct")
+    ccs_col = _find_column(df, "ccs")
 
     df = df.copy()
     df["_row_id"] = df.index.astype(int)
@@ -195,9 +196,9 @@ def main() -> None:
     else:
         preds = pd.DataFrame(columns=["_row_id", "predicted_ccs"])
 
-    output_df = df[[smiles_col, adduct_col, "_row_id"]].merge(preds, on="_row_id", how="left")
-    output_df = output_df.rename(columns={smiles_col: "smiles", adduct_col: "adduct"})
-    output_df = output_df[["_row_id", "smiles", "adduct", "predicted_ccs"]]
+    output_df = df[[smiles_col, adduct_col, ccs_col, "_row_id",]].merge(preds, on="_row_id", how="left")
+    output_df = output_df.rename(columns={smiles_col: "smiles", adduct_col: "adduct", ccs_col: "true_CCS"})
+    output_df = output_df[["_row_id", "smiles", "adduct", "true_CCS", "predicted_ccs"]]
     output_df.to_csv(output_path, index=False)
 
     logging.info("Predictions saved to: %s", output_path)

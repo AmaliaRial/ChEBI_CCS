@@ -42,7 +42,9 @@ class CCSRegressor(nn.Module):
         for out_features in hidden_dims:
             layers.append(nn.Linear(in_features, out_features))
             layers.append(nn.LeakyReLU(negative_slope=0.01))
-            layers.append(nn.Dropout(dropout_rate))
+            
+            if dropout_rate > 0:
+                layers.append(nn.Dropout(dropout_rate))
             in_features = out_features
         
         layers.append(nn.Linear(in_features, 1))
@@ -137,11 +139,16 @@ def predict_array(model: nn.Module, features: torch.Tensor, device: torch.device
         return model(features.to(device)).detach().cpu().numpy()
 
 
-def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, test_csv: str | None = None, test_size: float = 0.2, random_state: int = 42, epochs: int = 40, batch_size: int = 64, lr: float = 1e-3) -> None:
+def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, test_csv: str | None = None, test_size: float = 0.2, random_state: int = 42, epochs: int = 40, batch_size: int = 64, lr: float = 1e-3, hidden_dims: tuple[int, ...] = (1024, 256, 64), dropout: float = 0.2, device: str | None = None) -> None:
     
     #Se fijan semillas aletorias para garantizar el mismo resultado al entrenar varias veces el modelo
     torch.manual_seed(random_state)
     np.random.seed(random_state)
+    
+    selected_device = torch.device(
+        device if device is not None else ("cuda" if torch.cuda.is_available() else "cpu")
+    )
+    print(f"Training device: {selected_device}")
 
     # leemos el dataset nuevo: train/val/test ya vienen definidos
     train_df = pd.read_csv(train_csv, low_memory=False)
@@ -178,8 +185,8 @@ def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, tes
     train_loader = DataLoader(TensorDataset(x_train_t, y_train_t), batch_size=batch_size, shuffle=True)
 
     #Aqui definimos la "forma" de la res, pero aun no se han aprendido los pesos.
-    model = CCSRegressor(input_dim=x_train.shape[1])
-    model.to(DEVICE)
+    model = CCSRegressor(input_dim=x_train.shape[1], hidden_dims=hidden_dims, dropout_rate=dropout)
+    model.to(selected_device)
 
     loss_fn = nn.MSELoss()# medimos el error cuadrático medio entre las predicciones y los valores reales
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)# actualiza los pesos del modelo para minimizar la función de pérdida
@@ -190,8 +197,8 @@ def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, tes
     for epoch in range(1, epochs + 1):
         model.train()
         for xb, yb in train_loader: #batch
-            xb = xb.to(DEVICE)
-            yb = yb.to(DEVICE)
+            xb = xb.to(selected_device)
+            yb = yb.to(selected_device)
 
             #aqui se aprende el modelo, se hace un forward pass, se calcula la pérdida, se hace un backward pass y se actualizan los pesos
             optimizer.zero_grad() #--> forward pass
@@ -201,8 +208,8 @@ def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, tes
             batch_loss.backward() #--> backward pass: calcula como cambia cada peso
             optimizer.step()
 
-        train_pred_epoch = predict_array(model, x_train_t, DEVICE)
-        val_pred_epoch = predict_array(model, x_val_t, DEVICE)
+        train_pred_epoch = predict_array(model, x_train_t, selected_device)
+        val_pred_epoch = predict_array(model, x_val_t, selected_device)
         train_epoch_metrics = regression_metrics(y_train, train_pred_epoch)
         val_epoch_metrics = regression_metrics(y_val, val_pred_epoch)
 
@@ -219,9 +226,9 @@ def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, tes
         )
 
     model.eval()
-    pred_train = predict_array(model, x_train_t, DEVICE)
-    pred_val = predict_array(model, x_val_t, DEVICE)
-    pred_test = predict_array(model, x_test_t, DEVICE)
+    pred_train = predict_array(model, x_train_t, selected_device)
+    pred_val = predict_array(model, x_val_t, selected_device)
+    pred_test = predict_array(model, x_test_t, selected_device)
 
     train_metrics = regression_metrics(y_train, pred_train)
     val_metrics = regression_metrics(y_val, pred_val)
@@ -444,6 +451,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--batch-size", type=int, default=128)
     parser.add_argument("--lr", type=float, default=1e-3)
     parser.add_argument("--test-size", type=float, default=0.2)
+    parser.add_argument("--hidden-dims", type=int, nargs="+", default=[1024, 256, 64], help="Hidden layer dimensions, e.g. --hidden-dims 320 64 160 384 480")
+
+    parser.add_argument("--dropout", type=float, default=0.2, help="Dropout probability.")
+
+    parser.add_argument("--device", default=None, choices=["cpu", "cuda", None], help="Device used for training. If omitted, CUDA is used when available.")
     return parser.parse_args()
 
 
@@ -458,4 +470,7 @@ if __name__ == "__main__":
         epochs=args.epochs,
         batch_size=args.batch_size,
         lr=args.lr,
+        hidden_dims=tuple(args.hidden_dims),
+        dropout=args.dropout,
+        device=args.device,
     )

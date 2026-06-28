@@ -1,0 +1,75 @@
+{
+  "chunk_summaries": [
+    {
+      "coverage_pct": 11.61,
+      "file": "results_pablo_hybrid_chunk1.json",
+      "matched": 1329,
+      "matched_by_source": {
+        "inchi_from_smiles": 82,
+        "input_inchi": 1027,
+        "input_smiles": 220
+      },
+      "total_inputs": 11444
+    },
+    {
+      "coverage_pct": 0.21,
+      "file": "results_pablo_hybrid_chunk2.json",
+      "matched": 24,
+      "matched_by_source": {
+        "inchi_from_smiles": 1,
+        "input_inchi": 22,
+        "input_smiles": 1
+      },
+      "total_inputs": 11444
+    },
+    {
+      "coverage_pct": 0.28,
+      "file": "results_pablo_hybrid_chunk3.json",
+      "matched": 32,
+      "matched_by_source": {
+        "inchi_from_smiles": 1,
+        "input_inchi": 30,
+        "input_smiles": 1
+      },
+      "total_inputs": 11444
+    },
+    {
+      "coverage_pct": 0.31,
+      "file": "results_pablo_hybrid_chunk4.json",
+      "matched": 35,
+      "matched_by_source": {
+        "inchi_from_smiles": 1,
+        "input_inchi": 32,
+        "input_smiles": 2
+      },
+      "total_inputs": 11444
+    },
+    {
+      "coverage_pct": 65.21,
+      "file": "results_pablo_hybrid_chunk5.json",
+      "matched": 7463,
+      "matched_by_source": {
+        "inchi_from_smiles": 977,
+        "input_inchi": 3837,
+        "input_smiles": 2649
+      },
+      "total_inputs": 11444
+    },
+    {
+      "coverage_pct": 69.99,
+      "file": "results_pablo_hybrid_chunk6.json",
+      "matched": 8009,
+      "matched_by_source": {
+        "inchi_from_smiles": 1839,
+        "input_smiles": 6170
+      },
+      "total_inputs": 11443
+    }
+  ],
+  "coverage_pct": 24.6,
+  "covered_rows": 16892,
+  "out": "data\\model\\final_covered_ccs.csv",
+  "results_dir": "predictions\\chebi\\chunks",
+  "source_csv": "data\\unified\\unified_ccs.csv",
+  "total_source_rows": 68663
+}

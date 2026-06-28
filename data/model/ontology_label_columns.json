@@ -1,0 +1,4548 @@
+{
+  "fingerprint_csv": "C:\\Users\\amali\\repos\\ChEBI_CCS\\data\\model\\final_covered_ccs_fingerprints.csv",
+  "chunks_dir": "C:\\Users\\amali\\repos\\ChEBI_CCS\\predictions\\chebi\\chunks",
+  "ontology_obo": "C:\\Users\\amali\\repos\\ChEBI_CCS\\data\\ontology\\chebi.obo",
+  "output_csv": "C:\\Users\\amali\\repos\\ChEBI_CCS\\data\\model\\final_covered_ccs_fingerprints_multilabel.csv",
+  "min_class_count": 30,
+  "fingerprint_rows": 16892,
+  "rows_with_ontology_labels": 16731,
+  "selected_ontology_class_count": 739,
+  "selected_ontology_labels": [
+    {
+      "chebi_id": "CHEBI:35352",
+      "name": "organonitrogen compound",
+      "count": 5392,
+      "column": "ont_CHEBI_35352"
+    },
+    {
+      "chebi_id": "CHEBI:36963",
+      "name": "organooxygen compound",
+      "count": 4345,
+      "column": "ont_CHEBI_36963"
+    },
+    {
+      "chebi_id": "CHEBI:33285",
+      "name": "heteroorganic entity",
+      "count": 4056,
+      "column": "ont_CHEBI_33285"
+    },
+    {
+      "chebi_id": "CHEBI:38101",
+      "name": "organonitrogen heterocyclic compound",
+      "count": 3235,
+      "column": "ont_CHEBI_38101"
+    },
+    {
+      "chebi_id": "CHEBI:36586",
+      "name": "carbonyl compound",
+      "count": 3166,
+      "column": "ont_CHEBI_36586"
+    },
+    {
+      "chebi_id": "CHEBI:51143",
+      "name": "nitrogen molecular entity",
+      "count": 3089,
+      "column": "ont_CHEBI_51143"
+    },
+    {
+      "chebi_id": "CHEBI:24532",
+      "name": "organic heterocyclic compound",
+      "count": 3063,
+      "column": "ont_CHEBI_24532"
+    },
+    {
+      "chebi_id": "CHEBI:33659",
+      "name": "organic aromatic compound",
+      "count": 2899,
+      "column": "ont_CHEBI_33659"
+    },
+    {
+      "chebi_id": "CHEBI:33832",
+      "name": "organic cyclic compound",
+      "count": 2894,
+      "column": "ont_CHEBI_33832"
+    },
+    {
+      "chebi_id": "CHEBI:36962",
+      "name": "organochalcogen compound",
+      "count": 2551,
+      "column": "ont_CHEBI_36962"
+    },
+    {
+      "chebi_id": "CHEBI:33822",
+      "name": "organic hydroxy compound",
+      "count": 2454,
+      "column": "ont_CHEBI_33822"
+    },
+    {
+      "chebi_id": "CHEBI:50047",
+      "name": "organic amino compound",
+      "count": 2343,
+      "column": "ont_CHEBI_50047"
+    },
+    {
+      "chebi_id": "CHEBI:25806",
+      "name": "oxygen molecular entity",
+      "count": 2186,
+      "column": "ont_CHEBI_25806"
+    },
+    {
+      "chebi_id": "CHEBI:33575",
+      "name": "carboxylic acid",
+      "count": 2136,
+      "column": "ont_CHEBI_33575"
+    },
+    {
+      "chebi_id": "CHEBI:37739",
+      "name": "glycerophospholipid",
+      "count": 2009,
+      "column": "ont_CHEBI_37739"
+    },
+    {
+      "chebi_id": "CHEBI:18059",
+      "name": "lipid",
+      "count": 1991,
+      "column": "ont_CHEBI_18059"
+    },
+    {
+      "chebi_id": "CHEBI:35701",
+      "name": "ester",
+      "count": 1841,
+      "column": "ont_CHEBI_35701"
+    },
+    {
+      "chebi_id": "CHEBI:33655",
+      "name": "aromatic compound",
+      "count": 1803,
+      "column": "ont_CHEBI_33655"
+    },
+    {
+      "chebi_id": "CHEBI:37622",
+      "name": "carboxamide",
+      "count": 1612,
+      "column": "ont_CHEBI_37622"
+    },
+    {
+      "chebi_id": "CHEBI:25693",
+      "name": "organic heteromonocyclic compound",
+      "count": 1594,
+      "column": "ont_CHEBI_25693"
+    },
+    {
+      "chebi_id": "CHEBI:38166",
+      "name": "organic heteropolycyclic compound",
+      "count": 1587,
+      "column": "ont_CHEBI_38166"
+    },
+    {
+      "chebi_id": "CHEBI:25703",
+      "name": "organic phosphate",
+      "count": 1531,
+      "column": "ont_CHEBI_25703"
+    },
+    {
+      "chebi_id": "CHEBI:33256",
+      "name": "primary amide",
+      "count": 1529,
+      "column": "ont_CHEBI_33256"
+    },
+    {
+      "chebi_id": "CHEBI:37734",
+      "name": "phosphoric ester",
+      "count": 1521,
+      "column": "ont_CHEBI_37734"
+    },
+    {
+      "chebi_id": "CHEBI:24651",
+      "name": "hydroxides",
+      "count": 1515,
+      "column": "ont_CHEBI_24651"
+    },
+    {
+      "chebi_id": "CHEBI:33582",
+      "name": "carbon group molecular entity",
+      "count": 1432,
+      "column": "ont_CHEBI_33582"
+    },
+    {
+      "chebi_id": "CHEBI:33595",
+      "name": "cyclic compound",
+      "count": 1406,
+      "column": "ont_CHEBI_33595"
+    },
+    {
+      "chebi_id": "CHEBI:33836",
+      "name": "benzenoid aromatic compound",
+      "count": 1384,
+      "column": "ont_CHEBI_33836"
+    },
+    {
+      "chebi_id": "CHEBI:36587",
+      "name": "organic oxo compound",
+      "count": 1375,
+      "column": "ont_CHEBI_36587"
+    },
+    {
+      "chebi_id": "CHEBI:72695",
+      "name": "organic molecule",
+      "count": 1371,
+      "column": "ont_CHEBI_72695"
+    },
+    {
+      "chebi_id": "CHEBI:17792",
+      "name": "organohalogen compound",
+      "count": 1360,
+      "column": "ont_CHEBI_17792"
+    },
+    {
+      "chebi_id": "CHEBI:5686",
+      "name": "heterocyclic compound",
+      "count": 1351,
+      "column": "ont_CHEBI_5686"
+    },
+    {
+      "chebi_id": "CHEBI:35341",
+      "name": "steroid",
+      "count": 1331,
+      "column": "ont_CHEBI_35341"
+    },
+    {
+      "chebi_id": "CHEBI:32988",
+      "name": "amide",
+      "count": 1308,
+      "column": "ont_CHEBI_32988"
+    },
+    {
+      "chebi_id": "CHEBI:64709",
+      "name": "organic acid",
+      "count": 1293,
+      "column": "ont_CHEBI_64709"
+    },
+    {
+      "chebi_id": "CHEBI:22712",
+      "name": "benzenes",
+      "count": 1292,
+      "column": "ont_CHEBI_22712"
+    },
+    {
+      "chebi_id": "CHEBI:33308",
+      "name": "carboxylic ester",
+      "count": 1292,
+      "column": "ont_CHEBI_33308"
+    },
+    {
+      "chebi_id": "CHEBI:16247",
+      "name": "phospholipid",
+      "count": 1270,
+      "column": "ont_CHEBI_16247"
+    },
+    {
+      "chebi_id": "CHEBI:33670",
+      "name": "heteromonocyclic compound",
+      "count": 1251,
+      "column": "ont_CHEBI_33670"
+    },
+    {
+      "chebi_id": "CHEBI:35605",
+      "name": "carbon oxoacid",
+      "count": 1241,
+      "column": "ont_CHEBI_35605"
+    },
+    {
+      "chebi_id": "CHEBI:33261",
+      "name": "organosulfur compound",
+      "count": 1205,
+      "column": "ont_CHEBI_33261"
+    },
+    {
+      "chebi_id": "CHEBI:33671",
+      "name": "heteropolycyclic compound",
+      "count": 1165,
+      "column": "ont_CHEBI_33671"
+    },
+    {
+      "chebi_id": "CHEBI:35284",
+      "name": "ammonium betaine",
+      "count": 1165,
+      "column": "ont_CHEBI_35284"
+    },
+    {
+      "chebi_id": "CHEBI:17087",
+      "name": "ketone",
+      "count": 1154,
+      "column": "ont_CHEBI_17087"
+    },
+    {
+      "chebi_id": "CHEBI:36700",
+      "name": "phosphocholines",
+      "count": 1143,
+      "column": "ont_CHEBI_36700"
+    },
+    {
+      "chebi_id": "CHEBI:51958",
+      "name": "organic polycyclic compound",
+      "count": 1133,
+      "column": "ont_CHEBI_51958"
+    },
+    {
+      "chebi_id": "CHEBI:25384",
+      "name": "monocarboxylic acid",
+      "count": 1132,
+      "column": "ont_CHEBI_25384"
+    },
+    {
+      "chebi_id": "CHEBI:26469",
+      "name": "quaternary nitrogen compound",
+      "count": 1127,
+      "column": "ont_CHEBI_26469"
+    },
+    {
+      "chebi_id": "CHEBI:35281",
+      "name": "onium betaine",
+      "count": 1122,
+      "column": "ont_CHEBI_35281"
+    },
+    {
+      "chebi_id": "CHEBI:30879",
+      "name": "alcohol",
+      "count": 1121,
+      "column": "ont_CHEBI_30879"
+    },
+    {
+      "chebi_id": "CHEBI:33304",
+      "name": "chalcogen molecular entity",
+      "count": 1084,
+      "column": "ont_CHEBI_33304"
+    },
+    {
+      "chebi_id": "CHEBI:27171",
+      "name": "organic heterobicyclic compound",
+      "count": 1082,
+      "column": "ont_CHEBI_27171"
+    },
+    {
+      "chebi_id": "CHEBI:35741",
+      "name": "glycerolipid",
+      "count": 1051,
+      "column": "ont_CHEBI_35741"
+    },
+    {
+      "chebi_id": "CHEBI:26835",
+      "name": "sulfur molecular entity",
+      "count": 1047,
+      "column": "ont_CHEBI_26835"
+    },
+    {
+      "chebi_id": "CHEBI:36313",
+      "name": "glycerophosphocholine",
+      "count": 1038,
+      "column": "ont_CHEBI_36313"
+    },
+    {
+      "chebi_id": "CHEBI:25698",
+      "name": "ether",
+      "count": 1022,
+      "column": "ont_CHEBI_25698"
+    },
+    {
+      "chebi_id": "CHEBI:23117",
+      "name": "chlorine molecular entity",
+      "count": 952,
+      "column": "ont_CHEBI_23117"
+    },
+    {
+      "chebi_id": "CHEBI:36683",
+      "name": "organochlorine compound",
+      "count": 904,
+      "column": "ont_CHEBI_36683"
+    },
+    {
+      "chebi_id": "CHEBI:37577",
+      "name": "heteroatomic molecular entity",
+      "count": 900,
+      "column": "ont_CHEBI_37577"
+    },
+    {
+      "chebi_id": "CHEBI:38104",
+      "name": "oxacycle",
+      "count": 850,
+      "column": "ont_CHEBI_38104"
+    },
+    {
+      "chebi_id": "CHEBI:24471",
+      "name": "halogen molecular entity",
+      "count": 840,
+      "column": "ont_CHEBI_24471"
+    },
+    {
+      "chebi_id": "CHEBI:35350",
+      "name": "hydroxy steroid",
+      "count": 835,
+      "column": "ont_CHEBI_35350"
+    },
+    {
+      "chebi_id": "CHEBI:37578",
+      "name": "halide",
+      "count": 799,
+      "column": "ont_CHEBI_37578"
+    },
+    {
+      "chebi_id": "CHEBI:83821",
+      "name": "amino-acid derivative",
+      "count": 795,
+      "column": "ont_CHEBI_83821"
+    },
+    {
+      "chebi_id": "CHEBI:78840",
+      "name": "olefinic compound",
+      "count": 794,
+      "column": "ont_CHEBI_78840"
+    },
+    {
+      "chebi_id": "CHEBI:3992",
+      "name": "cyclic ketone",
+      "count": 781,
+      "column": "ont_CHEBI_3992"
+    },
+    {
+      "chebi_id": "CHEBI:36314",
+      "name": "glycerophosphoethanolamine",
+      "count": 774,
+      "column": "ont_CHEBI_36314"
+    },
+    {
+      "chebi_id": "CHEBI:57643",
+      "name": "1,2-diacyl-sn-glycero-3-phosphocholine",
+      "count": 774,
+      "column": "ont_CHEBI_57643"
+    },
+    {
+      "chebi_id": "CHEBI:64482",
+      "name": "phosphatidylcholine",
+      "count": 772,
+      "column": "ont_CHEBI_64482"
+    },
+    {
+      "chebi_id": "CHEBI:33635",
+      "name": "polycyclic compound",
+      "count": 758,
+      "column": "ont_CHEBI_33635"
+    },
+    {
+      "chebi_id": "CHEBI:33672",
+      "name": "heterobicyclic compound",
+      "count": 724,
+      "column": "ont_CHEBI_33672"
+    },
+    {
+      "chebi_id": "CHEBI:33598",
+      "name": "carbocyclic compound",
+      "count": 712,
+      "column": "ont_CHEBI_33598"
+    },
+    {
+      "chebi_id": "CHEBI:27369",
+      "name": "zwitterion",
+      "count": 707,
+      "column": "ont_CHEBI_27369"
+    },
+    {
+      "chebi_id": "CHEBI:36711",
+      "name": "phosphoethanolamine",
+      "count": 690,
+      "column": "ont_CHEBI_36711"
+    },
+    {
+      "chebi_id": "CHEBI:33853",
+      "name": "phenols",
+      "count": 687,
+      "column": "ont_CHEBI_33853"
+    },
+    {
+      "chebi_id": "CHEBI:35618",
+      "name": "aromatic ether",
+      "count": 661,
+      "column": "ont_CHEBI_35618"
+    },
+    {
+      "chebi_id": "CHEBI:23217",
+      "name": "cholines",
+      "count": 660,
+      "column": "ont_CHEBI_23217"
+    },
+    {
+      "chebi_id": "CHEBI:23213",
+      "name": "choline ester",
+      "count": 654,
+      "column": "ont_CHEBI_23213"
+    },
+    {
+      "chebi_id": "CHEBI:50996",
+      "name": "tertiary amino compound",
+      "count": 616,
+      "column": "ont_CHEBI_50996"
+    },
+    {
+      "chebi_id": "CHEBI:83811",
+      "name": "proteinogenic amino acid derivative",
+      "count": 616,
+      "column": "ont_CHEBI_83811"
+    },
+    {
+      "chebi_id": "CHEBI:33709",
+      "name": "amino acid",
+      "count": 588,
+      "column": "ont_CHEBI_33709"
+    },
+    {
+      "chebi_id": "CHEBI:33636",
+      "name": "bicyclic compound",
+      "count": 568,
+      "column": "ont_CHEBI_33636"
+    },
+    {
+      "chebi_id": "CHEBI:26079",
+      "name": "phosphoric acid derivative",
+      "count": 559,
+      "column": "ont_CHEBI_26079"
+    },
+    {
+      "chebi_id": "CHEBI:68452",
+      "name": "azole",
+      "count": 557,
+      "column": "ont_CHEBI_68452"
+    },
+    {
+      "chebi_id": "CHEBI:26739",
+      "name": "sphingolipid",
+      "count": 556,
+      "column": "ont_CHEBI_26739"
+    },
+    {
+      "chebi_id": "CHEBI:25710",
+      "name": "organophosphorus compound",
+      "count": 545,
+      "column": "ont_CHEBI_25710"
+    },
+    {
+      "chebi_id": "CHEBI:37143",
+      "name": "organofluorine compound",
+      "count": 543,
+      "column": "ont_CHEBI_37143"
+    },
+    {
+      "chebi_id": "CHEBI:33704",
+      "name": "alpha-amino acid",
+      "count": 541,
+      "column": "ont_CHEBI_33704"
+    },
+    {
+      "chebi_id": "CHEBI:24062",
+      "name": "fluorine molecular entity",
+      "count": 540,
+      "column": "ont_CHEBI_24062"
+    },
+    {
+      "chebi_id": "CHEBI:26020",
+      "name": "phosphate",
+      "count": 529,
+      "column": "ont_CHEBI_26020"
+    },
+    {
+      "chebi_id": "CHEBI:23132",
+      "name": "chlorobenzenes",
+      "count": 503,
+      "column": "ont_CHEBI_23132"
+    },
+    {
+      "chebi_id": "CHEBI:35681",
+      "name": "secondary alcohol",
+      "count": 497,
+      "column": "ont_CHEBI_35681"
+    },
+    {
+      "chebi_id": "CHEBI:16038",
+      "name": "phosphatidylethanolamine",
+      "count": 488,
+      "column": "ont_CHEBI_16038"
+    },
+    {
+      "chebi_id": "CHEBI:33675",
+      "name": "p-block molecular entity",
+      "count": 488,
+      "column": "ont_CHEBI_33675"
+    },
+    {
+      "chebi_id": "CHEBI:33302",
+      "name": "pnictogen molecular entity",
+      "count": 481,
+      "column": "ont_CHEBI_33302"
+    },
+    {
+      "chebi_id": "CHEBI:35789",
+      "name": "oxo steroid",
+      "count": 479,
+      "column": "ont_CHEBI_35789"
+    },
+    {
+      "chebi_id": "CHEBI:51959",
+      "name": "organic tricyclic compound",
+      "count": 476,
+      "column": "ont_CHEBI_51959"
+    },
+    {
+      "chebi_id": "CHEBI:33833",
+      "name": "heteroarene",
+      "count": 471,
+      "column": "ont_CHEBI_33833"
+    },
+    {
+      "chebi_id": "CHEBI:33860",
+      "name": "aromatic amine",
+      "count": 469,
+      "column": "ont_CHEBI_33860"
+    },
+    {
+      "chebi_id": "CHEBI:29347",
+      "name": "monocarboxylic acid amide",
+      "count": 465,
+      "column": "ont_CHEBI_29347"
+    },
+    {
+      "chebi_id": "CHEBI:36078",
+      "name": "cholanoid",
+      "count": 462,
+      "column": "ont_CHEBI_36078"
+    },
+    {
+      "chebi_id": "CHEBI:38106",
+      "name": "organosulfur heterocyclic compound",
+      "count": 461,
+      "column": "ont_CHEBI_38106"
+    },
+    {
+      "chebi_id": "CHEBI:63299",
+      "name": "carbohydrate derivative",
+      "count": 458,
+      "column": "ont_CHEBI_63299"
+    },
+    {
+      "chebi_id": "CHEBI:38179",
+      "name": "monocyclic heteroarene",
+      "count": 456,
+      "column": "ont_CHEBI_38179"
+    },
+    {
+      "chebi_id": "CHEBI:26979",
+      "name": "organic heterotricyclic compound",
+      "count": 452,
+      "column": "ont_CHEBI_26979"
+    },
+    {
+      "chebi_id": "CHEBI:64674",
+      "name": "1,2-diacyl-sn-glycero-3-phosphoethanolamine",
+      "count": 449,
+      "column": "ont_CHEBI_64674"
+    },
+    {
+      "chebi_id": "CHEBI:26421",
+      "name": "pyridines",
+      "count": 444,
+      "column": "ont_CHEBI_26421"
+    },
+    {
+      "chebi_id": "CHEBI:33661",
+      "name": "monocyclic compound",
+      "count": 435,
+      "column": "ont_CHEBI_33661"
+    },
+    {
+      "chebi_id": "CHEBI:26401",
+      "name": "purines",
+      "count": 432,
+      "column": "ont_CHEBI_26401"
+    },
+    {
+      "chebi_id": "CHEBI:24833",
+      "name": "oxoacid",
+      "count": 420,
+      "column": "ont_CHEBI_24833"
+    },
+    {
+      "chebi_id": "CHEBI:61697",
+      "name": "fatty acid derivative",
+      "count": 414,
+      "column": "ont_CHEBI_61697"
+    },
+    {
+      "chebi_id": "CHEBI:36688",
+      "name": "heterotricyclic compound",
+      "count": 400,
+      "column": "ont_CHEBI_36688"
+    },
+    {
+      "chebi_id": "CHEBI:22315",
+      "name": "alkaloid",
+      "count": 399,
+      "column": "ont_CHEBI_22315"
+    },
+    {
+      "chebi_id": "CHEBI:33424",
+      "name": "sulfur oxoacid derivative",
+      "count": 395,
+      "column": "ont_CHEBI_33424"
+    },
+    {
+      "chebi_id": "CHEBI:33552",
+      "name": "sulfonic acid derivative",
+      "count": 391,
+      "column": "ont_CHEBI_33552"
+    },
+    {
+      "chebi_id": "CHEBI:51689",
+      "name": "enone",
+      "count": 384,
+      "column": "ont_CHEBI_51689"
+    },
+    {
+      "chebi_id": "CHEBI:39447",
+      "name": "pyrimidines",
+      "count": 382,
+      "column": "ont_CHEBI_39447"
+    },
+    {
+      "chebi_id": "CHEBI:51721",
+      "name": "alpha,beta-unsaturated ketone",
+      "count": 371,
+      "column": "ont_CHEBI_51721"
+    },
+    {
+      "chebi_id": "CHEBI:35366",
+      "name": "fatty acid",
+      "count": 363,
+      "column": "ont_CHEBI_35366"
+    },
+    {
+      "chebi_id": "CHEBI:76224",
+      "name": "aromatic ketone",
+      "count": 363,
+      "column": "ont_CHEBI_76224"
+    },
+    {
+      "chebi_id": "CHEBI:36834",
+      "name": "3-hydroxy steroid",
+      "count": 362,
+      "column": "ont_CHEBI_36834"
+    },
+    {
+      "chebi_id": "CHEBI:25367",
+      "name": "molecule",
+      "count": 352,
+      "column": "ont_CHEBI_25367"
+    },
+    {
+      "chebi_id": "CHEBI:47788",
+      "name": "3-oxo steroid",
+      "count": 345,
+      "column": "ont_CHEBI_47788"
+    },
+    {
+      "chebi_id": "CHEBI:17761",
+      "name": "ceramide",
+      "count": 341,
+      "column": "ont_CHEBI_17761"
+    },
+    {
+      "chebi_id": "CHEBI:78616",
+      "name": "carbohydrates and carbohydrate derivatives",
+      "count": 335,
+      "column": "ont_CHEBI_78616"
+    },
+    {
+      "chebi_id": "CHEBI:33597",
+      "name": "homocyclic compound",
+      "count": 331,
+      "column": "ont_CHEBI_33597"
+    },
+    {
+      "chebi_id": "CHEBI:35358",
+      "name": "sulfonamide",
+      "count": 328,
+      "column": "ont_CHEBI_35358"
+    },
+    {
+      "chebi_id": "CHEBI:83820",
+      "name": "non-proteinogenic amino acid",
+      "count": 327,
+      "column": "ont_CHEBI_83820"
+    },
+    {
+      "chebi_id": "CHEBI:83925",
+      "name": "non-proteinogenic alpha-amino acid",
+      "count": 324,
+      "column": "ont_CHEBI_83925"
+    },
+    {
+      "chebi_id": "CHEBI:83403",
+      "name": "monochlorobenzenes",
+      "count": 321,
+      "column": "ont_CHEBI_83403"
+    },
+    {
+      "chebi_id": "CHEBI:26878",
+      "name": "tertiary alcohol",
+      "count": 320,
+      "column": "ont_CHEBI_26878"
+    },
+    {
+      "chebi_id": "CHEBI:131927",
+      "name": "dicarboxylic acids and O-substituted derivatives",
+      "count": 314,
+      "column": "ont_CHEBI_131927"
+    },
+    {
+      "chebi_id": "CHEBI:140325",
+      "name": "secondary carboxamide",
+      "count": 309,
+      "column": "ont_CHEBI_140325"
+    },
+    {
+      "chebi_id": "CHEBI:23677",
+      "name": "diazole",
+      "count": 309,
+      "column": "ont_CHEBI_23677"
+    },
+    {
+      "chebi_id": "CHEBI:33608",
+      "name": "hydrogen molecular entity",
+      "count": 306,
+      "column": "ont_CHEBI_33608"
+    },
+    {
+      "chebi_id": "CHEBI:33241",
+      "name": "oxoacid derivative",
+      "count": 305,
+      "column": "ont_CHEBI_33241"
+    },
+    {
+      "chebi_id": "CHEBI:50995",
+      "name": "secondary amino compound",
+      "count": 297,
+      "column": "ont_CHEBI_50995"
+    },
+    {
+      "chebi_id": "CHEBI:26082",
+      "name": "phosphorus molecular entity",
+      "count": 296,
+      "column": "ont_CHEBI_26082"
+    },
+    {
+      "chebi_id": "CHEBI:38313",
+      "name": "diazines",
+      "count": 295,
+      "column": "ont_CHEBI_38313"
+    },
+    {
+      "chebi_id": "CHEBI:47909",
+      "name": "3-oxo-Delta(4) steroid",
+      "count": 291,
+      "column": "ont_CHEBI_47909"
+    },
+    {
+      "chebi_id": "CHEBI:72544",
+      "name": "flavonoids",
+      "count": 287,
+      "column": "ont_CHEBI_72544"
+    },
+    {
+      "chebi_id": "CHEBI:26873",
+      "name": "terpenoid",
+      "count": 280,
+      "column": "ont_CHEBI_26873"
+    },
+    {
+      "chebi_id": "CHEBI:33859",
+      "name": "aromatic carboxylic acid",
+      "count": 277,
+      "column": "ont_CHEBI_33859"
+    },
+    {
+      "chebi_id": "CHEBI:35766",
+      "name": "glycerophosphoserine",
+      "count": 270,
+      "column": "ont_CHEBI_35766"
+    },
+    {
+      "chebi_id": "CHEBI:52565",
+      "name": "acylglycerophosphoserine",
+      "count": 269,
+      "column": "ont_CHEBI_52565"
+    },
+    {
+      "chebi_id": "CHEBI:36838",
+      "name": "17-hydroxy steroid",
+      "count": 264,
+      "column": "ont_CHEBI_36838"
+    },
+    {
+      "chebi_id": "CHEBI:25000",
+      "name": "lactone",
+      "count": 263,
+      "column": "ont_CHEBI_25000"
+    },
+    {
+      "chebi_id": "CHEBI:15904",
+      "name": "long-chain fatty acid",
+      "count": 261,
+      "column": "ont_CHEBI_15904"
+    },
+    {
+      "chebi_id": "CHEBI:24913",
+      "name": "isoprenoid",
+      "count": 255,
+      "column": "ont_CHEBI_24913"
+    },
+    {
+      "chebi_id": "CHEBI:36248",
+      "name": "5beta-cholanic acids",
+      "count": 254,
+      "column": "ont_CHEBI_36248"
+    },
+    {
+      "chebi_id": "CHEBI:63161",
+      "name": "glycosyl compound",
+      "count": 254,
+      "column": "ont_CHEBI_63161"
+    },
+    {
+      "chebi_id": "CHEBI:83273",
+      "name": "N-acylsphingoid",
+      "count": 254,
+      "column": "ont_CHEBI_83273"
+    },
+    {
+      "chebi_id": "CHEBI:15705",
+      "name": "L-alpha-amino acid",
+      "count": 251,
+      "column": "ont_CHEBI_15705"
+    },
+    {
+      "chebi_id": "CHEBI:18303",
+      "name": "phosphatidyl-L-serine",
+      "count": 251,
+      "column": "ont_CHEBI_18303"
+    },
+    {
+      "chebi_id": "CHEBI:62733",
+      "name": "aromatic amide",
+      "count": 247,
+      "column": "ont_CHEBI_62733"
+    },
+    {
+      "chebi_id": "CHEBI:47778",
+      "name": "glyceride",
+      "count": 246,
+      "column": "ont_CHEBI_47778"
+    },
+    {
+      "chebi_id": "CHEBI:36976",
+      "name": "nucleotide",
+      "count": 245,
+      "column": "ont_CHEBI_36976"
+    },
+    {
+      "chebi_id": "CHEBI:24828",
+      "name": "indoles",
+      "count": 244,
+      "column": "ont_CHEBI_24828"
+    },
+    {
+      "chebi_id": "CHEBI:25608",
+      "name": "nucleoside phosphate",
+      "count": 244,
+      "column": "ont_CHEBI_25608"
+    },
+    {
+      "chebi_id": "CHEBI:26649",
+      "name": "serine derivative",
+      "count": 243,
+      "column": "ont_CHEBI_26649"
+    },
+    {
+      "chebi_id": "CHEBI:61120",
+      "name": "nucleobase-containing molecular entity",
+      "count": 241,
+      "column": "ont_CHEBI_61120"
+    },
+    {
+      "chebi_id": "CHEBI:47916",
+      "name": "flavonoid",
+      "count": 239,
+      "column": "ont_CHEBI_47916"
+    },
+    {
+      "chebi_id": "CHEBI:16646",
+      "name": "carbohydrate",
+      "count": 238,
+      "column": "ont_CHEBI_16646"
+    },
+    {
+      "chebi_id": "CHEBI:84135",
+      "name": "L-serine derivative",
+      "count": 235,
+      "column": "ont_CHEBI_84135"
+    },
+    {
+      "chebi_id": "CHEBI:22728",
+      "name": "benzopyrrole",
+      "count": 233,
+      "column": "ont_CHEBI_22728"
+    },
+    {
+      "chebi_id": "CHEBI:26144",
+      "name": "piperazines",
+      "count": 233,
+      "column": "ont_CHEBI_26144"
+    },
+    {
+      "chebi_id": "CHEBI:26764",
+      "name": "steroid hormone",
+      "count": 232,
+      "column": "ont_CHEBI_26764"
+    },
+    {
+      "chebi_id": "CHEBI:26191",
+      "name": "polyol",
+      "count": 231,
+      "column": "ont_CHEBI_26191"
+    },
+    {
+      "chebi_id": "CHEBI:26004",
+      "name": "phenylpropanoid",
+      "count": 230,
+      "column": "ont_CHEBI_26004"
+    },
+    {
+      "chebi_id": "CHEBI:60971",
+      "name": "aminophospholipid",
+      "count": 229,
+      "column": "ont_CHEBI_60971"
+    },
+    {
+      "chebi_id": "CHEBI:138366",
+      "name": "bile acids",
+      "count": 227,
+      "column": "ont_CHEBI_138366"
+    },
+    {
+      "chebi_id": "CHEBI:24663",
+      "name": "hydroxy-5beta-cholanic acid",
+      "count": 227,
+      "column": "ont_CHEBI_24663"
+    },
+    {
+      "chebi_id": "CHEBI:3098",
+      "name": "bile acid",
+      "count": 227,
+      "column": "ont_CHEBI_3098"
+    },
+    {
+      "chebi_id": "CHEBI:47857",
+      "name": "ureas",
+      "count": 226,
+      "column": "ont_CHEBI_47857"
+    },
+    {
+      "chebi_id": "CHEBI:35692",
+      "name": "dicarboxylic acid",
+      "count": 225,
+      "column": "ont_CHEBI_35692"
+    },
+    {
+      "chebi_id": "CHEBI:15734",
+      "name": "primary alcohol",
+      "count": 224,
+      "column": "ont_CHEBI_15734"
+    },
+    {
+      "chebi_id": "CHEBI:35267",
+      "name": "quaternary ammonium ion",
+      "count": 222,
+      "column": "ont_CHEBI_35267"
+    },
+    {
+      "chebi_id": "CHEBI:136889",
+      "name": "5beta steroid",
+      "count": 221,
+      "column": "ont_CHEBI_136889"
+    },
+    {
+      "chebi_id": "CHEBI:22160",
+      "name": "acetamides",
+      "count": 219,
+      "column": "ont_CHEBI_22160"
+    },
+    {
+      "chebi_id": "CHEBI:25697",
+      "name": "organic cation",
+      "count": 218,
+      "column": "ont_CHEBI_25697"
+    },
+    {
+      "chebi_id": "CHEBI:35748",
+      "name": "fatty acid ester",
+      "count": 213,
+      "column": "ont_CHEBI_35748"
+    },
+    {
+      "chebi_id": "CHEBI:24400",
+      "name": "glycoside",
+      "count": 211,
+      "column": "ont_CHEBI_24400"
+    },
+    {
+      "chebi_id": "CHEBI:139588",
+      "name": "alpha-hydroxy ketone",
+      "count": 208,
+      "column": "ont_CHEBI_139588"
+    },
+    {
+      "chebi_id": "CHEBI:35786",
+      "name": "phosphosphingolipid",
+      "count": 208,
+      "column": "ont_CHEBI_35786"
+    },
+    {
+      "chebi_id": "CHEBI:25558",
+      "name": "organonitrogen heterocyclic antibiotic",
+      "count": 207,
+      "column": "ont_CHEBI_25558"
+    },
+    {
+      "chebi_id": "CHEBI:24780",
+      "name": "imidazoles",
+      "count": 206,
+      "column": "ont_CHEBI_24780"
+    },
+    {
+      "chebi_id": "CHEBI:26151",
+      "name": "piperidines",
+      "count": 204,
+      "column": "ont_CHEBI_26151"
+    },
+    {
+      "chebi_id": "CHEBI:26513",
+      "name": "quinolines",
+      "count": 203,
+      "column": "ont_CHEBI_26513"
+    },
+    {
+      "chebi_id": "CHEBI:36278",
+      "name": "cholanic acids",
+      "count": 202,
+      "column": "ont_CHEBI_36278"
+    },
+    {
+      "chebi_id": "CHEBI:35875",
+      "name": "imidazopyrimidine",
+      "count": 198,
+      "column": "ont_CHEBI_35875"
+    },
+    {
+      "chebi_id": "CHEBI:50858",
+      "name": "corticosteroid",
+      "count": 198,
+      "column": "ont_CHEBI_50858"
+    },
+    {
+      "chebi_id": "CHEBI:32952",
+      "name": "amine",
+      "count": 195,
+      "column": "ont_CHEBI_32952"
+    },
+    {
+      "chebi_id": "CHEBI:22478",
+      "name": "amino alcohol",
+      "count": 193,
+      "column": "ont_CHEBI_22478"
+    },
+    {
+      "chebi_id": "CHEBI:24043",
+      "name": "flavones",
+      "count": 193,
+      "column": "ont_CHEBI_24043"
+    },
+    {
+      "chebi_id": "CHEBI:35294",
+      "name": "carbopolycyclic compound",
+      "count": 193,
+      "column": "ont_CHEBI_35294"
+    },
+    {
+      "chebi_id": "CHEBI:36885",
+      "name": "20-oxo steroid",
+      "count": 192,
+      "column": "ont_CHEBI_36885"
+    },
+    {
+      "chebi_id": "CHEBI:36699",
+      "name": "corticosteroid hormone",
+      "count": 190,
+      "column": "ont_CHEBI_36699"
+    },
+    {
+      "chebi_id": "CHEBI:51569",
+      "name": "N-acyl-amino acid",
+      "count": 188,
+      "column": "ont_CHEBI_51569"
+    },
+    {
+      "chebi_id": "CHEBI:192499",
+      "name": "anthoxanthin",
+      "count": 187,
+      "column": "ont_CHEBI_192499"
+    },
+    {
+      "chebi_id": "CHEBI:38180",
+      "name": "polycyclic heteroarene",
+      "count": 187,
+      "column": "ont_CHEBI_38180"
+    },
+    {
+      "chebi_id": "CHEBI:35274",
+      "name": "ammonium ion derivative",
+      "count": 186,
+      "column": "ont_CHEBI_35274"
+    },
+    {
+      "chebi_id": "CHEBI:23697",
+      "name": "dichlorobenzene",
+      "count": 184,
+      "column": "ont_CHEBI_23697"
+    },
+    {
+      "chebi_id": "CHEBI:50994",
+      "name": "primary amino compound",
+      "count": 181,
+      "column": "ont_CHEBI_50994"
+    },
+    {
+      "chebi_id": "CHEBI:23003",
+      "name": "carbamate ester",
+      "count": 179,
+      "column": "ont_CHEBI_23003"
+    },
+    {
+      "chebi_id": "CHEBI:24373",
+      "name": "glycine derivative",
+      "count": 179,
+      "column": "ont_CHEBI_24373"
+    },
+    {
+      "chebi_id": "CHEBI:50699",
+      "name": "oligosaccharide",
+      "count": 177,
+      "column": "ont_CHEBI_50699"
+    },
+    {
+      "chebi_id": "CHEBI:60479",
+      "name": "lysophosphatidylcholine",
+      "count": 176,
+      "column": "ont_CHEBI_60479"
+    },
+    {
+      "chebi_id": "CHEBI:27208",
+      "name": "unsaturated fatty acid",
+      "count": 172,
+      "column": "ont_CHEBI_27208"
+    },
+    {
+      "chebi_id": "CHEBI:16701",
+      "name": "nucleoside 5'-phosphate",
+      "count": 170,
+      "column": "ont_CHEBI_16701"
+    },
+    {
+      "chebi_id": "CHEBI:16670",
+      "name": "peptide",
+      "count": 168,
+      "column": "ont_CHEBI_16670"
+    },
+    {
+      "chebi_id": "CHEBI:75769",
+      "name": "B vitamin",
+      "count": 168,
+      "column": "ont_CHEBI_75769"
+    },
+    {
+      "chebi_id": "CHEBI:27933",
+      "name": "beta-lactam antibiotic",
+      "count": 167,
+      "column": "ont_CHEBI_27933"
+    },
+    {
+      "chebi_id": "CHEBI:24868",
+      "name": "organic salt",
+      "count": 165,
+      "column": "ont_CHEBI_24868"
+    },
+    {
+      "chebi_id": "CHEBI:35868",
+      "name": "hydroxy monocarboxylic acid",
+      "count": 162,
+      "column": "ont_CHEBI_35868"
+    },
+    {
+      "chebi_id": "CHEBI:35344",
+      "name": "21-hydroxy steroid",
+      "count": 161,
+      "column": "ont_CHEBI_35344"
+    },
+    {
+      "chebi_id": "CHEBI:38443",
+      "name": "1-benzopyran",
+      "count": 161,
+      "column": "ont_CHEBI_38443"
+    },
+    {
+      "chebi_id": "CHEBI:22562",
+      "name": "anilines",
+      "count": 160,
+      "column": "ont_CHEBI_22562"
+    },
+    {
+      "chebi_id": "CHEBI:36249",
+      "name": "bile acid conjugate",
+      "count": 160,
+      "column": "ont_CHEBI_36249"
+    },
+    {
+      "chebi_id": "CHEBI:48975",
+      "name": "substituted aniline",
+      "count": 160,
+      "column": "ont_CHEBI_48975"
+    },
+    {
+      "chebi_id": "CHEBI:24360",
+      "name": "glycerophosphoglycerols",
+      "count": 158,
+      "column": "ont_CHEBI_24360"
+    },
+    {
+      "chebi_id": "CHEBI:22723",
+      "name": "benzoic acids",
+      "count": 157,
+      "column": "ont_CHEBI_22723"
+    },
+    {
+      "chebi_id": "CHEBI:33570",
+      "name": "benzenediols",
+      "count": 157,
+      "column": "ont_CHEBI_33570"
+    },
+    {
+      "chebi_id": "CHEBI:26707",
+      "name": "glycerol phosphate",
+      "count": 156,
+      "column": "ont_CHEBI_26707"
+    },
+    {
+      "chebi_id": "CHEBI:24698",
+      "name": "hydroxyflavone",
+      "count": 154,
+      "column": "ont_CHEBI_24698"
+    },
+    {
+      "chebi_id": "CHEBI:26208",
+      "name": "polyunsaturated fatty acid",
+      "count": 154,
+      "column": "ont_CHEBI_26208"
+    },
+    {
+      "chebi_id": "CHEBI:35715",
+      "name": "nitro compound",
+      "count": 154,
+      "column": "ont_CHEBI_35715"
+    },
+    {
+      "chebi_id": "CHEBI:72823",
+      "name": "glycerophosphoethanolamine zwitterion",
+      "count": 154,
+      "column": "ont_CHEBI_72823"
+    },
+    {
+      "chebi_id": "CHEBI:33838",
+      "name": "nucleoside",
+      "count": 152,
+      "column": "ont_CHEBI_33838"
+    },
+    {
+      "chebi_id": "CHEBI:35716",
+      "name": "C-nitro compound",
+      "count": 152,
+      "column": "ont_CHEBI_35716"
+    },
+    {
+      "chebi_id": "CHEBI:139592",
+      "name": "tertiary alpha-hydroxy ketone",
+      "count": 149,
+      "column": "ont_CHEBI_139592"
+    },
+    {
+      "chebi_id": "CHEBI:26395",
+      "name": "purine nucleotide",
+      "count": 148,
+      "column": "ont_CHEBI_26395"
+    },
+    {
+      "chebi_id": "CHEBI:47880",
+      "name": "steroid ester",
+      "count": 148,
+      "column": "ont_CHEBI_47880"
+    },
+    {
+      "chebi_id": "CHEBI:51683",
+      "name": "methoxybenzenes",
+      "count": 148,
+      "column": "ont_CHEBI_51683"
+    },
+    {
+      "chebi_id": "CHEBI:59202",
+      "name": "straight-chain fatty acid",
+      "count": 148,
+      "column": "ont_CHEBI_59202"
+    },
+    {
+      "chebi_id": "CHEBI:76170",
+      "name": "olefinic phospholipid",
+      "count": 148,
+      "column": "ont_CHEBI_76170"
+    },
+    {
+      "chebi_id": "CHEBI:167559",
+      "name": "glycan",
+      "count": 146,
+      "column": "ont_CHEBI_167559"
+    },
+    {
+      "chebi_id": "CHEBI:36835",
+      "name": "3alpha-hydroxy steroid",
+      "count": 146,
+      "column": "ont_CHEBI_36835"
+    },
+    {
+      "chebi_id": "CHEBI:18035",
+      "name": "diglyceride",
+      "count": 144,
+      "column": "ont_CHEBI_18035"
+    },
+    {
+      "chebi_id": "CHEBI:26562",
+      "name": "ribose phosphate",
+      "count": 144,
+      "column": "ont_CHEBI_26562"
+    },
+    {
+      "chebi_id": "CHEBI:76578",
+      "name": "diradylglycerol",
+      "count": 144,
+      "column": "ont_CHEBI_76578"
+    },
+    {
+      "chebi_id": "CHEBI:82830",
+      "name": "sphingosine-based sphingolipid",
+      "count": 144,
+      "column": "ont_CHEBI_82830"
+    },
+    {
+      "chebi_id": "CHEBI:84465",
+      "name": "acyl-sn-glycero-3-phosphocholine",
+      "count": 143,
+      "column": "ont_CHEBI_84465"
+    },
+    {
+      "chebi_id": "CHEBI:22715",
+      "name": "benzimidazoles",
+      "count": 141,
+      "column": "ont_CHEBI_22715"
+    },
+    {
+      "chebi_id": "CHEBI:26561",
+      "name": "ribonucleotide",
+      "count": 141,
+      "column": "ont_CHEBI_26561"
+    },
+    {
+      "chebi_id": "CHEBI:26706",
+      "name": "sn-glycerol 3-phosphates",
+      "count": 141,
+      "column": "ont_CHEBI_26706"
+    },
+    {
+      "chebi_id": "CHEBI:24669",
+      "name": "hydroxy carboxylic acid",
+      "count": 140,
+      "column": "ont_CHEBI_24669"
+    },
+    {
+      "chebi_id": "CHEBI:83813",
+      "name": "proteinogenic amino acid",
+      "count": 140,
+      "column": "ont_CHEBI_83813"
+    },
+    {
+      "chebi_id": "CHEBI:46848",
+      "name": "N-arylpiperazine",
+      "count": 139,
+      "column": "ont_CHEBI_46848"
+    },
+    {
+      "chebi_id": "CHEBI:64583",
+      "name": "sphingomyelin",
+      "count": 139,
+      "column": "ont_CHEBI_64583"
+    },
+    {
+      "chebi_id": "CHEBI:26394",
+      "name": "purine nucleoside",
+      "count": 138,
+      "column": "ont_CHEBI_26394"
+    },
+    {
+      "chebi_id": "CHEBI:26167",
+      "name": "polar amino acid",
+      "count": 137,
+      "column": "ont_CHEBI_26167"
+    },
+    {
+      "chebi_id": "CHEBI:131620",
+      "name": "C24-steroid",
+      "count": 136,
+      "column": "ont_CHEBI_131620"
+    },
+    {
+      "chebi_id": "CHEBI:131657",
+      "name": "cholane derivative",
+      "count": 136,
+      "column": "ont_CHEBI_131657"
+    },
+    {
+      "chebi_id": "CHEBI:24531",
+      "name": "heterocyclic antibiotic",
+      "count": 135,
+      "column": "ont_CHEBI_24531"
+    },
+    {
+      "chebi_id": "CHEBI:35343",
+      "name": "17beta-hydroxy steroid",
+      "count": 132,
+      "column": "ont_CHEBI_35343"
+    },
+    {
+      "chebi_id": "CHEBI:139590",
+      "name": "primary alpha-hydroxy ketone",
+      "count": 131,
+      "column": "ont_CHEBI_139590"
+    },
+    {
+      "chebi_id": "CHEBI:46845",
+      "name": "N-alkylpiperazine",
+      "count": 131,
+      "column": "ont_CHEBI_46845"
+    },
+    {
+      "chebi_id": "CHEBI:35342",
+      "name": "17alpha-hydroxy steroid",
+      "count": 129,
+      "column": "ont_CHEBI_35342"
+    },
+    {
+      "chebi_id": "CHEBI:33856",
+      "name": "aromatic amino acid",
+      "count": 128,
+      "column": "ont_CHEBI_33856"
+    },
+    {
+      "chebi_id": "CHEBI:36841",
+      "name": "11-hydroxy steroid",
+      "count": 128,
+      "column": "ont_CHEBI_36841"
+    },
+    {
+      "chebi_id": "CHEBI:38164",
+      "name": "organic heteropentacyclic compound",
+      "count": 126,
+      "column": "ont_CHEBI_38164"
+    },
+    {
+      "chebi_id": "CHEBI:58168",
+      "name": "1-O-acyl-sn-glycero-3-phosphocholine",
+      "count": 126,
+      "column": "ont_CHEBI_58168"
+    },
+    {
+      "chebi_id": "CHEBI:78191",
+      "name": "2-lysophosphatidylcholine",
+      "count": 126,
+      "column": "ont_CHEBI_78191"
+    },
+    {
+      "chebi_id": "CHEBI:25676",
+      "name": "oligopeptide",
+      "count": 124,
+      "column": "ont_CHEBI_25676"
+    },
+    {
+      "chebi_id": "CHEBI:25716",
+      "name": "organothiophosphorus compound",
+      "count": 124,
+      "column": "ont_CHEBI_25716"
+    },
+    {
+      "chebi_id": "CHEBI:36844",
+      "name": "7-hydroxy steroid",
+      "count": 124,
+      "column": "ont_CHEBI_36844"
+    },
+    {
+      "chebi_id": "CHEBI:37511",
+      "name": "thiophosphate",
+      "count": 124,
+      "column": "ont_CHEBI_37511"
+    },
+    {
+      "chebi_id": "CHEBI:37512",
+      "name": "organic thiophosphate",
+      "count": 124,
+      "column": "ont_CHEBI_37512"
+    },
+    {
+      "chebi_id": "CHEBI:87228",
+      "name": "sulfonamide antibiotic",
+      "count": 124,
+      "column": "ont_CHEBI_87228"
+    },
+    {
+      "chebi_id": "CHEBI:16385",
+      "name": "organic sulfide",
+      "count": 123,
+      "column": "ont_CHEBI_16385"
+    },
+    {
+      "chebi_id": "CHEBI:24261",
+      "name": "glucocorticoid",
+      "count": 123,
+      "column": "ont_CHEBI_24261"
+    },
+    {
+      "chebi_id": "CHEBI:26188",
+      "name": "polyketide",
+      "count": 123,
+      "column": "ont_CHEBI_26188"
+    },
+    {
+      "chebi_id": "CHEBI:26822",
+      "name": "sulfide",
+      "count": 123,
+      "column": "ont_CHEBI_26822"
+    },
+    {
+      "chebi_id": "CHEBI:35346",
+      "name": "11beta-hydroxy steroid",
+      "count": 123,
+      "column": "ont_CHEBI_35346"
+    },
+    {
+      "chebi_id": "CHEBI:35295",
+      "name": "homopolycyclic compound",
+      "count": 121,
+      "column": "ont_CHEBI_35295"
+    },
+    {
+      "chebi_id": "CHEBI:38260",
+      "name": "pyrrolidines",
+      "count": 120,
+      "column": "ont_CHEBI_38260"
+    },
+    {
+      "chebi_id": "CHEBI:37015",
+      "name": "ribonucleoside 5'-phosphate",
+      "count": 119,
+      "column": "ont_CHEBI_37015"
+    },
+    {
+      "chebi_id": "CHEBI:35436",
+      "name": "D-glucoside",
+      "count": 118,
+      "column": "ont_CHEBI_35436"
+    },
+    {
+      "chebi_id": "CHEBI:36785",
+      "name": "carbobicyclic compound",
+      "count": 118,
+      "column": "ont_CHEBI_36785"
+    },
+    {
+      "chebi_id": "CHEBI:36820",
+      "name": "ring assembly",
+      "count": 117,
+      "column": "ont_CHEBI_36820"
+    },
+    {
+      "chebi_id": "CHEBI:52639",
+      "name": "N-acylsphingosine",
+      "count": 116,
+      "column": "ont_CHEBI_52639"
+    },
+    {
+      "chebi_id": "CHEBI:25248",
+      "name": "methyl ester",
+      "count": 115,
+      "column": "ont_CHEBI_25248"
+    },
+    {
+      "chebi_id": "CHEBI:53339",
+      "name": "olefinic fatty acid",
+      "count": 115,
+      "column": "ont_CHEBI_53339"
+    },
+    {
+      "chebi_id": "CHEBI:24995",
+      "name": "lactam",
+      "count": 114,
+      "column": "ont_CHEBI_24995"
+    },
+    {
+      "chebi_id": "CHEBI:11750",
+      "name": "3-sn-phosphatidyl-L-serine",
+      "count": 113,
+      "column": "ont_CHEBI_11750"
+    },
+    {
+      "chebi_id": "CHEBI:17517",
+      "name": "phosphatidylglycerol",
+      "count": 113,
+      "column": "ont_CHEBI_17517"
+    },
+    {
+      "chebi_id": "CHEBI:61313",
+      "name": "C21-steroid",
+      "count": 113,
+      "column": "ont_CHEBI_61313"
+    },
+    {
+      "chebi_id": "CHEBI:25711",
+      "name": "organophosphorus insecticide",
+      "count": 112,
+      "column": "ont_CHEBI_25711"
+    },
+    {
+      "chebi_id": "CHEBI:39093",
+      "name": "organophosphorus pesticide",
+      "count": 112,
+      "column": "ont_CHEBI_39093"
+    },
+    {
+      "chebi_id": "CHEBI:16337",
+      "name": "phosphatidic acid",
+      "count": 111,
+      "column": "ont_CHEBI_16337"
+    },
+    {
+      "chebi_id": "CHEBI:17188",
+      "name": "nucleoside 5'-monophosphate",
+      "count": 111,
+      "column": "ont_CHEBI_17188"
+    },
+    {
+      "chebi_id": "CHEBI:22798",
+      "name": "beta-D-glucoside",
+      "count": 110,
+      "column": "ont_CHEBI_22798"
+    },
+    {
+      "chebi_id": "CHEBI:33579",
+      "name": "main group molecular entity",
+      "count": 110,
+      "column": "ont_CHEBI_33579"
+    },
+    {
+      "chebi_id": "CHEBI:60980",
+      "name": "beta-glucoside",
+      "count": 110,
+      "column": "ont_CHEBI_60980"
+    },
+    {
+      "chebi_id": "CHEBI:62732",
+      "name": "aromatic ester",
+      "count": 110,
+      "column": "ont_CHEBI_62732"
+    },
+    {
+      "chebi_id": "CHEBI:26410",
+      "name": "pyrazoles",
+      "count": 109,
+      "column": "ont_CHEBI_26410"
+    },
+    {
+      "chebi_id": "CHEBI:83822",
+      "name": "non-proteinogenic L-alpha-amino acid",
+      "count": 109,
+      "column": "ont_CHEBI_83822"
+    },
+    {
+      "chebi_id": "CHEBI:29089",
+      "name": "1,2-diacyl-sn-glycerol 3-phosphate",
+      "count": 108,
+      "column": "ont_CHEBI_29089"
+    },
+    {
+      "chebi_id": "CHEBI:20156",
+      "name": "3-oxo-Delta(1) steroid",
+      "count": 107,
+      "column": "ont_CHEBI_20156"
+    },
+    {
+      "chebi_id": "CHEBI:22297",
+      "name": "alditol phosphate",
+      "count": 107,
+      "column": "ont_CHEBI_22297"
+    },
+    {
+      "chebi_id": "CHEBI:86324",
+      "name": "quinolone antibiotic",
+      "count": 107,
+      "column": "ont_CHEBI_86324"
+    },
+    {
+      "chebi_id": "CHEBI:50753",
+      "name": "isoflavonoid",
+      "count": 105,
+      "column": "ont_CHEBI_50753"
+    },
+    {
+      "chebi_id": "CHEBI:18254",
+      "name": "ribonucleoside",
+      "count": 104,
+      "column": "ont_CHEBI_18254"
+    },
+    {
+      "chebi_id": "CHEBI:26607",
+      "name": "saturated fatty acid",
+      "count": 104,
+      "column": "ont_CHEBI_26607"
+    },
+    {
+      "chebi_id": "CHEBI:33958",
+      "name": "halide salt",
+      "count": 103,
+      "column": "ont_CHEBI_33958"
+    },
+    {
+      "chebi_id": "CHEBI:36836",
+      "name": "3beta-hydroxy steroid",
+      "count": 103,
+      "column": "ont_CHEBI_36836"
+    },
+    {
+      "chebi_id": "CHEBI:51026",
+      "name": "macrocycle",
+      "count": 103,
+      "column": "ont_CHEBI_51026"
+    },
+    {
+      "chebi_id": "CHEBI:23443",
+      "name": "cyclic amide",
+      "count": 102,
+      "column": "ont_CHEBI_23443"
+    },
+    {
+      "chebi_id": "CHEBI:25810",
+      "name": "oxopurine",
+      "count": 102,
+      "column": "ont_CHEBI_25810"
+    },
+    {
+      "chebi_id": "CHEBI:24921",
+      "name": "isoquinoline alkaloid",
+      "count": 101,
+      "column": "ont_CHEBI_24921"
+    },
+    {
+      "chebi_id": "CHEBI:77166",
+      "name": "3-oxo-Delta(1),Delta(4)-steroid",
+      "count": 101,
+      "column": "ont_CHEBI_77166"
+    },
+    {
+      "chebi_id": "CHEBI:19168",
+      "name": "17-oxo steroid",
+      "count": 100,
+      "column": "ont_CHEBI_19168"
+    },
+    {
+      "chebi_id": "CHEBI:24129",
+      "name": "furans",
+      "count": 100,
+      "column": "ont_CHEBI_24129"
+    },
+    {
+      "chebi_id": "CHEBI:64574",
+      "name": "lysophosphatidylethanolamine",
+      "count": 100,
+      "column": "ont_CHEBI_64574"
+    },
+    {
+      "chebi_id": "CHEBI:74818",
+      "name": "heteroaryl hydroxy compound",
+      "count": 99,
+      "column": "ont_CHEBI_74818"
+    },
+    {
+      "chebi_id": "CHEBI:22645",
+      "name": "arenecarboxamide",
+      "count": 98,
+      "column": "ont_CHEBI_22645"
+    },
+    {
+      "chebi_id": "CHEBI:22702",
+      "name": "benzamides",
+      "count": 98,
+      "column": "ont_CHEBI_22702"
+    },
+    {
+      "chebi_id": "CHEBI:51069",
+      "name": "organic halide salt",
+      "count": 98,
+      "column": "ont_CHEBI_51069"
+    },
+    {
+      "chebi_id": "CHEBI:18379",
+      "name": "nitrile",
+      "count": 97,
+      "column": "ont_CHEBI_18379"
+    },
+    {
+      "chebi_id": "CHEBI:33566",
+      "name": "catechols",
+      "count": 97,
+      "column": "ont_CHEBI_33566"
+    },
+    {
+      "chebi_id": "CHEBI:23424",
+      "name": "cyanides",
+      "count": 96,
+      "column": "ont_CHEBI_23424"
+    },
+    {
+      "chebi_id": "CHEBI:24436",
+      "name": "guanidines",
+      "count": 96,
+      "column": "ont_CHEBI_24436"
+    },
+    {
+      "chebi_id": "CHEBI:25985",
+      "name": "phenylalanine derivative",
+      "count": 96,
+      "column": "ont_CHEBI_25985"
+    },
+    {
+      "chebi_id": "CHEBI:36255",
+      "name": "bile acid glycine conjugate",
+      "count": 96,
+      "column": "ont_CHEBI_36255"
+    },
+    {
+      "chebi_id": "CHEBI:23114",
+      "name": "chloride salt",
+      "count": 95,
+      "column": "ont_CHEBI_23114"
+    },
+    {
+      "chebi_id": "CHEBI:63367",
+      "name": "monosaccharide derivative",
+      "count": 95,
+      "column": "ont_CHEBI_63367"
+    },
+    {
+      "chebi_id": "CHEBI:50893",
+      "name": "azaarene",
+      "count": 94,
+      "column": "ont_CHEBI_50893"
+    },
+    {
+      "chebi_id": "CHEBI:26512",
+      "name": "quinolinemonocarboxylic acid",
+      "count": 93,
+      "column": "ont_CHEBI_26512"
+    },
+    {
+      "chebi_id": "CHEBI:23981",
+      "name": "ethanolamines",
+      "count": 92,
+      "column": "ont_CHEBI_23981"
+    },
+    {
+      "chebi_id": "CHEBI:25754",
+      "name": "oxo carboxylic acid",
+      "count": 92,
+      "column": "ont_CHEBI_25754"
+    },
+    {
+      "chebi_id": "CHEBI:26400",
+      "name": "purine ribonucleotide",
+      "count": 92,
+      "column": "ont_CHEBI_26400"
+    },
+    {
+      "chebi_id": "CHEBI:36849",
+      "name": "6-hydroxy steroid",
+      "count": 92,
+      "column": "ont_CHEBI_36849"
+    },
+    {
+      "chebi_id": "CHEBI:38102",
+      "name": "triazines",
+      "count": 92,
+      "column": "ont_CHEBI_38102"
+    },
+    {
+      "chebi_id": "CHEBI:87691",
+      "name": "tetradecanoate ester",
+      "count": 92,
+      "column": "ont_CHEBI_87691"
+    },
+    {
+      "chebi_id": "CHEBI:17855",
+      "name": "triglyceride",
+      "count": 91,
+      "column": "ont_CHEBI_17855"
+    },
+    {
+      "chebi_id": "CHEBI:36094",
+      "name": "organic chloride salt",
+      "count": 91,
+      "column": "ont_CHEBI_36094"
+    },
+    {
+      "chebi_id": "CHEBI:76579",
+      "name": "triradylglycerol",
+      "count": 91,
+      "column": "ont_CHEBI_76579"
+    },
+    {
+      "chebi_id": "CHEBI:26441",
+      "name": "pyrimidine nucleotide",
+      "count": 90,
+      "column": "ont_CHEBI_26441"
+    },
+    {
+      "chebi_id": "CHEBI:35727",
+      "name": "triazoles",
+      "count": 90,
+      "column": "ont_CHEBI_35727"
+    },
+    {
+      "chebi_id": "CHEBI:26399",
+      "name": "purine ribonucleoside",
+      "count": 89,
+      "column": "ont_CHEBI_26399"
+    },
+    {
+      "chebi_id": "CHEBI:26658",
+      "name": "sesquiterpenoid",
+      "count": 89,
+      "column": "ont_CHEBI_26658"
+    },
+    {
+      "chebi_id": "CHEBI:35627",
+      "name": "beta-lactam",
+      "count": 89,
+      "column": "ont_CHEBI_35627"
+    },
+    {
+      "chebi_id": "CHEBI:36843",
+      "name": "7alpha-hydroxy steroid",
+      "count": 89,
+      "column": "ont_CHEBI_36843"
+    },
+    {
+      "chebi_id": "CHEBI:78189",
+      "name": "alkylacylglycero-3-phosphocholine",
+      "count": 89,
+      "column": "ont_CHEBI_78189"
+    },
+    {
+      "chebi_id": "CHEBI:189840",
+      "name": "dicarboxylic fatty acid",
+      "count": 88,
+      "column": "ont_CHEBI_189840"
+    },
+    {
+      "chebi_id": "CHEBI:24866",
+      "name": "salt",
+      "count": 88,
+      "column": "ont_CHEBI_24866"
+    },
+    {
+      "chebi_id": "CHEBI:26195",
+      "name": "polyphenol",
+      "count": 88,
+      "column": "ont_CHEBI_26195"
+    },
+    {
+      "chebi_id": "CHEBI:38418",
+      "name": "1,3-thiazoles",
+      "count": 88,
+      "column": "ont_CHEBI_38418"
+    },
+    {
+      "chebi_id": "CHEBI:48901",
+      "name": "thiazoles",
+      "count": 88,
+      "column": "ont_CHEBI_48901"
+    },
+    {
+      "chebi_id": "CHEBI:50402",
+      "name": "androstanoid",
+      "count": 88,
+      "column": "ont_CHEBI_50402"
+    },
+    {
+      "chebi_id": "CHEBI:23232",
+      "name": "chromenes",
+      "count": 87,
+      "column": "ont_CHEBI_23232"
+    },
+    {
+      "chebi_id": "CHEBI:36141",
+      "name": "quinone",
+      "count": 87,
+      "column": "ont_CHEBI_36141"
+    },
+    {
+      "chebi_id": "CHEBI:38304",
+      "name": "diazolidine",
+      "count": 87,
+      "column": "ont_CHEBI_38304"
+    },
+    {
+      "chebi_id": "CHEBI:38445",
+      "name": "chromenone",
+      "count": 87,
+      "column": "ont_CHEBI_38445"
+    },
+    {
+      "chebi_id": "CHEBI:57613",
+      "name": "phosphatidylethanolamine zwitterion",
+      "count": 87,
+      "column": "ont_CHEBI_57613"
+    },
+    {
+      "chebi_id": "CHEBI:64611",
+      "name": "ether lipid",
+      "count": 87,
+      "column": "ont_CHEBI_64611"
+    },
+    {
+      "chebi_id": "CHEBI:17478",
+      "name": "aldehyde",
+      "count": 86,
+      "column": "ont_CHEBI_17478"
+    },
+    {
+      "chebi_id": "CHEBI:51151",
+      "name": "dipolar compound",
+      "count": 86,
+      "column": "ont_CHEBI_51151"
+    },
+    {
+      "chebi_id": "CHEBI:49172",
+      "name": "1,2-diglyceride",
+      "count": 85,
+      "column": "ont_CHEBI_49172"
+    },
+    {
+      "chebi_id": "CHEBI:64459",
+      "name": "biaryl",
+      "count": 85,
+      "column": "ont_CHEBI_64459"
+    },
+    {
+      "chebi_id": "CHEBI:24654",
+      "name": "hydroxy fatty acid",
+      "count": 84,
+      "column": "ont_CHEBI_24654"
+    },
+    {
+      "chebi_id": "CHEBI:38672",
+      "name": "flavans",
+      "count": 84,
+      "column": "ont_CHEBI_38672"
+    },
+    {
+      "chebi_id": "CHEBI:63944",
+      "name": "macrocyclic lactone",
+      "count": 84,
+      "column": "ont_CHEBI_63944"
+    },
+    {
+      "chebi_id": "CHEBI:23899",
+      "name": "icosanoid",
+      "count": 83,
+      "column": "ont_CHEBI_23899"
+    },
+    {
+      "chebi_id": "CHEBI:64365",
+      "name": "aralkylamino compound",
+      "count": 83,
+      "column": "ont_CHEBI_64365"
+    },
+    {
+      "chebi_id": "CHEBI:68489",
+      "name": "alkyl,acyl-sn-glycero-3-phosphocholine",
+      "count": 83,
+      "column": "ont_CHEBI_68489"
+    },
+    {
+      "chebi_id": "CHEBI:17334",
+      "name": "penicillin",
+      "count": 82,
+      "column": "ont_CHEBI_17334"
+    },
+    {
+      "chebi_id": "CHEBI:25865",
+      "name": "penicillanic acids",
+      "count": 82,
+      "column": "ont_CHEBI_25865"
+    },
+    {
+      "chebi_id": "CHEBI:35992",
+      "name": "penams",
+      "count": 82,
+      "column": "ont_CHEBI_35992"
+    },
+    {
+      "chebi_id": "CHEBI:46761",
+      "name": "dipeptide",
+      "count": 82,
+      "column": "ont_CHEBI_46761"
+    },
+    {
+      "chebi_id": "CHEBI:62941",
+      "name": "glycosylceramide",
+      "count": 82,
+      "column": "ont_CHEBI_62941"
+    },
+    {
+      "chebi_id": "CHEBI:64612",
+      "name": "1,2-diacyl-sn-glycero-3-phosphoethanolamine zwitterion",
+      "count": 82,
+      "column": "ont_CHEBI_64612"
+    },
+    {
+      "chebi_id": "CHEBI:88061",
+      "name": "polyamine",
+      "count": 82,
+      "column": "ont_CHEBI_88061"
+    },
+    {
+      "chebi_id": "CHEBI:17476",
+      "name": "1-(alk-1-enyl)-2-acyl-sn-glycero-3-phosphoethanolamine",
+      "count": 81,
+      "column": "ont_CHEBI_17476"
+    },
+    {
+      "chebi_id": "CHEBI:23079",
+      "name": "cerebroside",
+      "count": 81,
+      "column": "ont_CHEBI_23079"
+    },
+    {
+      "chebi_id": "CHEBI:25106",
+      "name": "macrolide",
+      "count": 81,
+      "column": "ont_CHEBI_25106"
+    },
+    {
+      "chebi_id": "CHEBI:38163",
+      "name": "organic heterotetracyclic compound",
+      "count": 81,
+      "column": "ont_CHEBI_38163"
+    },
+    {
+      "chebi_id": "CHEBI:82829",
+      "name": "sphinganine-based sphingolipid",
+      "count": 81,
+      "column": "ont_CHEBI_82829"
+    },
+    {
+      "chebi_id": "CHEBI:23849",
+      "name": "diterpenoid",
+      "count": 80,
+      "column": "ont_CHEBI_23849"
+    },
+    {
+      "chebi_id": "CHEBI:25699",
+      "name": "organic ion",
+      "count": 80,
+      "column": "ont_CHEBI_25699"
+    },
+    {
+      "chebi_id": "CHEBI:32876",
+      "name": "tertiary amine",
+      "count": 80,
+      "column": "ont_CHEBI_32876"
+    },
+    {
+      "chebi_id": "CHEBI:33576",
+      "name": "sulfur-containing carboxylic acid",
+      "count": 80,
+      "column": "ont_CHEBI_33576"
+    },
+    {
+      "chebi_id": "CHEBI:25477",
+      "name": "naphthalenes",
+      "count": 79,
+      "column": "ont_CHEBI_25477"
+    },
+    {
+      "chebi_id": "CHEBI:36807",
+      "name": "hydrochloride",
+      "count": 79,
+      "column": "ont_CHEBI_36807"
+    },
+    {
+      "chebi_id": "CHEBI:37407",
+      "name": "cyclic ether",
+      "count": 79,
+      "column": "ont_CHEBI_37407"
+    },
+    {
+      "chebi_id": "CHEBI:38757",
+      "name": "isoflavones",
+      "count": 79,
+      "column": "ont_CHEBI_38757"
+    },
+    {
+      "chebi_id": "CHEBI:16180",
+      "name": "N-acylglycine",
+      "count": 78,
+      "column": "ont_CHEBI_16180"
+    },
+    {
+      "chebi_id": "CHEBI:32955",
+      "name": "epoxide",
+      "count": 78,
+      "column": "ont_CHEBI_32955"
+    },
+    {
+      "chebi_id": "CHEBI:36615",
+      "name": "triterpenoid",
+      "count": 78,
+      "column": "ont_CHEBI_36615"
+    },
+    {
+      "chebi_id": "CHEBI:37581",
+      "name": "gamma-lactone",
+      "count": 78,
+      "column": "ont_CHEBI_37581"
+    },
+    {
+      "chebi_id": "CHEBI:22888",
+      "name": "biphenyls",
+      "count": 77,
+      "column": "ont_CHEBI_22888"
+    },
+    {
+      "chebi_id": "CHEBI:24745",
+      "name": "hydroxypyridine",
+      "count": 77,
+      "column": "ont_CHEBI_24745"
+    },
+    {
+      "chebi_id": "CHEBI:25830",
+      "name": "p-quinones",
+      "count": 77,
+      "column": "ont_CHEBI_25830"
+    },
+    {
+      "chebi_id": "CHEBI:38093",
+      "name": "phenothiazines",
+      "count": 77,
+      "column": "ont_CHEBI_38093"
+    },
+    {
+      "chebi_id": "CHEBI:22195",
+      "name": "acetyl-amino acid",
+      "count": 76,
+      "column": "ont_CHEBI_22195"
+    },
+    {
+      "chebi_id": "CHEBI:21575",
+      "name": "N-acetyl-amino acid",
+      "count": 75,
+      "column": "ont_CHEBI_21575"
+    },
+    {
+      "chebi_id": "CHEBI:21731",
+      "name": "N-glycosyl compound",
+      "count": 75,
+      "column": "ont_CHEBI_21731"
+    },
+    {
+      "chebi_id": "CHEBI:22727",
+      "name": "benzopyran",
+      "count": 75,
+      "column": "ont_CHEBI_22727"
+    },
+    {
+      "chebi_id": "CHEBI:51307",
+      "name": "diester",
+      "count": 75,
+      "column": "ont_CHEBI_51307"
+    },
+    {
+      "chebi_id": "CHEBI:23066",
+      "name": "cephalosporin",
+      "count": 74,
+      "column": "ont_CHEBI_23066"
+    },
+    {
+      "chebi_id": "CHEBI:23403",
+      "name": "coumarins",
+      "count": 74,
+      "column": "ont_CHEBI_23403"
+    },
+    {
+      "chebi_id": "CHEBI:27114",
+      "name": "trihydroxy-5beta-cholanic acid",
+      "count": 74,
+      "column": "ont_CHEBI_27114"
+    },
+    {
+      "chebi_id": "CHEBI:38311",
+      "name": "cephem",
+      "count": 74,
+      "column": "ont_CHEBI_38311"
+    },
+    {
+      "chebi_id": "CHEBI:47019",
+      "name": "dihydroxytetrahydrofuran",
+      "count": 74,
+      "column": "ont_CHEBI_47019"
+    },
+    {
+      "chebi_id": "CHEBI:79020",
+      "name": "alpha,beta-unsaturated monocarboxylic acid",
+      "count": 74,
+      "column": "ont_CHEBI_79020"
+    },
+    {
+      "chebi_id": "CHEBI:22063",
+      "name": "sulfoxide",
+      "count": 73,
+      "column": "ont_CHEBI_22063"
+    },
+    {
+      "chebi_id": "CHEBI:26558",
+      "name": "ribonucleoside monophosphate",
+      "count": 73,
+      "column": "ont_CHEBI_26558"
+    },
+    {
+      "chebi_id": "CHEBI:26816",
+      "name": "carbohydrate phosphate",
+      "count": 73,
+      "column": "ont_CHEBI_26816"
+    },
+    {
+      "chebi_id": "CHEBI:27162",
+      "name": "tryptamines",
+      "count": 73,
+      "column": "ont_CHEBI_27162"
+    },
+    {
+      "chebi_id": "CHEBI:39418",
+      "name": "straight-chain saturated fatty acid",
+      "count": 73,
+      "column": "ont_CHEBI_39418"
+    },
+    {
+      "chebi_id": "CHEBI:51454",
+      "name": "cyclopropanes",
+      "count": 73,
+      "column": "ont_CHEBI_51454"
+    },
+    {
+      "chebi_id": "CHEBI:139048",
+      "name": "dihydroceramide",
+      "count": 72,
+      "column": "ont_CHEBI_139048"
+    },
+    {
+      "chebi_id": "CHEBI:38182",
+      "name": "monohydroxypyridine",
+      "count": 72,
+      "column": "ont_CHEBI_38182"
+    },
+    {
+      "chebi_id": "CHEBI:51614",
+      "name": "diarylmethane",
+      "count": 72,
+      "column": "ont_CHEBI_51614"
+    },
+    {
+      "chebi_id": "CHEBI:23765",
+      "name": "quinolone",
+      "count": 71,
+      "column": "ont_CHEBI_23765"
+    },
+    {
+      "chebi_id": "CHEBI:31488",
+      "name": "N-acylsphinganine",
+      "count": 71,
+      "column": "ont_CHEBI_31488"
+    },
+    {
+      "chebi_id": "CHEBI:47622",
+      "name": "acetate ester",
+      "count": 71,
+      "column": "ont_CHEBI_47622"
+    },
+    {
+      "chebi_id": "CHEBI:61293",
+      "name": "adenyl nucleotide",
+      "count": 71,
+      "column": "ont_CHEBI_61293"
+    },
+    {
+      "chebi_id": "CHEBI:63436",
+      "name": "carbohydrate acid derivative",
+      "count": 71,
+      "column": "ont_CHEBI_63436"
+    },
+    {
+      "chebi_id": "CHEBI:72588",
+      "name": "semisynthetic derivative",
+      "count": 71,
+      "column": "ont_CHEBI_72588"
+    },
+    {
+      "chebi_id": "CHEBI:87211",
+      "name": "fluoroquinolone antibiotic",
+      "count": 71,
+      "column": "ont_CHEBI_87211"
+    },
+    {
+      "chebi_id": "CHEBI:144712",
+      "name": "N-(very-long-chain fatty acyl)-sphingoid base",
+      "count": 70,
+      "column": "ont_CHEBI_144712"
+    },
+    {
+      "chebi_id": "CHEBI:17636",
+      "name": "sphingomyelin d18:1",
+      "count": 70,
+      "column": "ont_CHEBI_17636"
+    },
+    {
+      "chebi_id": "CHEBI:23990",
+      "name": "ethyl ester",
+      "count": 70,
+      "column": "ont_CHEBI_23990"
+    },
+    {
+      "chebi_id": "CHEBI:25715",
+      "name": "organothiophosphate insecticide",
+      "count": 70,
+      "column": "ont_CHEBI_25715"
+    },
+    {
+      "chebi_id": "CHEBI:33658",
+      "name": "arene",
+      "count": 70,
+      "column": "ont_CHEBI_33658"
+    },
+    {
+      "chebi_id": "CHEBI:24662",
+      "name": "hydroxy-amino acid",
+      "count": 69,
+      "column": "ont_CHEBI_24662"
+    },
+    {
+      "chebi_id": "CHEBI:35496",
+      "name": "fluorobenzenes",
+      "count": 69,
+      "column": "ont_CHEBI_35496"
+    },
+    {
+      "chebi_id": "CHEBI:18282",
+      "name": "nucleobase",
+      "count": 68,
+      "column": "ont_CHEBI_18282"
+    },
+    {
+      "chebi_id": "CHEBI:24278",
+      "name": "glucoside",
+      "count": 68,
+      "column": "ont_CHEBI_24278"
+    },
+    {
+      "chebi_id": "CHEBI:35850",
+      "name": "sulfone",
+      "count": 68,
+      "column": "ont_CHEBI_35850"
+    },
+    {
+      "chebi_id": "CHEBI:36233",
+      "name": "disaccharide",
+      "count": 68,
+      "column": "ont_CHEBI_36233"
+    },
+    {
+      "chebi_id": "CHEBI:38338",
+      "name": "aminopyrimidine",
+      "count": 68,
+      "column": "ont_CHEBI_38338"
+    },
+    {
+      "chebi_id": "CHEBI:22324",
+      "name": "alkyl phosphate",
+      "count": 67,
+      "column": "ont_CHEBI_22324"
+    },
+    {
+      "chebi_id": "CHEBI:28802",
+      "name": "flavonols",
+      "count": 67,
+      "column": "ont_CHEBI_28802"
+    },
+    {
+      "chebi_id": "CHEBI:33599",
+      "name": "spiro compound",
+      "count": 67,
+      "column": "ont_CHEBI_33599"
+    },
+    {
+      "chebi_id": "CHEBI:38032",
+      "name": "carbotricyclic compound",
+      "count": 67,
+      "column": "ont_CHEBI_38032"
+    },
+    {
+      "chebi_id": "CHEBI:134043",
+      "name": "phenylureas",
+      "count": 66,
+      "column": "ont_CHEBI_134043"
+    },
+    {
+      "chebi_id": "CHEBI:26834",
+      "name": "sulfur-containing amino acid",
+      "count": 66,
+      "column": "ont_CHEBI_26834"
+    },
+    {
+      "chebi_id": "CHEBI:27306",
+      "name": "vitamin B6",
+      "count": 66,
+      "column": "ont_CHEBI_27306"
+    },
+    {
+      "chebi_id": "CHEBI:36054",
+      "name": "benzoate ester",
+      "count": 66,
+      "column": "ont_CHEBI_36054"
+    },
+    {
+      "chebi_id": "CHEBI:37826",
+      "name": "sulfuric acid derivative",
+      "count": 66,
+      "column": "ont_CHEBI_37826"
+    },
+    {
+      "chebi_id": "CHEBI:59769",
+      "name": "acetal",
+      "count": 66,
+      "column": "ont_CHEBI_59769"
+    },
+    {
+      "chebi_id": "CHEBI:17815",
+      "name": "1,2-diacyl-sn-glycerol",
+      "count": 65,
+      "column": "ont_CHEBI_17815"
+    },
+    {
+      "chebi_id": "CHEBI:26588",
+      "name": "1,3,5-triazines",
+      "count": 65,
+      "column": "ont_CHEBI_26588"
+    },
+    {
+      "chebi_id": "CHEBI:38958",
+      "name": "indole alkaloid",
+      "count": 65,
+      "column": "ont_CHEBI_38958"
+    },
+    {
+      "chebi_id": "CHEBI:23219",
+      "name": "bile acid taurine conjugate",
+      "count": 64,
+      "column": "ont_CHEBI_23219"
+    },
+    {
+      "chebi_id": "CHEBI:26373",
+      "name": "pteridines",
+      "count": 64,
+      "column": "ont_CHEBI_26373"
+    },
+    {
+      "chebi_id": "CHEBI:17522",
+      "name": "alditol",
+      "count": 63,
+      "column": "ont_CHEBI_17522"
+    },
+    {
+      "chebi_id": "CHEBI:22726",
+      "name": "benzophenones",
+      "count": 63,
+      "column": "ont_CHEBI_22726"
+    },
+    {
+      "chebi_id": "CHEBI:26820",
+      "name": "sulfates",
+      "count": 63,
+      "column": "ont_CHEBI_26820"
+    },
+    {
+      "chebi_id": "CHEBI:38261",
+      "name": "imidazolidines",
+      "count": 63,
+      "column": "ont_CHEBI_38261"
+    },
+    {
+      "chebi_id": "CHEBI:23636",
+      "name": "deoxyribonucleoside",
+      "count": 62,
+      "column": "ont_CHEBI_23636"
+    },
+    {
+      "chebi_id": "CHEBI:26440",
+      "name": "pyrimidine nucleoside",
+      "count": 62,
+      "column": "ont_CHEBI_26440"
+    },
+    {
+      "chebi_id": "CHEBI:64520",
+      "name": "phosphatidylcholine 36:4",
+      "count": 62,
+      "column": "ont_CHEBI_64520"
+    },
+    {
+      "chebi_id": "CHEBI:25235",
+      "name": "monomethoxybenzene",
+      "count": 61,
+      "column": "ont_CHEBI_25235"
+    },
+    {
+      "chebi_id": "CHEBI:35259",
+      "name": "benzofurans",
+      "count": 61,
+      "column": "ont_CHEBI_35259"
+    },
+    {
+      "chebi_id": "CHEBI:23666",
+      "name": "diamine",
+      "count": 60,
+      "column": "ont_CHEBI_23666"
+    },
+    {
+      "chebi_id": "CHEBI:25241",
+      "name": "methoxyflavone",
+      "count": 60,
+      "column": "ont_CHEBI_25241"
+    },
+    {
+      "chebi_id": "CHEBI:33663",
+      "name": "cyclic hydrocarbon",
+      "count": 60,
+      "column": "ont_CHEBI_33663"
+    },
+    {
+      "chebi_id": "CHEBI:36244",
+      "name": "dicarboxylic acid monoester",
+      "count": 60,
+      "column": "ont_CHEBI_36244"
+    },
+    {
+      "chebi_id": "CHEBI:36916",
+      "name": "cation",
+      "count": 60,
+      "column": "ont_CHEBI_36916"
+    },
+    {
+      "chebi_id": "CHEBI:73474",
+      "name": "acetylenic compound",
+      "count": 60,
+      "column": "ont_CHEBI_73474"
+    },
+    {
+      "chebi_id": "CHEBI:22527",
+      "name": "aminopurine",
+      "count": 59,
+      "column": "ont_CHEBI_22527"
+    },
+    {
+      "chebi_id": "CHEBI:25704",
+      "name": "organic sulfate",
+      "count": 59,
+      "column": "ont_CHEBI_25704"
+    },
+    {
+      "chebi_id": "CHEBI:26385",
+      "name": "purine alkaloid",
+      "count": 59,
+      "column": "ont_CHEBI_26385"
+    },
+    {
+      "chebi_id": "CHEBI:27136",
+      "name": "triol",
+      "count": 59,
+      "column": "ont_CHEBI_27136"
+    },
+    {
+      "chebi_id": "CHEBI:33551",
+      "name": "organosulfonic acid",
+      "count": 59,
+      "column": "ont_CHEBI_33551"
+    },
+    {
+      "chebi_id": "CHEBI:38337",
+      "name": "pyrimidone",
+      "count": 59,
+      "column": "ont_CHEBI_38337"
+    },
+    {
+      "chebi_id": "CHEBI:25340",
+      "name": "methylpyridines",
+      "count": 58,
+      "column": "ont_CHEBI_25340"
+    },
+    {
+      "chebi_id": "CHEBI:25375",
+      "name": "monoamine molecular messenger",
+      "count": 58,
+      "column": "ont_CHEBI_25375"
+    },
+    {
+      "chebi_id": "CHEBI:26912",
+      "name": "oxolanes",
+      "count": 58,
+      "column": "ont_CHEBI_26912"
+    },
+    {
+      "chebi_id": "CHEBI:35313",
+      "name": "hexoside",
+      "count": 58,
+      "column": "ont_CHEBI_35313"
+    },
+    {
+      "chebi_id": "CHEBI:63534",
+      "name": "monoamine",
+      "count": 58,
+      "column": "ont_CHEBI_63534"
+    },
+    {
+      "chebi_id": "CHEBI:22720",
+      "name": "benzodiazepine",
+      "count": 57,
+      "column": "ont_CHEBI_22720"
+    },
+    {
+      "chebi_id": "CHEBI:23824",
+      "name": "diol",
+      "count": 57,
+      "column": "ont_CHEBI_23824"
+    },
+    {
+      "chebi_id": "CHEBI:52267",
+      "name": "7-hydroxyflavonol",
+      "count": 57,
+      "column": "ont_CHEBI_52267"
+    },
+    {
+      "chebi_id": "CHEBI:83565",
+      "name": "(trifluoromethyl)benzenes",
+      "count": 57,
+      "column": "ont_CHEBI_83565"
+    },
+    {
+      "chebi_id": "CHEBI:19260",
+      "name": "2'-deoxyribonucleotide",
+      "count": 56,
+      "column": "ont_CHEBI_19260"
+    },
+    {
+      "chebi_id": "CHEBI:24922",
+      "name": "isoquinolines",
+      "count": 56,
+      "column": "ont_CHEBI_24922"
+    },
+    {
+      "chebi_id": "CHEBI:26438",
+      "name": "pyrimidine nucleoside monophosphate",
+      "count": 56,
+      "column": "ont_CHEBI_26438"
+    },
+    {
+      "chebi_id": "CHEBI:26819",
+      "name": "sulfuric ester",
+      "count": 56,
+      "column": "ont_CHEBI_26819"
+    },
+    {
+      "chebi_id": "CHEBI:37010",
+      "name": "ribonucleoside 5'-monophosphate",
+      "count": 56,
+      "column": "ont_CHEBI_37010"
+    },
+    {
+      "chebi_id": "CHEBI:37016",
+      "name": "2'-deoxyribonucleoside 5'-phosphate",
+      "count": 56,
+      "column": "ont_CHEBI_37016"
+    },
+    {
+      "chebi_id": "CHEBI:38298",
+      "name": "benzodioxoles",
+      "count": 56,
+      "column": "ont_CHEBI_38298"
+    },
+    {
+      "chebi_id": "CHEBI:55370",
+      "name": "imidazolidinone",
+      "count": 56,
+      "column": "ont_CHEBI_55370"
+    },
+    {
+      "chebi_id": "CHEBI:62761",
+      "name": "tyrosine derivative",
+      "count": 56,
+      "column": "ont_CHEBI_62761"
+    },
+    {
+      "chebi_id": "CHEBI:167497",
+      "name": "1-O-(alk-1-enyl)-2-acyl-sn-glycerolipid",
+      "count": 55,
+      "column": "ont_CHEBI_167497"
+    },
+    {
+      "chebi_id": "CHEBI:1722",
+      "name": "3beta-hydroxy-Delta(5)-steroid",
+      "count": 55,
+      "column": "ont_CHEBI_1722"
+    },
+    {
+      "chebi_id": "CHEBI:17387",
+      "name": "O-acylcarnitine",
+      "count": 55,
+      "column": "ont_CHEBI_17387"
+    },
+    {
+      "chebi_id": "CHEBI:25348",
+      "name": "methylxanthine",
+      "count": 55,
+      "column": "ont_CHEBI_25348"
+    },
+    {
+      "chebi_id": "CHEBI:26392",
+      "name": "purine nucleoside monophosphate",
+      "count": 55,
+      "column": "ont_CHEBI_26392"
+    },
+    {
+      "chebi_id": "CHEBI:28383",
+      "name": "alpha,omega-dicarboxylic acid",
+      "count": 55,
+      "column": "ont_CHEBI_28383"
+    },
+    {
+      "chebi_id": "CHEBI:28863",
+      "name": "flavanones",
+      "count": 55,
+      "column": "ont_CHEBI_28863"
+    },
+    {
+      "chebi_id": "CHEBI:46955",
+      "name": "anthracenes",
+      "count": 55,
+      "column": "ont_CHEBI_46955"
+    },
+    {
+      "chebi_id": "CHEBI:83575",
+      "name": "monofluorobenzenes",
+      "count": 55,
+      "column": "ont_CHEBI_83575"
+    },
+    {
+      "chebi_id": "CHEBI:21644",
+      "name": "N-acyl-L-amino acid",
+      "count": 54,
+      "column": "ont_CHEBI_21644"
+    },
+    {
+      "chebi_id": "CHEBI:23509",
+      "name": "cysteine derivative",
+      "count": 54,
+      "column": "ont_CHEBI_23509"
+    },
+    {
+      "chebi_id": "CHEBI:25418",
+      "name": "morphinane alkaloid",
+      "count": 54,
+      "column": "ont_CHEBI_25418"
+    },
+    {
+      "chebi_id": "CHEBI:39173",
+      "name": "chloropyridine",
+      "count": 54,
+      "column": "ont_CHEBI_39173"
+    },
+    {
+      "chebi_id": "CHEBI:78186",
+      "name": "1-alkyl-2-acyl-glycero-3-phosphocholine",
+      "count": 54,
+      "column": "ont_CHEBI_78186"
+    },
+    {
+      "chebi_id": "CHEBI:88187",
+      "name": "penicillin allergen",
+      "count": 54,
+      "column": "ont_CHEBI_88187"
+    },
+    {
+      "chebi_id": "CHEBI:15889",
+      "name": "sterol",
+      "count": 53,
+      "column": "ont_CHEBI_15889"
+    },
+    {
+      "chebi_id": "CHEBI:16158",
+      "name": "steroid sulfate",
+      "count": 53,
+      "column": "ont_CHEBI_16158"
+    },
+    {
+      "chebi_id": "CHEBI:26375",
+      "name": "pterins",
+      "count": 53,
+      "column": "ont_CHEBI_26375"
+    },
+    {
+      "chebi_id": "CHEBI:35871",
+      "name": "oxo monocarboxylic acid",
+      "count": 53,
+      "column": "ont_CHEBI_35871"
+    },
+    {
+      "chebi_id": "CHEBI:50830",
+      "name": "fluorinated steroid",
+      "count": 53,
+      "column": "ont_CHEBI_50830"
+    },
+    {
+      "chebi_id": "CHEBI:134216",
+      "name": "muricholic acids",
+      "count": 52,
+      "column": "ont_CHEBI_134216"
+    },
+    {
+      "chebi_id": "CHEBI:22260",
+      "name": "adenosines",
+      "count": 52,
+      "column": "ont_CHEBI_22260"
+    },
+    {
+      "chebi_id": "CHEBI:59777",
+      "name": "ketal",
+      "count": 52,
+      "column": "ont_CHEBI_59777"
+    },
+    {
+      "chebi_id": "CHEBI:59779",
+      "name": "cyclic ketal",
+      "count": 52,
+      "column": "ont_CHEBI_59779"
+    },
+    {
+      "chebi_id": "CHEBI:60600",
+      "name": "amide fungicide",
+      "count": 52,
+      "column": "ont_CHEBI_60600"
+    },
+    {
+      "chebi_id": "CHEBI:63353",
+      "name": "disaccharide derivative",
+      "count": 52,
+      "column": "ont_CHEBI_63353"
+    },
+    {
+      "chebi_id": "CHEBI:87012",
+      "name": "amide antifungal agent",
+      "count": 52,
+      "column": "ont_CHEBI_87012"
+    },
+    {
+      "chebi_id": "CHEBI:24315",
+      "name": "glutamic acid derivative",
+      "count": 51,
+      "column": "ont_CHEBI_24315"
+    },
+    {
+      "chebi_id": "CHEBI:26446",
+      "name": "pyrimidine ribonucleotide",
+      "count": 51,
+      "column": "ont_CHEBI_26446"
+    },
+    {
+      "chebi_id": "CHEBI:36702",
+      "name": "2-acyl-1-alkyl-sn-glycero-3-phosphocholine",
+      "count": 51,
+      "column": "ont_CHEBI_36702"
+    },
+    {
+      "chebi_id": "CHEBI:38755",
+      "name": "hydroxyisoflavone",
+      "count": 51,
+      "column": "ont_CHEBI_38755"
+    },
+    {
+      "chebi_id": "CHEBI:134091",
+      "name": "perfluorinated compound",
+      "count": 50,
+      "column": "ont_CHEBI_134091"
+    },
+    {
+      "chebi_id": "CHEBI:24697",
+      "name": "hydroxyflavanone",
+      "count": 50,
+      "column": "ont_CHEBI_24697"
+    },
+    {
+      "chebi_id": "CHEBI:29067",
+      "name": "carboxylic acid anion",
+      "count": 50,
+      "column": "ont_CHEBI_29067"
+    },
+    {
+      "chebi_id": "CHEBI:36500",
+      "name": "glucosylceramide",
+      "count": 50,
+      "column": "ont_CHEBI_36500"
+    },
+    {
+      "chebi_id": "CHEBI:83264",
+      "name": "beta-D-glucosylceramide",
+      "count": 50,
+      "column": "ont_CHEBI_83264"
+    },
+    {
+      "chebi_id": "CHEBI:20706",
+      "name": "6-aminopurines",
+      "count": 49,
+      "column": "ont_CHEBI_20706"
+    },
+    {
+      "chebi_id": "CHEBI:26386",
+      "name": "purine nucleobase",
+      "count": 49,
+      "column": "ont_CHEBI_26386"
+    },
+    {
+      "chebi_id": "CHEBI:38756",
+      "name": "methoxyisoflavone",
+      "count": 49,
+      "column": "ont_CHEBI_38756"
+    },
+    {
+      "chebi_id": "CHEBI:47018",
+      "name": "monohydroxytetrahydrofuran",
+      "count": 49,
+      "column": "ont_CHEBI_47018"
+    },
+    {
+      "chebi_id": "CHEBI:47804",
+      "name": "dibenzoazepine",
+      "count": 49,
+      "column": "ont_CHEBI_47804"
+    },
+    {
+      "chebi_id": "CHEBI:61296",
+      "name": "adenyl ribonucleotide",
+      "count": 49,
+      "column": "ont_CHEBI_61296"
+    },
+    {
+      "chebi_id": "CHEBI:13248",
+      "name": "anilide",
+      "count": 48,
+      "column": "ont_CHEBI_13248"
+    },
+    {
+      "chebi_id": "CHEBI:144711",
+      "name": "N-stearoyl-sphingoid base",
+      "count": 48,
+      "column": "ont_CHEBI_144711"
+    },
+    {
+      "chebi_id": "CHEBI:18274",
+      "name": "2'-deoxyribonucleoside",
+      "count": 48,
+      "column": "ont_CHEBI_18274"
+    },
+    {
+      "chebi_id": "CHEBI:24676",
+      "name": "hydroxybenzoic acid",
+      "count": 48,
+      "column": "ont_CHEBI_24676"
+    },
+    {
+      "chebi_id": "CHEBI:25696",
+      "name": "organic anion",
+      "count": 48,
+      "column": "ont_CHEBI_25696"
+    },
+    {
+      "chebi_id": "CHEBI:33572",
+      "name": "resorcinols",
+      "count": 48,
+      "column": "ont_CHEBI_33572"
+    },
+    {
+      "chebi_id": "CHEBI:36851",
+      "name": "6beta-hydroxy steroid",
+      "count": 48,
+      "column": "ont_CHEBI_36851"
+    },
+    {
+      "chebi_id": "CHEBI:38207",
+      "name": "aminopyridine",
+      "count": 48,
+      "column": "ont_CHEBI_38207"
+    },
+    {
+      "chebi_id": "CHEBI:38295",
+      "name": "azabicycloalkane",
+      "count": 48,
+      "column": "ont_CHEBI_38295"
+    },
+    {
+      "chebi_id": "CHEBI:51285",
+      "name": "acenoquinone",
+      "count": 48,
+      "column": "ont_CHEBI_51285"
+    },
+    {
+      "chebi_id": "CHEBI:76983",
+      "name": "N-sulfonylurea",
+      "count": 48,
+      "column": "ont_CHEBI_76983"
+    },
+    {
+      "chebi_id": "CHEBI:83812",
+      "name": "non-proteinogenic amino acid derivative",
+      "count": 48,
+      "column": "ont_CHEBI_83812"
+    },
+    {
+      "chebi_id": "CHEBI:16862",
+      "name": "nucleoside 5'-diphosphate",
+      "count": 47,
+      "column": "ont_CHEBI_16862"
+    },
+    {
+      "chebi_id": "CHEBI:18368",
+      "name": "D-glucosyl-N-acylsphingosine",
+      "count": 47,
+      "column": "ont_CHEBI_18368"
+    },
+    {
+      "chebi_id": "CHEBI:22801",
+      "name": "beta-D-glucosyl-N-acylsphingosine",
+      "count": 47,
+      "column": "ont_CHEBI_22801"
+    },
+    {
+      "chebi_id": "CHEBI:33720",
+      "name": "carbohydrate acid",
+      "count": 47,
+      "column": "ont_CHEBI_33720"
+    },
+    {
+      "chebi_id": "CHEBI:35915",
+      "name": "sterol ester",
+      "count": 47,
+      "column": "ont_CHEBI_35915"
+    },
+    {
+      "chebi_id": "CHEBI:84144",
+      "name": "L-phenylalanine derivative",
+      "count": 47,
+      "column": "ont_CHEBI_84144"
+    },
+    {
+      "chebi_id": "CHEBI:167148",
+      "name": "1-linoleoyl-2-acyl-sn-glycero-3-phosphocholine",
+      "count": 46,
+      "column": "ont_CHEBI_167148"
+    },
+    {
+      "chebi_id": "CHEBI:18946",
+      "name": "delta-lactone",
+      "count": 46,
+      "column": "ont_CHEBI_18946"
+    },
+    {
+      "chebi_id": "CHEBI:24405",
+      "name": "glycosylglucose",
+      "count": 46,
+      "column": "ont_CHEBI_24405"
+    },
+    {
+      "chebi_id": "CHEBI:27283",
+      "name": "very long-chain fatty acid",
+      "count": 46,
+      "column": "ont_CHEBI_27283"
+    },
+    {
+      "chebi_id": "CHEBI:35689",
+      "name": "tetrazoles",
+      "count": 46,
+      "column": "ont_CHEBI_35689"
+    },
+    {
+      "chebi_id": "CHEBI:42027",
+      "name": "1,2-di-[(9Z,12Z)-octadecadienoyl]-sn-glycero-3-phosphocholine",
+      "count": 46,
+      "column": "ont_CHEBI_42027"
+    },
+    {
+      "chebi_id": "CHEBI:59549",
+      "name": "essential fatty acid",
+      "count": 46,
+      "column": "ont_CHEBI_59549"
+    },
+    {
+      "chebi_id": "CHEBI:84815",
+      "name": "1,2-di-octadecadienoyl-sn-glycero-3-phosphocholine",
+      "count": 46,
+      "column": "ont_CHEBI_84815"
+    },
+    {
+      "chebi_id": "CHEBI:17326",
+      "name": "nucleoside 5'-triphoshate",
+      "count": 45,
+      "column": "ont_CHEBI_17326"
+    },
+    {
+      "chebi_id": "CHEBI:23086",
+      "name": "chalcones",
+      "count": 45,
+      "column": "ont_CHEBI_23086"
+    },
+    {
+      "chebi_id": "CHEBI:25990",
+      "name": "phenylethanolamines",
+      "count": 45,
+      "column": "ont_CHEBI_25990"
+    },
+    {
+      "chebi_id": "CHEBI:27164",
+      "name": "tryptophan derivative",
+      "count": 45,
+      "column": "ont_CHEBI_27164"
+    },
+    {
+      "chebi_id": "CHEBI:35348",
+      "name": "3beta-sterol",
+      "count": 45,
+      "column": "ont_CHEBI_35348"
+    },
+    {
+      "chebi_id": "CHEBI:36132",
+      "name": "alicyclic ketone",
+      "count": 45,
+      "column": "ont_CHEBI_36132"
+    },
+    {
+      "chebi_id": "CHEBI:38196",
+      "name": "hydroxymethylpyridine",
+      "count": 45,
+      "column": "ont_CHEBI_38196"
+    },
+    {
+      "chebi_id": "CHEBI:38656",
+      "name": "organochlorine pesticide",
+      "count": 45,
+      "column": "ont_CHEBI_38656"
+    },
+    {
+      "chebi_id": "CHEBI:38686",
+      "name": "dihydroxyflavone",
+      "count": 45,
+      "column": "ont_CHEBI_38686"
+    },
+    {
+      "chebi_id": "CHEBI:51867",
+      "name": "methyl ketone",
+      "count": 45,
+      "column": "ont_CHEBI_51867"
+    },
+    {
+      "chebi_id": "CHEBI:83982",
+      "name": "L-glutamic acid derivative",
+      "count": 45,
+      "column": "ont_CHEBI_83982"
+    },
+    {
+      "chebi_id": "CHEBI:26273",
+      "name": "proline derivative",
+      "count": 44,
+      "column": "ont_CHEBI_26273"
+    },
+    {
+      "chebi_id": "CHEBI:35484",
+      "name": "phthalate ester",
+      "count": 44,
+      "column": "ont_CHEBI_35484"
+    },
+    {
+      "chebi_id": "CHEBI:35790",
+      "name": "oxazole",
+      "count": 44,
+      "column": "ont_CHEBI_35790"
+    },
+    {
+      "chebi_id": "CHEBI:46867",
+      "name": "indolyl carboxylic acid",
+      "count": 44,
+      "column": "ont_CHEBI_46867"
+    },
+    {
+      "chebi_id": "CHEBI:140345",
+      "name": "hydroxy polyunsaturated fatty acid",
+      "count": 43,
+      "column": "ont_CHEBI_140345"
+    },
+    {
+      "chebi_id": "CHEBI:18133",
+      "name": "hexose",
+      "count": 43,
+      "column": "ont_CHEBI_18133"
+    },
+    {
+      "chebi_id": "CHEBI:25105",
+      "name": "macrolide antibiotic",
+      "count": 43,
+      "column": "ont_CHEBI_25105"
+    },
+    {
+      "chebi_id": "CHEBI:33567",
+      "name": "catecholamine",
+      "count": 43,
+      "column": "ont_CHEBI_33567"
+    },
+    {
+      "chebi_id": "CHEBI:38170",
+      "name": "diamino-1,3,5-triazine",
+      "count": 43,
+      "column": "ont_CHEBI_38170"
+    },
+    {
+      "chebi_id": "CHEBI:38785",
+      "name": "morpholines",
+      "count": 43,
+      "column": "ont_CHEBI_38785"
+    },
+    {
+      "chebi_id": "CHEBI:46952",
+      "name": "oxazinane",
+      "count": 43,
+      "column": "ont_CHEBI_46952"
+    },
+    {
+      "chebi_id": "CHEBI:47891",
+      "name": "steroid acid",
+      "count": 43,
+      "column": "ont_CHEBI_47891"
+    },
+    {
+      "chebi_id": "CHEBI:67274",
+      "name": "lysophosphatidylethanolamine zwitterion",
+      "count": 43,
+      "column": "ont_CHEBI_67274"
+    },
+    {
+      "chebi_id": "CHEBI:78201",
+      "name": "monoacylglycero-3-phosphoethanolamine zwitterion",
+      "count": 43,
+      "column": "ont_CHEBI_78201"
+    },
+    {
+      "chebi_id": "CHEBI:86323",
+      "name": "conazole antifungal agent",
+      "count": 43,
+      "column": "ont_CHEBI_86323"
+    },
+    {
+      "chebi_id": "CHEBI:19257",
+      "name": "2'-deoxyribonucleoside monophosphate",
+      "count": 42,
+      "column": "ont_CHEBI_19257"
+    },
+    {
+      "chebi_id": "CHEBI:23447",
+      "name": "cyclic nucleotide",
+      "count": 42,
+      "column": "ont_CHEBI_23447"
+    },
+    {
+      "chebi_id": "CHEBI:24810",
+      "name": "indol-3-yl carboxylic acid",
+      "count": 42,
+      "column": "ont_CHEBI_24810"
+    },
+    {
+      "chebi_id": "CHEBI:25708",
+      "name": "organophosphate insecticide",
+      "count": 42,
+      "column": "ont_CHEBI_25708"
+    },
+    {
+      "chebi_id": "CHEBI:29017",
+      "name": "1-acyl-sn-glycero-3-phosphoethanolamine",
+      "count": 42,
+      "column": "ont_CHEBI_29017"
+    },
+    {
+      "chebi_id": "CHEBI:33563",
+      "name": "glycolipid",
+      "count": 42,
+      "column": "ont_CHEBI_33563"
+    },
+    {
+      "chebi_id": "CHEBI:36840",
+      "name": "16-hydroxy steroid",
+      "count": 42,
+      "column": "ont_CHEBI_36840"
+    },
+    {
+      "chebi_id": "CHEBI:37142",
+      "name": "organoiodine compound",
+      "count": 42,
+      "column": "ont_CHEBI_37142"
+    },
+    {
+      "chebi_id": "CHEBI:55493",
+      "name": "1-O-acylglycerophosphoethanolamine",
+      "count": 42,
+      "column": "ont_CHEBI_55493"
+    },
+    {
+      "chebi_id": "CHEBI:63427",
+      "name": "glycosylglycerol derivative",
+      "count": 42,
+      "column": "ont_CHEBI_63427"
+    },
+    {
+      "chebi_id": "CHEBI:65321",
+      "name": "terpenoid indole alkaloid",
+      "count": 42,
+      "column": "ont_CHEBI_65321"
+    },
+    {
+      "chebi_id": "CHEBI:78188",
+      "name": "1-(alk-1-enyl)-2-acyl-glycero-3-phosphocholine",
+      "count": 42,
+      "column": "ont_CHEBI_78188"
+    },
+    {
+      "chebi_id": "CHEBI:142355",
+      "name": "purines D-ribonucleoside",
+      "count": 41,
+      "column": "ont_CHEBI_142355"
+    },
+    {
+      "chebi_id": "CHEBI:17002",
+      "name": "cholesteryl ester",
+      "count": 41,
+      "column": "ont_CHEBI_17002"
+    },
+    {
+      "chebi_id": "CHEBI:21545",
+      "name": "N-acetyl-L-amino acid",
+      "count": 41,
+      "column": "ont_CHEBI_21545"
+    },
+    {
+      "chebi_id": "CHEBI:33847",
+      "name": "monocyclic arene",
+      "count": 41,
+      "column": "ont_CHEBI_33847"
+    },
+    {
+      "chebi_id": "CHEBI:37948",
+      "name": "oxaspiro compound",
+      "count": 41,
+      "column": "ont_CHEBI_37948"
+    },
+    {
+      "chebi_id": "CHEBI:38976",
+      "name": "alkylbenzene",
+      "count": 41,
+      "column": "ont_CHEBI_38976"
+    },
+    {
+      "chebi_id": "CHEBI:13956",
+      "name": "ceramide 1-phosphate",
+      "count": 40,
+      "column": "ont_CHEBI_13956"
+    },
+    {
+      "chebi_id": "CHEBI:16197",
+      "name": "N-acylsphingosine 1-phosphate",
+      "count": 40,
+      "column": "ont_CHEBI_16197"
+    },
+    {
+      "chebi_id": "CHEBI:22256",
+      "name": "adenosine phosphate",
+      "count": 40,
+      "column": "ont_CHEBI_22256"
+    },
+    {
+      "chebi_id": "CHEBI:24586",
+      "name": "hexosamine",
+      "count": 40,
+      "column": "ont_CHEBI_24586"
+    },
+    {
+      "chebi_id": "CHEBI:25753",
+      "name": "oxo-5beta-cholanic acid",
+      "count": 40,
+      "column": "ont_CHEBI_25753"
+    },
+    {
+      "chebi_id": "CHEBI:35489",
+      "name": "organic disulfide",
+      "count": 40,
+      "column": "ont_CHEBI_35489"
+    },
+    {
+      "chebi_id": "CHEBI:35972",
+      "name": "dihydroxy monocarboxylic acid",
+      "count": 40,
+      "column": "ont_CHEBI_35972"
+    },
+    {
+      "chebi_id": "CHEBI:36850",
+      "name": "6alpha-hydroxy steroid",
+      "count": 40,
+      "column": "ont_CHEBI_36850"
+    },
+    {
+      "chebi_id": "CHEBI:48343",
+      "name": "disulfide",
+      "count": 40,
+      "column": "ont_CHEBI_48343"
+    },
+    {
+      "chebi_id": "CHEBI:52603",
+      "name": "1-acyl-sn-glycero-3-phosphoserine",
+      "count": 40,
+      "column": "ont_CHEBI_52603"
+    },
+    {
+      "chebi_id": "CHEBI:68510",
+      "name": "lysophosphatidylserine",
+      "count": 40,
+      "column": "ont_CHEBI_68510"
+    },
+    {
+      "chebi_id": "CHEBI:73477",
+      "name": "terminal acetylenic compound",
+      "count": 40,
+      "column": "ont_CHEBI_73477"
+    },
+    {
+      "chebi_id": "CHEBI:79098",
+      "name": "1-octadecanoyl-2-(4Z,7Z,10Z,13Z,16Z,19Z-docosahexaenoyl)-sn-glycero-3-phosphoserine",
+      "count": 40,
+      "column": "ont_CHEBI_79098"
+    },
+    {
+      "chebi_id": "CHEBI:29348",
+      "name": "fatty amide",
+      "count": 39,
+      "column": "ont_CHEBI_29348"
+    },
+    {
+      "chebi_id": "CHEBI:32863",
+      "name": "secondary amine",
+      "count": 39,
+      "column": "ont_CHEBI_32863"
+    },
+    {
+      "chebi_id": "CHEBI:46920",
+      "name": "N-methylpiperazine",
+      "count": 39,
+      "column": "ont_CHEBI_46920"
+    },
+    {
+      "chebi_id": "CHEBI:51269",
+      "name": "acenes",
+      "count": 39,
+      "column": "ont_CHEBI_51269"
+    },
+    {
+      "chebi_id": "CHEBI:65323",
+      "name": "monoterpenoid indole alkaloid",
+      "count": 39,
+      "column": "ont_CHEBI_65323"
+    },
+    {
+      "chebi_id": "CHEBI:22580",
+      "name": "anthraquinone",
+      "count": 38,
+      "column": "ont_CHEBI_22580"
+    },
+    {
+      "chebi_id": "CHEBI:22658",
+      "name": "aspartate family amino acid",
+      "count": 38,
+      "column": "ont_CHEBI_22658"
+    },
+    {
+      "chebi_id": "CHEBI:35757",
+      "name": "monocarboxylic acid anion",
+      "count": 38,
+      "column": "ont_CHEBI_35757"
+    },
+    {
+      "chebi_id": "CHEBI:35785",
+      "name": "sphingoid",
+      "count": 38,
+      "column": "ont_CHEBI_35785"
+    },
+    {
+      "chebi_id": "CHEBI:36360",
+      "name": "phosphorus oxoacids and derivatives",
+      "count": 38,
+      "column": "ont_CHEBI_36360"
+    },
+    {
+      "chebi_id": "CHEBI:50523",
+      "name": "butenolide",
+      "count": 38,
+      "column": "ont_CHEBI_50523"
+    },
+    {
+      "chebi_id": "CHEBI:64615",
+      "name": "triacyl-sn-glycerol",
+      "count": 38,
+      "column": "ont_CHEBI_64615"
+    },
+    {
+      "chebi_id": "CHEBI:87631",
+      "name": "statin",
+      "count": 38,
+      "column": "ont_CHEBI_87631"
+    },
+    {
+      "chebi_id": "CHEBI:16799",
+      "name": "16alpha-hydroxy steroid",
+      "count": 37,
+      "column": "ont_CHEBI_16799"
+    },
+    {
+      "chebi_id": "CHEBI:22918",
+      "name": "branched-chain amino acid",
+      "count": 37,
+      "column": "ont_CHEBI_22918"
+    },
+    {
+      "chebi_id": "CHEBI:22928",
+      "name": "bromine molecular entity",
+      "count": 37,
+      "column": "ont_CHEBI_22928"
+    },
+    {
+      "chebi_id": "CHEBI:23007",
+      "name": "carbohydrate-containing antibiotic",
+      "count": 37,
+      "column": "ont_CHEBI_23007"
+    },
+    {
+      "chebi_id": "CHEBI:23775",
+      "name": "dihydroxy-5beta-cholanic acid",
+      "count": 37,
+      "column": "ont_CHEBI_23775"
+    },
+    {
+      "chebi_id": "CHEBI:24860",
+      "name": "iodine molecular entity",
+      "count": 37,
+      "column": "ont_CHEBI_24860"
+    },
+    {
+      "chebi_id": "CHEBI:33257",
+      "name": "secondary amide",
+      "count": 37,
+      "column": "ont_CHEBI_33257"
+    },
+    {
+      "chebi_id": "CHEBI:37793",
+      "name": "amino sulfonic acid",
+      "count": 37,
+      "column": "ont_CHEBI_37793"
+    },
+    {
+      "chebi_id": "CHEBI:37912",
+      "name": "hydroxycoumarin",
+      "count": 37,
+      "column": "ont_CHEBI_37912"
+    },
+    {
+      "chebi_id": "CHEBI:61292",
+      "name": "guanyl nucleotide",
+      "count": 37,
+      "column": "ont_CHEBI_61292"
+    },
+    {
+      "chebi_id": "CHEBI:63423",
+      "name": "alditol derivative",
+      "count": 37,
+      "column": "ont_CHEBI_63423"
+    },
+    {
+      "chebi_id": "CHEBI:64517",
+      "name": "phosphatidylcholine 34:1",
+      "count": 37,
+      "column": "ont_CHEBI_64517"
+    },
+    {
+      "chebi_id": "CHEBI:85184",
+      "name": "dihydroxycholanic acid",
+      "count": 37,
+      "column": "ont_CHEBI_85184"
+    },
+    {
+      "chebi_id": "CHEBI:87659",
+      "name": "dodecanoate ester",
+      "count": 37,
+      "column": "ont_CHEBI_87659"
+    },
+    {
+      "chebi_id": "CHEBI:140326",
+      "name": "tertiary carboxamide",
+      "count": 36,
+      "column": "ont_CHEBI_140326"
+    },
+    {
+      "chebi_id": "CHEBI:17668",
+      "name": "ribonucleoside diphosphat",
+      "count": 36,
+      "column": "ont_CHEBI_17668"
+    },
+    {
+      "chebi_id": "CHEBI:22750",
+      "name": "benzylisoquinoline alkaloid",
+      "count": 36,
+      "column": "ont_CHEBI_22750"
+    },
+    {
+      "chebi_id": "CHEBI:23451",
+      "name": "cyclitol",
+      "count": 36,
+      "column": "ont_CHEBI_23451"
+    },
+    {
+      "chebi_id": "CHEBI:27093",
+      "name": "tricarboxylic acid",
+      "count": 36,
+      "column": "ont_CHEBI_27093"
+    },
+    {
+      "chebi_id": "CHEBI:33447",
+      "name": "phospho sugar",
+      "count": 36,
+      "column": "ont_CHEBI_33447"
+    },
+    {
+      "chebi_id": "CHEBI:35551",
+      "name": "fluoroalkanoic acid",
+      "count": 36,
+      "column": "ont_CHEBI_35551"
+    },
+    {
+      "chebi_id": "CHEBI:38631",
+      "name": "aminoalkylindole",
+      "count": 36,
+      "column": "ont_CHEBI_38631"
+    },
+    {
+      "chebi_id": "CHEBI:55373",
+      "name": "isoxazoles",
+      "count": 36,
+      "column": "ont_CHEBI_55373"
+    },
+    {
+      "chebi_id": "CHEBI:83824",
+      "name": "L-cysteine derivative",
+      "count": 36,
+      "column": "ont_CHEBI_83824"
+    },
+    {
+      "chebi_id": "CHEBI:132124",
+      "name": "1,4-benzoquinones",
+      "count": 35,
+      "column": "ont_CHEBI_132124"
+    },
+    {
+      "chebi_id": "CHEBI:22729",
+      "name": "benzoquinones",
+      "count": 35,
+      "column": "ont_CHEBI_22729"
+    },
+    {
+      "chebi_id": "CHEBI:35533",
+      "name": "propanolamine",
+      "count": 35,
+      "column": "ont_CHEBI_35533"
+    },
+    {
+      "chebi_id": "CHEBI:38530",
+      "name": "quinazolines",
+      "count": 35,
+      "column": "ont_CHEBI_38530"
+    },
+    {
+      "chebi_id": "CHEBI:47017",
+      "name": "tetrahydrofuranol",
+      "count": 35,
+      "column": "ont_CHEBI_47017"
+    },
+    {
+      "chebi_id": "CHEBI:47779",
+      "name": "aminoglycoside",
+      "count": 35,
+      "column": "ont_CHEBI_47779"
+    },
+    {
+      "chebi_id": "CHEBI:47885",
+      "name": "dinucleotide",
+      "count": 35,
+      "column": "ont_CHEBI_47885"
+    },
+    {
+      "chebi_id": "CHEBI:48420",
+      "name": "biphenylyltetrazole",
+      "count": 35,
+      "column": "ont_CHEBI_48420"
+    },
+    {
+      "chebi_id": "CHEBI:66873",
+      "name": "C4-dicarboxylic acid",
+      "count": 35,
+      "column": "ont_CHEBI_66873"
+    },
+    {
+      "chebi_id": "CHEBI:73539",
+      "name": "naphthyridine derivative",
+      "count": 35,
+      "column": "ont_CHEBI_73539"
+    },
+    {
+      "chebi_id": "CHEBI:75063",
+      "name": "1-acyl-2-arachidonoyl-sn-glycero-3-phosphocholine",
+      "count": 35,
+      "column": "ont_CHEBI_75063"
+    },
+    {
+      "chebi_id": "CHEBI:87015",
+      "name": "anilide fungicide",
+      "count": 35,
+      "column": "ont_CHEBI_87015"
+    },
+    {
+      "chebi_id": "CHEBI:139051",
+      "name": "phytoceramide",
+      "count": 34,
+      "column": "ont_CHEBI_139051"
+    },
+    {
+      "chebi_id": "CHEBI:23818",
+      "name": "dimethylxanthine",
+      "count": 34,
+      "column": "ont_CHEBI_23818"
+    },
+    {
+      "chebi_id": "CHEBI:24782",
+      "name": "imide",
+      "count": 34,
+      "column": "ont_CHEBI_24782"
+    },
+    {
+      "chebi_id": "CHEBI:26397",
+      "name": "purine ribonucleoside monophosphate",
+      "count": 34,
+      "column": "ont_CHEBI_26397"
+    },
+    {
+      "chebi_id": "CHEBI:26443",
+      "name": "pyrimidine ribonucleoside monophosphate",
+      "count": 34,
+      "column": "ont_CHEBI_26443"
+    },
+    {
+      "chebi_id": "CHEBI:35381",
+      "name": "monosaccharide",
+      "count": 34,
+      "column": "ont_CHEBI_35381"
+    },
+    {
+      "chebi_id": "CHEBI:36164",
+      "name": "amino dicarboxylic acid",
+      "count": 34,
+      "column": "ont_CHEBI_36164"
+    },
+    {
+      "chebi_id": "CHEBI:38684",
+      "name": "tetrahydroxyflavone",
+      "count": 34,
+      "column": "ont_CHEBI_38684"
+    },
+    {
+      "chebi_id": "CHEBI:50401",
+      "name": "cholestanoid",
+      "count": 34,
+      "column": "ont_CHEBI_50401"
+    },
+    {
+      "chebi_id": "CHEBI:63424",
+      "name": "glycosyl alditol derivative",
+      "count": 34,
+      "column": "ont_CHEBI_63424"
+    },
+    {
+      "chebi_id": "CHEBI:73155",
+      "name": "trienoic fatty acid",
+      "count": 34,
+      "column": "ont_CHEBI_73155"
+    },
+    {
+      "chebi_id": "CHEBI:73690",
+      "name": "erythrose 4-phosphate/phosphoenolpyruvate family amino acid",
+      "count": 34,
+      "column": "ont_CHEBI_73690"
+    },
+    {
+      "chebi_id": "CHEBI:74266",
+      "name": "N-acylurea",
+      "count": 34,
+      "column": "ont_CHEBI_74266"
+    },
+    {
+      "chebi_id": "CHEBI:84403",
+      "name": "phytoceramides",
+      "count": 34,
+      "column": "ont_CHEBI_84403"
+    },
+    {
+      "chebi_id": "CHEBI:16648",
+      "name": "dialkyl phosphate",
+      "count": 33,
+      "column": "ont_CHEBI_16648"
+    },
+    {
+      "chebi_id": "CHEBI:16961",
+      "name": "monoacylglycerol phosphate",
+      "count": 33,
+      "column": "ont_CHEBI_16961"
+    },
+    {
+      "chebi_id": "CHEBI:22300",
+      "name": "aldonic acid phosphate",
+      "count": 33,
+      "column": "ont_CHEBI_22300"
+    },
+    {
+      "chebi_id": "CHEBI:24583",
+      "name": "hexitol",
+      "count": 33,
+      "column": "ont_CHEBI_24583"
+    },
+    {
+      "chebi_id": "CHEBI:25609",
+      "name": "nucleotide-sugar",
+      "count": 33,
+      "column": "ont_CHEBI_25609"
+    },
+    {
+      "chebi_id": "CHEBI:31998",
+      "name": "N-acylphytosphingosine",
+      "count": 33,
+      "column": "ont_CHEBI_31998"
+    },
+    {
+      "chebi_id": "CHEBI:35293",
+      "name": "fused compound",
+      "count": 33,
+      "column": "ont_CHEBI_35293"
+    },
+    {
+      "chebi_id": "CHEBI:35819",
+      "name": "branched-chain fatty acid",
+      "count": 33,
+      "column": "ont_CHEBI_35819"
+    },
+    {
+      "chebi_id": "CHEBI:36260",
+      "name": "monohydroxy-5beta-cholanic acid",
+      "count": 33,
+      "column": "ont_CHEBI_36260"
+    },
+    {
+      "chebi_id": "CHEBI:36845",
+      "name": "12-hydroxy steroid",
+      "count": 33,
+      "column": "ont_CHEBI_36845"
+    },
+    {
+      "chebi_id": "CHEBI:38774",
+      "name": "hydroxyquinoline",
+      "count": 33,
+      "column": "ont_CHEBI_38774"
+    },
+    {
+      "chebi_id": "CHEBI:50018",
+      "name": "glycosyloxyflavone",
+      "count": 33,
+      "column": "ont_CHEBI_50018"
+    },
+    {
+      "chebi_id": "CHEBI:17810",
+      "name": "1-O-(alk-1-enyl)-2-O-acyl-sn-glycero-3-phosphocholine",
+      "count": 32,
+      "column": "ont_CHEBI_17810"
+    },
+    {
+      "chebi_id": "CHEBI:23690",
+      "name": "dicarboxylic acid amide",
+      "count": 32,
+      "column": "ont_CHEBI_23690"
+    },
+    {
+      "chebi_id": "CHEBI:24318",
+      "name": "glutamine family amino acid",
+      "count": 32,
+      "column": "ont_CHEBI_24318"
+    },
+    {
+      "chebi_id": "CHEBI:25527",
+      "name": "nicotinamide nucleotide",
+      "count": 32,
+      "column": "ont_CHEBI_25527"
+    },
+    {
+      "chebi_id": "CHEBI:26766",
+      "name": "steroid lactone",
+      "count": 32,
+      "column": "ont_CHEBI_26766"
+    },
+    {
+      "chebi_id": "CHEBI:33296",
+      "name": "alkali metal molecular entity",
+      "count": 32,
+      "column": "ont_CHEBI_33296"
+    },
+    {
+      "chebi_id": "CHEBI:35479",
+      "name": "alkali metal salt",
+      "count": 32,
+      "column": "ont_CHEBI_35479"
+    },
+    {
+      "chebi_id": "CHEBI:37075",
+      "name": "ribonucleoside 5'-diphosphate",
+      "count": 32,
+      "column": "ont_CHEBI_37075"
+    },
+    {
+      "chebi_id": "CHEBI:37096",
+      "name": "adenosine 5'-phosphate",
+      "count": 32,
+      "column": "ont_CHEBI_37096"
+    },
+    {
+      "chebi_id": "CHEBI:37562",
+      "name": "trialkyl phosphate",
+      "count": 32,
+      "column": "ont_CHEBI_37562"
+    },
+    {
+      "chebi_id": "CHEBI:62643",
+      "name": "anionic phospholipid",
+      "count": 32,
+      "column": "ont_CHEBI_62643"
+    },
+    {
+      "chebi_id": "CHEBI:86426",
+      "name": "triazole antifungal agent",
+      "count": 32,
+      "column": "ont_CHEBI_86426"
+    },
+    {
+      "chebi_id": "CHEBI:143593",
+      "name": "beta-galactosylceramide",
+      "count": 31,
+      "column": "ont_CHEBI_143593"
+    },
+    {
+      "chebi_id": "CHEBI:17972",
+      "name": "ribonucleoside triphosphate",
+      "count": 31,
+      "column": "ont_CHEBI_17972"
+    },
+    {
+      "chebi_id": "CHEBI:18241",
+      "name": "2'-deoxynucleoside 5'-phosphate",
+      "count": 31,
+      "column": "ont_CHEBI_18241"
+    },
+    {
+      "chebi_id": "CHEBI:24610",
+      "name": "homocysteines",
+      "count": 31,
+      "column": "ont_CHEBI_24610"
+    },
+    {
+      "chebi_id": "CHEBI:2468",
+      "name": "secondary alpha-hydroxy ketone",
+      "count": 31,
+      "column": "ont_CHEBI_2468"
+    },
+    {
+      "chebi_id": "CHEBI:25409",
+      "name": "monoterpenoid",
+      "count": 31,
+      "column": "ont_CHEBI_25409"
+    },
+    {
+      "chebi_id": "CHEBI:26347",
+      "name": "prostanoid",
+      "count": 31,
+      "column": "ont_CHEBI_26347"
+    },
+    {
+      "chebi_id": "CHEBI:26390",
+      "name": "purine 2'-deoxyribonucleotide",
+      "count": 31,
+      "column": "ont_CHEBI_26390"
+    },
+    {
+      "chebi_id": "CHEBI:27177",
+      "name": "L-tyrosine derivative",
+      "count": 31,
+      "column": "ont_CHEBI_27177"
+    },
+    {
+      "chebi_id": "CHEBI:33245",
+      "name": "organic fundamental parent",
+      "count": 31,
+      "column": "ont_CHEBI_33245"
+    },
+    {
+      "chebi_id": "CHEBI:35349",
+      "name": "7beta-hydroxy steroid",
+      "count": 31,
+      "column": "ont_CHEBI_35349"
+    },
+    {
+      "chebi_id": "CHEBI:35990",
+      "name": "bridged compound",
+      "count": 31,
+      "column": "ont_CHEBI_35990"
+    },
+    {
+      "chebi_id": "CHEBI:36498",
+      "name": "galactosylceramide",
+      "count": 31,
+      "column": "ont_CHEBI_36498"
+    },
+    {
+      "chebi_id": "CHEBI:37076",
+      "name": "ribonucleoside 5'-triphosphate",
+      "count": 31,
+      "column": "ont_CHEBI_37076"
+    },
+    {
+      "chebi_id": "CHEBI:39203",
+      "name": "dibenzopyran",
+      "count": 31,
+      "column": "ont_CHEBI_39203"
+    },
+    {
+      "chebi_id": "CHEBI:39417",
+      "name": "branched-chain saturated fatty acid",
+      "count": 31,
+      "column": "ont_CHEBI_39417"
+    },
+    {
+      "chebi_id": "CHEBI:39434",
+      "name": "limonoid",
+      "count": 31,
+      "column": "ont_CHEBI_39434"
+    },
+    {
+      "chebi_id": "CHEBI:5254",
+      "name": "galactolipid",
+      "count": 31,
+      "column": "ont_CHEBI_5254"
+    },
+    {
+      "chebi_id": "CHEBI:59554",
+      "name": "medium-chain fatty acid",
+      "count": 31,
+      "column": "ont_CHEBI_59554"
+    },
+    {
+      "chebi_id": "CHEBI:68472",
+      "name": "pyrimidine deoxyribonucleoside",
+      "count": 31,
+      "column": "ont_CHEBI_68472"
+    },
+    {
+      "chebi_id": "CHEBI:139140",
+      "name": "beta-D-glucosyl-N-(oleoyl)sphingosine",
+      "count": 30,
+      "column": "ont_CHEBI_139140"
+    },
+    {
+      "chebi_id": "CHEBI:24268",
+      "name": "glucooligosaccharide",
+      "count": 30,
+      "column": "ont_CHEBI_24268"
+    },
+    {
+      "chebi_id": "CHEBI:24302",
+      "name": "glucosiduronic acid",
+      "count": 30,
+      "column": "ont_CHEBI_24302"
+    },
+    {
+      "chebi_id": "CHEBI:25413",
+      "name": "monounsaturated fatty acid",
+      "count": 30,
+      "column": "ont_CHEBI_25413"
+    },
+    {
+      "chebi_id": "CHEBI:25481",
+      "name": "naphthoquinone",
+      "count": 30,
+      "column": "ont_CHEBI_25481"
+    },
+    {
+      "chebi_id": "CHEBI:25872",
+      "name": "pentacyclic triterpenoid",
+      "count": 30,
+      "column": "ont_CHEBI_25872"
+    },
+    {
+      "chebi_id": "CHEBI:26391",
+      "name": "purine nucleoside diphosphate",
+      "count": 30,
+      "column": "ont_CHEBI_26391"
+    },
+    {
+      "chebi_id": "CHEBI:26455",
+      "name": "pyrroles",
+      "count": 30,
+      "column": "ont_CHEBI_26455"
+    },
+    {
+      "chebi_id": "CHEBI:32877",
+      "name": "primary amine",
+      "count": 30,
+      "column": "ont_CHEBI_32877"
+    },
+    {
+      "chebi_id": "CHEBI:35314",
+      "name": "glycosiduronic acid",
+      "count": 30,
+      "column": "ont_CHEBI_35314"
+    },
+    {
+      "chebi_id": "CHEBI:35406",
+      "name": "oxoanion",
+      "count": 30,
+      "column": "ont_CHEBI_35406"
+    },
+    {
+      "chebi_id": "CHEBI:35683",
+      "name": "aryl sulfide",
+      "count": 30,
+      "column": "ont_CHEBI_35683"
+    },
+    {
+      "chebi_id": "CHEBI:38830",
+      "name": "1-benzofurans",
+      "count": 30,
+      "column": "ont_CHEBI_38830"
+    },
+    {
+      "chebi_id": "CHEBI:38835",
+      "name": "xanthenes",
+      "count": 30,
+      "column": "ont_CHEBI_38835"
+    },
+    {
+      "chebi_id": "CHEBI:38925",
+      "name": "benzopteridine",
+      "count": 30,
+      "column": "ont_CHEBI_38925"
+    },
+    {
+      "chebi_id": "CHEBI:47789",
+      "name": "7-oxo steroid",
+      "count": 30,
+      "column": "ont_CHEBI_47789"
+    },
+    {
+      "chebi_id": "CHEBI:55465",
+      "name": "7-hydroxyisoflavones",
+      "count": 30,
+      "column": "ont_CHEBI_55465"
+    },
+    {
+      "chebi_id": "CHEBI:72010",
+      "name": "hydroxyflavan",
+      "count": 30,
+      "column": "ont_CHEBI_72010"
+    },
+    {
+      "chebi_id": "CHEBI:72718",
+      "name": "N-dodecanoylsphingosine 1-phosphate",
+      "count": 30,
+      "column": "ont_CHEBI_72718"
+    },
+    {
+      "chebi_id": "CHEBI:74222",
+      "name": "gamma-lactam",
+      "count": 30,
+      "column": "ont_CHEBI_74222"
+    }
+  ],
+  "top_20_ontology_classes": [
+    {
+      "chebi_id": "CHEBI:35352",
+      "name": "organonitrogen compound",
+      "count": 5392
+    },
+    {
+      "chebi_id": "CHEBI:36963",
+      "name": "organooxygen compound",
+      "count": 4345
+    },
+    {
+      "chebi_id": "CHEBI:33285",
+      "name": "heteroorganic entity",
+      "count": 4056
+    },
+    {
+      "chebi_id": "CHEBI:38101",
+      "name": "organonitrogen heterocyclic compound",
+      "count": 3235
+    },
+    {
+      "chebi_id": "CHEBI:36586",
+      "name": "carbonyl compound",
+      "count": 3166
+    },
+    {
+      "chebi_id": "CHEBI:51143",
+      "name": "nitrogen molecular entity",
+      "count": 3089
+    },
+    {
+      "chebi_id": "CHEBI:24532",
+      "name": "organic heterocyclic compound",
+      "count": 3063
+    },
+    {
+      "chebi_id": "CHEBI:33659",
+      "name": "organic aromatic compound",
+      "count": 2899
+    },
+    {
+      "chebi_id": "CHEBI:33832",
+      "name": "organic cyclic compound",
+      "count": 2894
+    },
+    {
+      "chebi_id": "CHEBI:36962",
+      "name": "organochalcogen compound",
+      "count": 2551
+    },
+    {
+      "chebi_id": "CHEBI:33822",
+      "name": "organic hydroxy compound",
+      "count": 2454
+    },
+    {
+      "chebi_id": "CHEBI:50047",
+      "name": "organic amino compound",
+      "count": 2343
+    },
+    {
+      "chebi_id": "CHEBI:25806",
+      "name": "oxygen molecular entity",
+      "count": 2186
+    },
+    {
+      "chebi_id": "CHEBI:33575",
+      "name": "carboxylic acid",
+      "count": 2136
+    },
+    {
+      "chebi_id": "CHEBI:37739",
+      "name": "glycerophospholipid",
+      "count": 2009
+    },
+    {
+      "chebi_id": "CHEBI:18059",
+      "name": "lipid",
+      "count": 1991
+    },
+    {
+      "chebi_id": "CHEBI:35701",
+      "name": "ester",
+      "count": 1841
+    },
+    {
+      "chebi_id": "CHEBI:33655",
+      "name": "aromatic compound",
+      "count": 1803
+    },
+    {
+      "chebi_id": "CHEBI:37622",
+      "name": "carboxamide",
+      "count": 1612
+    },
+    {
+      "chebi_id": "CHEBI:25693",
+      "name": "organic heteromonocyclic compound",
+      "count": 1594
+    }
+  ]
+}

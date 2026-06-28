@@ -62,7 +62,7 @@ def _run_model(wrapper_path: Path, conda_env: str, input_csv: Path, output_csv: 
         "--input",
         str(input_csv),
         "--output",
-            output_csv.parent.mkdir(parents=True, exist_ok=True)
+        str(output_csv),
         "--repo",
         str(repo_path),
     ] + extra_wrapper_args
@@ -101,7 +101,7 @@ def main() -> None:
         conda_env = info.get("conda_env")
         repo_path = _resolve_repo_path(external_root, info.get("repo_path", ""))
         wrapper_path = wrapper_root / "{}.py".format(wrapper_name)
-        output_csv = output_dir / name / "predictions.csv"
+        output_csv = output_dir / name / "benchmark_predictions.csv"
         extra_wrapper_args = _build_extra_wrapper_args(info)
 
         if not conda_env:
