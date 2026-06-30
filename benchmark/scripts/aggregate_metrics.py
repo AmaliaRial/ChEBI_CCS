@@ -46,6 +46,7 @@ def _compute_metrics(df: pd.DataFrame, pred_col: str) -> dict:
             "n": 0,
             "mae": np.nan,
             "rmse": np.nan,
+            "r2": np.nan,
             "mpe": np.nan,
             "mape": np.nan,
             "std_abs_error": np.nan,
@@ -60,10 +61,15 @@ def _compute_metrics(df: pd.DataFrame, pred_col: str) -> dict:
     pct_err = 100.0 * (y_pred - y_true) / y_true
     abs_pct_err = np.abs(pct_err)
 
+    ss_res = np.sum((y_true - y_pred) ** 2)
+    ss_tot = np.sum((y_true - np.mean(y_true)) ** 2)
+    r2 = 1.0 - (ss_res / ss_tot) if ss_tot > 0 else np.nan
+
     return {
         "n": int(len(valid)),
         "mae": float(np.mean(abs_err)),
         "rmse": float(np.sqrt(np.mean((y_pred - y_true) ** 2))),
+        "r2": float(r2),
         "mpe": float(np.mean(pct_err)),
         "mape": float(np.mean(abs_pct_err)),
         "std_abs_error": float(np.std(abs_err, ddof=0)),
