@@ -19,6 +19,7 @@ def _load_predictions(pred_path: Path, model_name: str) -> Tuple[pd.DataFrame, s
 
     if "_row_id" in pred_df.columns:
         out = pred_df[["_row_id", pred_col]].copy()
+        out = out.drop_duplicates(subset=["_row_id"], keep="first")
         out = out.rename(columns={pred_col: "predicted_ccs_{}".format(model_name)})
         return out, "_row_id"
 
