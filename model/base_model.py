@@ -257,8 +257,7 @@ def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, tes
             "test": test_metrics,
         },
         "architecture": {
-            "layers_total": 5,
-            "hidden_layers": 3,
+            "hidden_layers": len(hidden_dims),
             "activation": "LeakyReLU",
             "output_activation": "linear",
         },

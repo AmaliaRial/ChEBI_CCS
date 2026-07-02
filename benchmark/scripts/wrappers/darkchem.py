@@ -13,7 +13,7 @@ def _setup_logging() -> None:
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s [%(levelname)s] %(message)s",
-    )
+    ) #crea los logs
 
 
 def _find_column(df: pd.DataFrame, target: str) -> str:

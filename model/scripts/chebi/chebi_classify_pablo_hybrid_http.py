@@ -6,15 +6,11 @@ can classify records that provide SMILES, InChI, or InChIKey. When SMILES are
 present, it also tries a canonical SMILES and an InChI derived from that SMILES
 before giving up.
 
-The script is intended for smaller validation runs first because the public API
-is slow and rate-limited in practice. Use --sample-size or --limit to test a
-reduced subset before launching a full 68k run.
-
 Input formats:
 - JSONL records with row_id, smiles, inchi, and/or inchikey fields
 - plain text files with one value per line
 - a single value passed directly on the command line
-    """Look up a candidate in local maps."""
+    
 Output:
 - JSON payload with summary and per-row results
 """

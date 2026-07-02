@@ -80,7 +80,7 @@ def _compute_metrics(df: pd.DataFrame, pred_col: str) -> dict:
 
 
 def _collect_prediction_files(predictions_dir: Path) -> List[Path]:
-    return sorted(predictions_dir.glob("*/predictions.csv"))
+    return sorted(predictions_dir.glob("*/benchmark_predictions.csv"))
 
 
 def main() -> None:

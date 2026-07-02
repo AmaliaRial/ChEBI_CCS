@@ -107,9 +107,11 @@ def read_split_metrics(summary_path: Path) -> dict[str, float]:
     test = metrics.get("test", {})
     return {
         "val_mae": float(val.get("mae", np.inf)),
+        "val_medae": float(val.get("medae", np.nan)),
         "val_rmse": float(val.get("rmse", np.nan)),
         "val_r2": float(val.get("r2", np.nan)),
         "test_mae": float(test.get("mae", np.nan)),
+        "test_medae": float(test.get("medae", np.nan)),
         "test_rmse": float(test.get("rmse", np.nan)),
         "test_r2": float(test.get("r2", np.nan)),
     }
@@ -183,7 +185,12 @@ def main() -> None:
                 dropout_rate=dropout,
             )
             record.update(read_split_metrics(lambda_dir / "training_summary.json"))
-            print(f"    VAL MAE = {record['val_mae']:.4f}  |  TEST MAE = {record['test_mae']:.4f}")
+            print(
+                f"    VAL MAE = {record['val_mae']:.4f}  |  "
+                f"VAL MedAE = {record['val_medae']:.4f}  |  "
+                f"TEST MAE = {record['test_mae']:.4f}  |  "
+                f"TEST MedAE = {record['test_medae']:.4f}"
+            )
         except Exception as error:  # noqa: BLE001 - registramos el fallo y seguimos con el resto
             record["val_mae"] = float(np.inf)
             record["error"] = str(error)
@@ -200,7 +207,19 @@ def main() -> None:
         if best_lambda is not None:
             print(f"    Mejor lambda hasta ahora: {best_lambda} (VAL MAE = {best_val_mae:.4f})")
 
-    columns = ["lambda", "val_mae", "val_rmse", "val_r2", "test_mae", "test_rmse", "test_r2", "output_dir", "error"]
+    columns = [
+        "lambda",
+        "val_mae",
+        "val_medae",
+        "val_rmse",
+        "val_r2",
+        "test_mae",
+        "test_medae",
+        "test_rmse",
+        "test_r2",
+        "output_dir",
+        "error",
+    ]
     results_df = pd.DataFrame(results).reindex(columns=columns)
     results_df.to_csv(output_dir / "lambda_sweep_results.csv", index=False)
 
@@ -244,7 +263,7 @@ def main() -> None:
     print(f"\n{'=' * 80}")
     print("RANKING DE LAMBDA (ordenado por MAE de VALIDACIÓN)")
     print(f"{'=' * 80}")
-    print(ranking[["lambda", "val_mae", "val_rmse", "test_mae"]].to_string(index=False))
+    print(ranking[["lambda", "val_mae", "val_medae", "val_rmse", "test_mae", "test_medae"]].to_string(index=False))
     print(f"\n{'-' * 80}")
     print(f"MEJOR LAMBDA: {best_lambda}  |  VALIDATION MAE: {best_val_mae:.4f}")
     print(f"{'-' * 80}\n")

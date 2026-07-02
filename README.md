@@ -15,7 +15,7 @@ This repository contains two trainable models:
    - Input: fingerprints + adduct + m/z + ChEBI ontology labels
    - Output: CCS prediction + multilabel classification
    - Loss: MSE + λ × BCE (λ defaults to 0.1)
-   - Supports λ ∈ {0.1, 0.5, 1.0} for comparison
+   - Supports λ ∈ {0.1 - 2.0} for comparison
 
 Both models use identical 80/10/10 train/val/test splits on **16,892 molecules** (ChEBI-covered compounds) with **2,259 input features** and **546 ontology labels** (filtered).
 
@@ -165,11 +165,11 @@ python model/scripts/classification_model/run_multitask_train.py \
 
 ### Compare Results
 
-Pre-trained models available in:
-- `predictions/base/` — Baseline (λ = N/A)
-- `predictions/ontology_model/` — λ = 0.1
-- `predictions/ontology_model_filtered_lambda05/` — λ = 0.5
-- `predictions/ontology_model_filtered_lambda10/` — λ = 1.0
+Final Pre-trained models available in:
+- `predictions/final_baseline_optimized/` — Baseline (λ = N/A)
+- `predictions/final_ontology_optimized/` — λ = 1.8
+- `predictions/lambda_sweep/` — λ = (0.1, 2.0)
+- `predictions/final_benchmark_test/` — Benchmark values on test split
 
 All use identical train/val/test splits. Compare `test_predictions.csv` or `ontology_metrics.json` across directories.
 
@@ -264,7 +264,7 @@ model/
         └── run_multitask_train.py     [CLI for ontology model]
 
 predictions/
-├── base/                              [Pre-trained baseline]
+├── final_baseline_optimized/                              [Pre-trained baseline]
 │   ├── train_split.csv
 │   ├── val_split.csv
 │   ├── test_split.csv
@@ -272,7 +272,6 @@ predictions/
 │   ├── training_curves.png
 │   └── test_predictions.csv
 │
-├── ontology_model/                    [Pre-trained ontology model, λ=0.1]
-├── ontology_model_filtered_lambda05/  [λ=0.5]
-└── ontology_model_filtered_lambda10/  [λ=1.0]
+├── final_ontology_optimized/                    [Pre-trained ontology model, λ=1.8]
+├── final_benchmark_test
 ```
