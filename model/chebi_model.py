@@ -545,7 +545,7 @@ def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, tes
             device=DEVICE,
         )
 
-        train_ontology_loss_epoch = torch.nn.functional.binary_cross_entropy_with_logits(
+        train_ontology_loss_epoch = ontology_loss_fn(
             train_ontology_logits_tensor,
             y_train_ontology_tensor,
         )
@@ -562,7 +562,7 @@ def train_model(train_csv: str, output_dir: str, val_csv: str | None = None, tes
             device=DEVICE,
         )
 
-        val_ontology_loss_epoch = torch.nn.functional.binary_cross_entropy_with_logits(
+        val_ontology_loss_epoch = ontology_loss_fn(
             val_ontology_logits_tensor,
             y_val_ontology_tensor,
         )
