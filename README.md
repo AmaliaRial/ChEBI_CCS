@@ -105,14 +105,14 @@ All datasets are pre-processed and ready to use. No data preparation needed.
 ```bash
 conda activate tfg_amalia
 
-python model/base_model.py \
+python -m model.base_model \
   --train-input predictions/base/train_split.csv \
   --val-input predictions/base/val_split.csv \
   --test-input predictions/base/test_split.csv \
-  --output-dir predictions/base_new \
-  --epochs 30 \
+  --output-dir predictions/baseline_model \
+  --epochs 65 \
   --batch-size 128 \
-  --lr 1e-3
+  --lr 0.0008733543414433369
 ```
 
 **Inputs:**
@@ -132,17 +132,20 @@ python model/base_model.py \
 ```bash
 conda activate tfg_amalia
 
-python model/scripts/classification_model/run_multitask_train.py \
+python -m model.scripts.classification_model.run_multitask_train \
   --train-input predictions/base/train_split.csv \
   --val-input predictions/base/val_split.csv \
   --test-input predictions/base/test_split.csv \
   --ontology-input data/model/final_covered_ccs_fingerprints_multilabel_filtered.csv \
-  --output-dir predictions/ontology_model_new \
-  --epochs 30 \
+  --output-dir predictions/final_ontology_lambda_1.8 \
+  --epochs 65 \
   --batch-size 128 \
-  --lr 1e-3 \
-  --lambda-ontology 0.1 \
-  --ontology-threshold 0.5
+  --lr 0.0008733543414433369 \
+  --hidden-dims 320 64 160 384 480 \
+  --dropout 0.0043597782845490735 \
+  --lambda-ontology 1.8 \
+  --ontology-threshold 0.5 \
+  --device cuda
 ```
 
 **Inputs:**
