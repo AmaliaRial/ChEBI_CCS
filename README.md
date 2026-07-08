@@ -14,10 +14,10 @@ This repository contains two trainable models:
 2. **Ontology-Aware Model**: Multitask learning
    - Input: fingerprints + adduct + m/z + ChEBI ontology labels
    - Output: CCS prediction + multilabel classification
-   - Loss: MSE + λ × BCE (λ defaults to 0.1)
+   - Loss: MSE + λ × BCE (λ defaults to 1.8, best MAE outcome)
    - Supports λ ∈ {0.1 - 2.0} for comparison
 
-Both models use identical 80/10/10 train/val/test splits on **16,892 molecules** (ChEBI-covered compounds) with **2,259 input features** and **546 ontology labels** (filtered).
+Both models use identical 80/10/10 train/val/test splits on **16,892 molecules** (ChEBI-covered compounds) and **546 ontology labels** (filtered).
 
 ## Data Files
 

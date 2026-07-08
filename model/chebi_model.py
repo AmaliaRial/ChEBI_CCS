@@ -753,15 +753,15 @@ def parse_args() -> argparse.Namespace:
         help="CSV con row_id y columnas ont_ o ontology__ generadas por el preprocesado de ChEBI.",
     )
     parser.add_argument("--output-dir", default="predictions/ontology_model", help="Directorio de salida.")
-    parser.add_argument("--epochs", type=int, default=30)
+    parser.add_argument("--epochs", type=int, default=65)
     parser.add_argument("--batch-size", type=int, default=128)
-    parser.add_argument("--lr", type=float, default=1e-3)
-    parser.add_argument("--lambda-ontology", type=float, default=0.1)
+    parser.add_argument("--lr", type=float, default=0.000873)
+    parser.add_argument("--lambda-ontology", type=float, default=1.8)
     parser.add_argument("--ontology-threshold", type=float, default=0.5)
     parser.add_argument("--row-id-column", default="row_id")
     parser.add_argument("--device", choices=("auto", "cpu", "cuda"), default="auto", help="Dispositivo para el entrenamiento multitarea.")
     parser.add_argument("--hidden-dims", type=int, nargs="+", default=None, help="Neuronas por capa oculta del tronco compartido (por defecto 1024 256 64).")
-    parser.add_argument("--dropout", type=float, default=0.2, help="Tasa de dropout del tronco compartido.")
+    parser.add_argument("--dropout", type=float, default=0.0044, help="Tasa de dropout del tronco compartido.")
     return parser.parse_args()
 
 
